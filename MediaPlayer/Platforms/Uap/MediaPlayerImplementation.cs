@@ -62,6 +62,18 @@ namespace ZPF.Media
 
       public override TimeSpan Duration => _player.PlaybackSession.NaturalDuration;
 
+      public override TimeSpan Buffered
+      {
+         get
+         {
+            //ToDo: ME - ???
+            if (_player == null) return TimeSpan.Zero;
+            return
+                TimeSpan.FromMilliseconds(_player.PlaybackSession.BufferingProgress *
+                                          _player.PlaybackSession.NaturalDuration.TotalMilliseconds);
+         }
+      }
+
       // - - -  - - - 
 
       //public new bool play(string uri)
@@ -108,13 +120,35 @@ namespace ZPF.Media
          return MediaSource.CreateFromUri(new Uri(mediaItem.MediaUri));
       }
 
+      public override Task Play()
+      {
+         _player.PlaybackSession.PlaybackRate = 1;
+         _player.Play();
+         return Task.CompletedTask;
+      }
+
+      public override Task Pause()
+      {
+         if (_player.PlaybackSession.PlaybackState == MediaPlaybackState.Paused)
+         {
+            _player.Play();
+         }
+         else
+         {
+            //ToDo: ME: Why not a play from zéro?
+            _player.Pause();
+         };
+
+         return Task.CompletedTask;
+      }
+
       public override Task Stop()
       {
          _player.PlaybackSession.PlaybackRate = 0;
          _player.PlaybackSession.Position = TimeSpan.Zero;
 
          _State = MediaPlayerState.Stopped;
-         //this.OnStateChanged(this, new StateChangedEventArgs(_State));
+         this.OnStateChanged(this, new StateChangedEventArgs(_State));
 
          return Task.CompletedTask;
       }

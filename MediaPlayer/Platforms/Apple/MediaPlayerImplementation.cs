@@ -11,14 +11,26 @@ namespace ZPF.Media
 
       public override TimeSpan Duration => throw new NotImplementedException();
 
+      public override TimeSpan Buffered => throw new NotImplementedException();
+
       public override void Init()
       {
          throw new System.NotImplementedException();
       }
 
+      public override Task Pause()
+      {
+         throw new NotImplementedException();
+      }
+
       public override Task<IMediaItem> Play(string uri)
       {
          throw new System.NotImplementedException();
+      }
+
+      public override Task Play()
+      {
+         throw new NotImplementedException();
       }
 
       public override Task SeekTo(TimeSpan position)

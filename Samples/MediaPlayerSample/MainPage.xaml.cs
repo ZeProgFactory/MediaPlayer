@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,52 +24,53 @@ namespace MediaPlayerSample
          //MediaPlayer.Current.ShuffleMode = MediaManager.Queue.ShuffleMode.Off;
 
          // Hook into events
-         //MediaPlayer.Current.StateChanged += Current_StateChanged;
-         //MediaPlayer.Current.PositionChanged += Current_PositionChanged;
+         MediaPlayer.Current.StateChanged += Current_StateChanged;
+         MediaPlayer.Current.PositionChanged += Current_PositionChanged;
 
-         //MediaPlayer.Current.PlayingChanged += Current_PlayingChanged;
-         //MediaPlayer.Current.BufferingChanged += Current_BufferingChanged;
+         MediaPlayer.Current.PlayingChanged += Current_PlayingChanged;
+         MediaPlayer.Current.BufferingChanged += Current_BufferingChanged;
 
-         //MediaPlayer.Current.MediaItemFinished += Current_MediaItemFinished;
-         //MediaPlayer.Current.MediaItemChanged += Current_MediaItemChanged;
+         MediaPlayer.Current.MediaItemFinished += Current_MediaItemFinished;
+         MediaPlayer.Current.MediaItemChanged += Current_MediaItemChanged;
       }
 
-      //private void Current_PlayingChanged(object sender, MediaManager.Playback.PlayingChangedEventArgs e)
-      //{
-      //   //Bug: Is running on Startup without any previous operation
-      //   Debug.WriteLine($"Current_PlayingChanged {e.Position}");
-      //}
+      private void Current_PlayingChanged(object sender, PlayingChangedEventArgs e)
+      {
+         //Bug: Is running on Startup without any previous operation
+         Debug.WriteLine($"Current_PlayingChanged {e.Position}");
+      }
 
-      //private void Current_BufferingChanged(object sender, MediaManager.Playback.BufferingChangedEventArgs e)
-      //{
-      //   throw new NotImplementedException();
-      //}
+      private void Current_BufferingChanged(object sender, BufferingChangedEventArgs e)
+      {
+         throw new NotImplementedException();
+      }
 
-      //private void Current_MediaItemFinished(object sender, MediaManager.Media.MediaItemEventArgs e)
-      //{
-      //   throw new NotImplementedException();
-      //}
+      private void Current_MediaItemFinished(object sender, MediaItemEventArgs e)
+      {
+         throw new NotImplementedException();
+      }
 
-      //private void Current_MediaItemChanged(object sender, MediaManager.Media.MediaItemEventArgs e)
-      //{
-      //   Debug.WriteLine("Current_MediaItemChanged");
-      //}
+      private void Current_MediaItemChanged(object sender, MediaItemEventArgs e)
+      {
+         Debug.WriteLine("Current_MediaItemChanged");
+      }
 
-      //private void Current_PositionChanged(object sender, MediaManager.Playback.PositionChangedEventArgs e)
-      //{
-      //   Device.BeginInvokeOnMainThread(() =>
-      //   {
-      //      labelPos.Text = $"{MediaPlayer.Current.Position}";
-      //   });
-      //}
+      private void Current_PositionChanged(object sender, PositionChangedEventArgs e)
+      {
+         Device.BeginInvokeOnMainThread(() =>
+         {
+            labelPos.Text = $"{MediaPlayer.Current.Position}";
+         });
+      }
 
-      //private void Current_StateChanged(object sender, MediaManager.Playback.StateChangedEventArgs e)
-      //{
-      //   Device.BeginInvokeOnMainThread(() =>
-      //   {
-      //      labelInfo.Text = $"{e.State} {MediaPlayer.Current.Duration} {MediaPlayer.Current.MediaQueue.Current?.Title}";
-      //   });
-      //}
+      private void Current_StateChanged(object sender, StateChangedEventArgs e)
+      {
+         Device.BeginInvokeOnMainThread(() =>
+         {
+            //labelInfo.Text = $"{e.State} {MediaPlayer.Current.Duration} {MediaPlayer.Current.MediaQueue.Current?.Title}";
+            labelInfo.Text = $"{e.State} {MediaPlayer.Current.Duration} ";
+         });
+      }
 
       private async void Button_Audio_Clicked(object sender, EventArgs e)
       {
@@ -100,19 +102,19 @@ namespace MediaPlayerSample
 
       private async void Button_PlayPause_Clicked(object sender, EventArgs e)
       {
-         //await MediaPlayer.Current.PlayPause();
+         //ToDo: await MediaPlayer.Current.PlayPause();
 
-         //switch (MediaPlayer.Current.State)
-         //{
-         //   case MediaManager.Playback.MediaPlayerState.Stopped:
-         //   case MediaManager.Playback.MediaPlayerState.Paused:
-         //      await MediaPlayer.Current.Play();
-         //      break;
+         switch (MediaPlayer.Current.State)
+         {
+            case MediaPlayerState.Stopped:
+            case MediaPlayerState.Paused:
+               await MediaPlayer.Current.Play();
+               break;
 
-         //   case MediaManager.Playback.MediaPlayerState.Playing:
-         //      await MediaPlayer.Current.Pause();
-         //      break;
-         //}
+            case MediaPlayerState.Playing:
+               await MediaPlayer.Current.Pause();
+               break;
+         }
       }
 
       private async void Button_Stop_Clicked(object sender, EventArgs e)

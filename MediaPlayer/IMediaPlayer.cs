@@ -14,6 +14,14 @@ namespace ZPF.Media
       Failed
    }
 
+   public delegate void StateChangedEventHandler(object sender, StateChangedEventArgs e);
+   public delegate void PlayingChangedEventHandler(object sender, PlayingChangedEventArgs e);
+   public delegate void BufferingChangedEventHandler(object sender, BufferingChangedEventArgs e);
+   public delegate void PositionChangedEventHandler(object sender, PositionChangedEventArgs e);
+   public delegate void MediaItemFinishedEventHandler(object sender, MediaItemEventArgs e);
+   public delegate void MediaItemChangedEventHandler(object sender, MediaItemEventArgs e);
+   public delegate void MediaItemFailedEventHandler(object sender, MediaItemFailedEventArgs e);
+
    public interface IMediaPlayer
    {
       void Init();
@@ -24,6 +32,7 @@ namespace ZPF.Media
       MediaPlayerState State { get; }
       TimeSpan Position { get; }
       TimeSpan Duration { get; }
+      TimeSpan Buffered { get; }
 
       TimeSpan StepSize { get; set; }
 
@@ -39,6 +48,16 @@ namespace ZPF.Media
       /// <param name="uri"></param>
       /// <returns></returns>
       Task<IMediaItem> Play(string uri);
+
+      /// <summary>
+      /// Starts playing
+      /// </summary>
+      Task Play();
+
+      /// <summary>
+      /// Stops playing but retains position
+      /// </summary>
+      Task Pause();
 
       /// <summary>
       /// Stops playing
@@ -60,6 +79,21 @@ namespace ZPF.Media
       /// </summary>
       Task StepBackward();
 
+      // - - -   - - - 
+
+      event StateChangedEventHandler StateChanged;
+
+      event PlayingChangedEventHandler PlayingChanged;
+
+      event BufferingChangedEventHandler BufferingChanged;
+
+      event PositionChangedEventHandler PositionChanged;
+
+      event MediaItemFinishedEventHandler MediaItemFinished;
+
+      event MediaItemChangedEventHandler MediaItemChanged;
+
+      event MediaItemFailedEventHandler MediaItemFailed;
    }
 
    public abstract class MediaPlayerBase : IMediaPlayer
@@ -79,19 +113,19 @@ namespace ZPF.Media
          if (!IsInitialized)
             return;
 
-         //if (PreviousPosition != Position)
-         //{
-         //   PreviousPosition = Position;
-         //   OnPositionChanged(this, new PositionChangedEventArgs(Position));
-         //}
-         //if (this.IsPlaying())
-         //{
-         //   OnPlayingChanged(this, new PlayingChangedEventArgs(Position, Duration));
-         //}
-         //if (this.IsBuffering())
-         //{
-         //   OnBufferingChanged(this, new BufferingChangedEventArgs(Buffered));
-         //}
+         if (PreviousPosition != Position)
+         {
+            PreviousPosition = Position;
+            OnPositionChanged(this, new PositionChangedEventArgs(Position));
+         }
+         if (this.IsPlaying())
+         {
+            OnPlayingChanged(this, new PlayingChangedEventArgs(Position, Duration));
+         }
+         if (this.IsBuffering())
+         {
+            OnBufferingChanged(this, new BufferingChangedEventArgs(Buffered));
+         }
       }
 
       public TimeSpan StepSize { get; set; } = TimeSpan.FromSeconds(10);
@@ -105,14 +139,17 @@ namespace ZPF.Media
       public abstract MediaPlayerState State { get; }
       public abstract TimeSpan Position { get; }
       public abstract TimeSpan Duration { get; }
+      public abstract TimeSpan Buffered { get; }
 
       public abstract void Init();
 
       public abstract Task<IMediaItem> Play(string uri);
 
+      public abstract Task Play();
+
+      public abstract Task Pause();
+
       public abstract Task Stop();
-
-
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
@@ -133,6 +170,28 @@ namespace ZPF.Media
       }
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
+
+      public event StateChangedEventHandler StateChanged;
+      public event PlayingChangedEventHandler PlayingChanged;
+      public event BufferingChangedEventHandler BufferingChanged;
+      public event PositionChangedEventHandler PositionChanged;
+
+      public event MediaItemFinishedEventHandler MediaItemFinished;
+      public event MediaItemChangedEventHandler MediaItemChanged;
+      public event MediaItemFailedEventHandler MediaItemFailed;
+
+      public void OnStateChanged(object sender, StateChangedEventArgs e) => StateChanged?.Invoke(sender, e);
+      public void OnPlayingChanged(object sender, PlayingChangedEventArgs e) => PlayingChanged?.Invoke(sender, e);
+      public void OnBufferingChanged(object sender, BufferingChangedEventArgs e) => BufferingChanged?.Invoke(sender, e);
+      public void OnPositionChanged(object sender, PositionChangedEventArgs e) => PositionChanged?.Invoke(sender, e);
+
+      public void OnMediaItemChanged(object sender, MediaItemEventArgs e) => MediaItemChanged?.Invoke(sender, e);
+      public void OnMediaItemFailed(object sender, MediaItemFailedEventArgs e) => MediaItemFailed?.Invoke(sender, e);
+      public void OnMediaItemFinished(object sender, MediaItemEventArgs e) => MediaItemFinished?.Invoke(sender, e);
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
+
+
    }
 }
 

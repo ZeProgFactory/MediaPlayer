@@ -7,3 +7,12 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 [How to Make Portable Class Libraries Work for You](https://blogs.msdn.microsoft.com/dsplaisted/2012/08/27/how-to-make-portable-class-libraries-work-for-you/)</BR>
 [Multi Targeting](https://dev.to/borrrden/multi-targeting-1p5)</BR>
 [onovotny/MSBuildSdkExtras](https://github.com/onovotny/MSBuildSdkExtras)</BR>
+
+## Platform Support
+
+|Platform|Version|State|
+| ------------------- | :------------------: | :------------------: |
+|Windows 10 UWP| | |
+|Xamarin.iOS| | |
+|Xamarin.Android| | |
+|Xamarin.Mac| | |
