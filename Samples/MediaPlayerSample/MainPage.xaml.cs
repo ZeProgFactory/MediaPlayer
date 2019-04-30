@@ -117,7 +117,7 @@ namespace MediaPlayerSample
 
       private async void Button_Stop_Clicked(object sender, EventArgs e)
       {
-         //await MediaPlayer.Current.Stop();
+         await MediaPlayer.Current.Stop();
       }
 
       private async void Button_StepBackward_Clicked(object sender, EventArgs e)

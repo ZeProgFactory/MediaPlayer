@@ -4,9 +4,25 @@ using System.Timers;
 
 namespace ZPF.Media
 {
+   public enum MediaPlayerState
+   {
+      Playing,
+      Paused,
+      Stopped,
+      Loading,
+      Buffering,
+      Failed
+   }
+
    public interface IMediaPlayer
    {
       void Init();
+
+      /// <summary>
+      /// Reading the current status of the player
+      /// </summary>
+      MediaPlayerState State { get; }
+
 
       TimeSpan StepSize { get; set; }
 
@@ -15,7 +31,18 @@ namespace ZPF.Media
       IMediaExtractor MediaExtractor { get; set; }
       IVolumeManager VolumeManager { get; set; }
 
+
+      /// <summary>
+      /// Plays an uri (remote or local)
+      /// </summary>
+      /// <param name="uri"></param>
+      /// <returns></returns>
       Task<IMediaItem> Play(string uri);
+
+      /// <summary>
+      /// Stops playing
+      /// </summary>
+      Task Stop();
    }
 
    public abstract class MediaPlayerBase : IMediaPlayer
@@ -57,10 +84,13 @@ namespace ZPF.Media
 
       public IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
       public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      public abstract MediaPlayerState State { get; }
 
       public abstract void Init();
 
       public abstract Task<IMediaItem> Play(string uri);
+
+      public abstract Task Stop();
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
    }

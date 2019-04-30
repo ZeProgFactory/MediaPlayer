@@ -27,6 +27,39 @@ namespace ZPF.Media
          IsInitialized = true;
       }
 
+      // - - -  - - - 
+
+      public override MediaPlayerState State
+      {
+         get { return _State; }
+         //ToDo: ME discuss with Martijn
+         //private set
+         //{
+         //    _state = value;
+         //    MediaManager.OnStateChanged(this, new StateChangedEventArgs(_state));
+         //}
+      }
+      private MediaPlayerState _State;
+
+
+      private MediaPlayerState GetMediaPlayerState()
+      {
+         //ToDo: ME:  Stopped ?, Loading ?, Failed ?
+
+         switch (_player.PlaybackSession.PlaybackState)
+         {
+            case MediaPlaybackState.Buffering: return MediaPlayerState.Buffering;
+            case MediaPlaybackState.None: return MediaPlayerState.Stopped;
+            case MediaPlaybackState.Opening: return MediaPlayerState.Loading;
+            case MediaPlaybackState.Paused: return MediaPlayerState.Paused;
+            case MediaPlaybackState.Playing: return MediaPlayerState.Playing;
+         };
+
+         return MediaPlayerState.Paused;
+      }
+
+      // - - -  - - - 
+
       //public new bool play(string uri)
       //{
       //   _player.Source = MediaSource.CreateFromUri(new Uri(uri));
@@ -69,6 +102,17 @@ namespace ZPF.Media
          }
 
          return MediaSource.CreateFromUri(new Uri(mediaItem.MediaUri));
+      }
+
+      public override Task Stop()
+      {
+         _player.PlaybackSession.PlaybackRate = 0;
+         _player.PlaybackSession.Position = TimeSpan.Zero;
+
+         _State = MediaPlayerState.Stopped;
+         //this.OnStateChanged(this, new StateChangedEventArgs(_State));
+
+         return Task.CompletedTask;
       }
    }
 }
