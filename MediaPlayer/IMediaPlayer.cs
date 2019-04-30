@@ -18,7 +18,7 @@ namespace ZPF.Media
       Task<IMediaItem> Play(string uri);
    }
 
-   public class MediaPlayerBase : IMediaPlayer
+   public abstract class MediaPlayerBase : IMediaPlayer
    {
       public Timer Timer { get; } = new Timer(1000);
 
@@ -58,15 +58,9 @@ namespace ZPF.Media
       public IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
       public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-      public void Init()
-      {
-         throw new NotImplementedException();
-      }
+      public abstract void Init();
 
-      public Task<IMediaItem> Play(string uri)
-      {
-         throw new NotImplementedException();
-      }
+      public abstract Task<IMediaItem> Play(string uri);
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
    }

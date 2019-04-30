@@ -75,8 +75,6 @@ namespace MediaPlayerSample
          //Audio
          //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
 
-         await TestMP.Current.Play2("");
-
          await MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
       }
 

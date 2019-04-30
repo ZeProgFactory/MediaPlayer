@@ -8,41 +8,19 @@ using Windows.Storage;
 
 namespace ZPF.Media
 {
-   public class MediaPlayer : MediaPlayerBase
+   public class MediaPlayerImplementation : MediaPlayerBase
    {
       private readonly Windows.Media.Playback.MediaPlayer _player;
       private IMediaExtractor _MediaExtractor;
 
-      public MediaPlayer()
+      public MediaPlayerImplementation()
       {
          _player = new Windows.Media.Playback.MediaPlayer();
       }
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
-      static MediaPlayer _Current = null;
-
-      public static MediaPlayer Current
-      {
-         get
-         {
-            if (_Current == null)
-            {
-               _Current = new MediaPlayer();
-            };
-
-            return _Current;
-         }
-
-         set
-         {
-            _Current = value;
-         }
-      }
-
-      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
-
-      public new void Init()
+      public override void Init()
       {
          // uap
 
@@ -56,8 +34,12 @@ namespace ZPF.Media
       //   return true;
       //}
 
-      public async new Task<IMediaItem> Play(string uri)
+      public override async Task<IMediaItem> Play(string uri)
       {
+         _player.Source = MediaSource.CreateFromUri(new Uri(uri));
+         _player.Play();
+         return null;
+
          var mediaItem = await MediaExtractor.CreateMediaItem(uri);
 
          var mediaPlaybackList = new MediaPlaybackList();
