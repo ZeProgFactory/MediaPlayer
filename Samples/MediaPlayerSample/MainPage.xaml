@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+   xmlns="http://xamarin.com/schemas/2014/forms"
+   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+   xmlns:local="clr-namespace:MediaPlayerSample"
+   x:Class="MediaPlayerSample.MainPage">
+
+   <Grid>
+      <Grid.RowDefinitions>
+         <RowDefinition Height="Auto"/>
+         <RowDefinition Height="Auto"/>
+         <RowDefinition Height="*"/>
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0" >
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="*"/>
+         </Grid.ColumnDefinitions>
+
+         <Label Grid.Column="0" x:Name="labelInfo" Margin="10" BackgroundColor="LightGray" />
+         <Label Grid.Column="1" x:Name="labelPos" Margin="10" BackgroundColor="LightGray" />
+      </Grid>
+
+
+      <Grid Grid.Row="1" >
+         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+         </Grid.ColumnDefinitions>
+
+         <Button Grid.Column="0" Text="PlayPrevious" HorizontalOptions="Center" Clicked="Button_PlayPrevious_Clicked" />
+         <Button Grid.Column="1" Text="StepBackward" HorizontalOptions="Center" Clicked="Button_StepBackward_Clicked" />
+         <Button Grid.Column="2" Text="PlayPause" HorizontalOptions="Center" Clicked="Button_PlayPause_Clicked" />
+         <Button Grid.Column="3" Text="StepForward" HorizontalOptions="Center" Clicked="Button_StepForward_Clicked" />
+         <Button Grid.Column="4" Text="PlayNext" HorizontalOptions="Center" Clicked="Button_PlayNext_Clicked" />
+         <Button Grid.Column="5" Text="Stop" HorizontalOptions="Center" Clicked="Button_Stop_Clicked" />
+      </Grid>
+
+      <!--<local:MPController Grid.Row="1" />-->
+
+      <ScrollView Grid.Row="2" Margin="10">
+         <StackLayout Padding="5">
+            <Label Text="Examples from 'https://github.com/martijn00/XamarinMediaManager/  README.md'" TextColor="DarkGray" />
+
+            <Button Text="Play a single media item (Audio)" HorizontalOptions="Center" Clicked="Button_Audio_Clicked" />
+
+            <Button Text="Play a single media item (Video)" HorizontalOptions="Center" Clicked="Button_Video_Clicked" />
+
+            <Button Text="Play multiple media items"  IsEnabled="False"  HorizontalOptions="Center" Clicked="Button_PlayMultiple_Clicked" />
+         </StackLayout>
+      </ScrollView>
+   </Grid>
+
+</ContentPage>
