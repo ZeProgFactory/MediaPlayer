@@ -1,23 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ZPF.Media
 {
-   public class MediaPlayer : MediaPlayerBase
+   public class TestMP : TestBaseMP
    {
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
-      static MediaPlayer _Current = null;
+      static TestMP _Current = null;
 
-      public static MediaPlayer Current
+      public static TestMP Current
       {
          get
          {
             if (_Current == null)
             {
-               _Current = new MediaPlayer();
+               _Current = new TestMP();
             };
 
             return _Current;
@@ -37,7 +35,12 @@ namespace ZPF.Media
          throw new NotImplementedException();
       }
 
-      public async new Task<IMediaItem> Play(string uri)
+      public new bool Play(string URL)
+      {
+         throw new NotImplementedException();
+      }
+
+      public new async Task<IMediaItem> Play2(string uri)
       {
          throw new NotImplementedException();
       }

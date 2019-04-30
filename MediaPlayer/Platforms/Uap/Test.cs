@@ -6,17 +6,19 @@ using Windows.Storage;
 
 namespace ZPF.Media
 {
-   public class MPlayer : MPlayerBase
+   public class TestMP : TestBaseMP
    {
-      static MPlayer _Current = null;
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
-      public static MPlayer Current
+      static TestMP _Current = null;
+
+      public static TestMP Current
       {
          get
          {
             if (_Current == null)
             {
-               _Current = new MPlayer();
+               _Current = new TestMP();
             };
 
             return _Current;
@@ -32,13 +34,18 @@ namespace ZPF.Media
 
       public new void Init()
       {
-         // dummy
-         throw new NotImplementedException();
+         // uap
       }
 
-      public new bool Play(string URL)
+      public new bool Play(string uri)
       {
-         throw new NotImplementedException();
+         return true;
+      }
+
+      public new async Task<IMediaItem> Play2(string uri)
+      {
+         await StorageFile.GetFileFromPathAsync(uri);
+         return null;
       }
    }
 }

@@ -3,13 +3,15 @@ using System.Threading.Tasks;
 
 namespace ZPF.Media
 {
-   public interface IMediaPlayer
+   public interface ITestMP
    {
       void Init();
+
       bool Play(string URL);
+      Task<IMediaItem> Play2(string URL);
    }
 
-   public class MediaPlayerBase : IMediaPlayer
+   public class TestBaseMP : ITestMP
    {
       public void Init()
       {
@@ -21,7 +23,10 @@ namespace ZPF.Media
          throw new NotImplementedException();
       }
 
-      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
+      public Task<IMediaItem> Play2(string URL)
+      {
+         throw new NotImplementedException();
+      }
    }
 }
 

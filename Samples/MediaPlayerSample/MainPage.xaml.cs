@@ -75,13 +75,15 @@ namespace MediaPlayerSample
          //Audio
          //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
 
-         MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
+         await TestMP.Current.Play2("");
+
+         await MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
       }
 
       private async void Button_Video_Clicked(object sender, EventArgs e)
       {
          //Video
-         //await MediaPlayer.Current.Play("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
+         await MediaPlayer.Current.Play("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");
       }
 
       public IList<string> Mp3UrlList => new[]
