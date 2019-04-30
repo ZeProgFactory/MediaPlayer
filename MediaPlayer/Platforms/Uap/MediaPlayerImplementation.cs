@@ -58,6 +58,10 @@ namespace ZPF.Media
          return MediaPlayerState.Paused;
       }
 
+      public override TimeSpan Position => _player.PlaybackSession.Position;
+
+      public override TimeSpan Duration => _player.PlaybackSession.NaturalDuration;
+
       // - - -  - - - 
 
       //public new bool play(string uri)
@@ -113,6 +117,12 @@ namespace ZPF.Media
          //this.OnStateChanged(this, new StateChangedEventArgs(_State));
 
          return Task.CompletedTask;
+      }
+
+      public override async Task SeekTo(TimeSpan position)
+      {
+         _player.PlaybackSession.Position = position;
+         await Task.CompletedTask;
       }
    }
 }

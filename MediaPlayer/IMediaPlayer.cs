@@ -22,7 +22,8 @@ namespace ZPF.Media
       /// Reading the current status of the player
       /// </summary>
       MediaPlayerState State { get; }
-
+      TimeSpan Position { get; }
+      TimeSpan Duration { get; }
 
       TimeSpan StepSize { get; set; }
 
@@ -43,6 +44,22 @@ namespace ZPF.Media
       /// Stops playing
       /// </summary>
       Task Stop();
+
+      /// <summary>
+      /// Changes position to the specified number of milliseconds from zero
+      /// </summary>
+      Task SeekTo(TimeSpan position);
+
+      /// <summary>
+      /// Seeks forward a fixed amount of seconds of the current MediaFile
+      /// </summary>
+      Task StepForward();
+
+      /// <summary>
+      /// Seeks backward a fixed amount of seconds of the current MediaFile
+      /// </summary>
+      Task StepBackward();
+
    }
 
    public abstract class MediaPlayerBase : IMediaPlayer
@@ -84,13 +101,36 @@ namespace ZPF.Media
 
       public IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
       public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
       public abstract MediaPlayerState State { get; }
+      public abstract TimeSpan Position { get; }
+      public abstract TimeSpan Duration { get; }
 
       public abstract void Init();
 
       public abstract Task<IMediaItem> Play(string uri);
 
       public abstract Task Stop();
+
+
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
+
+      public abstract Task SeekTo(TimeSpan position);
+
+      public virtual Task StepBackward()
+      {
+         var seekTo = this.SeekTo(TimeSpan.FromSeconds(Double.IsNaN(Position.TotalSeconds) ? 0 : ((Position.TotalSeconds < StepSize.TotalSeconds) ? 0 : Position.TotalSeconds - StepSize.TotalSeconds)));
+         Timer_Elapsed(null, null);
+         return seekTo;
+      }
+
+      public virtual Task StepForward()
+      {
+         var seekTo = this.SeekTo(TimeSpan.FromSeconds(Double.IsNaN(Position.TotalSeconds) ? 0 : Position.TotalSeconds + StepSize.TotalSeconds));
+         Timer_Elapsed(null, null);
+         return seekTo;
+      }
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
    }

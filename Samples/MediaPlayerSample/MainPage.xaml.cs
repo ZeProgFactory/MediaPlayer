@@ -122,12 +122,12 @@ namespace MediaPlayerSample
 
       private async void Button_StepBackward_Clicked(object sender, EventArgs e)
       {
-         //await MediaPlayer.Current.StepBackward();
+         await MediaPlayer.Current.StepBackward();
       }
 
       private async void Button_StepForward_Clicked(object sender, EventArgs e)
       {
-         //await MediaPlayer.Current.StepForward();
+         await MediaPlayer.Current.StepForward();
       }
 
       private async void Button_PlayPrevious_Clicked(object sender, EventArgs e)
