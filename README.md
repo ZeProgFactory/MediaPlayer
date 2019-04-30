@@ -1,6 +1,6 @@
 # MediaPlayer
 Cross platform media player lib</BR>
-based on ideas and code of @martijn00 ( https://github.com/martijn00/XamarinMediaManager )
+based on ideas and code of [martijn00](https://github.com/martijn00) ( https://github.com/martijn00/XamarinMediaManager )
 
 ## 'bait and switch'</BR>
 [The Bait and Switch PCL Trick](https://log.paulbetts.org/the-bait-and-switch-pcl-trick/)</BR>
