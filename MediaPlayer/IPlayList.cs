@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -19,15 +20,19 @@ namespace ZPF.Media
 
    //public delegate void MediaItemChangedEventHandler(object sender, MediaItemEventArgs e);
 
-   public interface IPlaylist
+   public interface IPlaylist : IList<IMediaItem>
    {
       //event MediaItemChangedEventHandler MediaItemChanged;
 
       RepeatMode RepeatMode { get; set; }
       ShuffleMode ShuffleMode { get; set; }
 
+      IMediaItem Current { get; set; }
+
       Task PlayPrevious();
       Task PlayNext();
+      void PlayByPosition(int ind);
+      void AddRange(List<MediaItem> playList);
    }
 }
 
