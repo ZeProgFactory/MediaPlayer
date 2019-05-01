@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ZPF.Media
 {
-   class PlayList : IPlayList
+   class Playlist : IPlaylist
    {
       public RepeatMode RepeatMode { get; set; }
       public ShuffleMode ShuffleMode { get; set; }

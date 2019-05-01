@@ -9,7 +9,7 @@ namespace ZPF.Media
       public IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
       public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-      public IPlayList PlayList { get; set; } = new PlayList();
+      public IPlaylist Playlist { get; set; } = new Playlist();
 
       public Timer Timer { get; } = new Timer(1000);
 

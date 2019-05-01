@@ -19,7 +19,7 @@ namespace ZPF.Media
 
    //public delegate void MediaItemChangedEventHandler(object sender, MediaItemEventArgs e);
 
-   public interface IPlayList
+   public interface IPlaylist
    {
       //event MediaItemChangedEventHandler MediaItemChanged;
 

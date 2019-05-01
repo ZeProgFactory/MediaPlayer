@@ -26,7 +26,7 @@ namespace ZPF.Media
    {
       IMediaExtractor MediaExtractor { get; set; }
       IVolumeManager VolumeManager { get; set; }
-      IPlayList PlayList { get; set; }
+      IPlaylist Playlist { get; set; }
 
       // - - -  - - - 
 
