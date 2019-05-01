@@ -24,6 +24,12 @@ namespace ZPF.Media
 
    public interface IMediaPlayer
    {
+      IMediaExtractor MediaExtractor { get; set; }
+      IVolumeManager VolumeManager { get; set; }
+      IPlayList PlayList { get; set; }
+
+      // - - -  - - - 
+
       void Init();
 
       /// <summary>
@@ -38,16 +44,19 @@ namespace ZPF.Media
 
       bool IsInitialized { get; set; }
 
-      IMediaExtractor MediaExtractor { get; set; }
-      IVolumeManager VolumeManager { get; set; }
-
-
       /// <summary>
       /// Plays an uri (remote or local)
       /// </summary>
       /// <param name="uri"></param>
       /// <returns></returns>
       Task<IMediaItem> Play(string uri);
+
+      /// <summary>
+      /// Plays a MediaItem
+      /// </summary>
+      /// <param name="uri"></param>
+      /// <returns></returns>
+      Task Play(IMediaItem mediaItem);
 
       /// <summary>
       /// Starts playing
@@ -70,12 +79,12 @@ namespace ZPF.Media
       Task SeekTo(TimeSpan position);
 
       /// <summary>
-      /// Seeks forward a fixed amount of seconds of the current MediaFile
+      /// Seeks forward a fixed amount of seconds of the current MediaItem
       /// </summary>
       Task StepForward();
 
       /// <summary>
-      /// Seeks backward a fixed amount of seconds of the current MediaFile
+      /// Seeks backward a fixed amount of seconds of the current MediaItem
       /// </summary>
       Task StepBackward();
 

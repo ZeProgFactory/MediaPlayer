@@ -6,6 +6,11 @@ namespace ZPF.Media
 {
    public abstract class MediaPlayerBase : IMediaPlayer
    {
+      public IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
+      public IPlayList PlayList { get; set; } = new PlayList();
+
       public Timer Timer { get; } = new Timer(1000);
 
       public MediaPlayerBase()
@@ -41,9 +46,6 @@ namespace ZPF.Media
       //ToDo: set private
       public bool IsInitialized { get; set; }
 
-      public IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-      public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
       public abstract MediaPlayerState State { get; }
       public abstract TimeSpan Position { get; }
       public abstract TimeSpan Duration { get; }
@@ -52,6 +54,8 @@ namespace ZPF.Media
       public abstract void Init();
 
       public abstract Task<IMediaItem> Play(string uri);
+
+      public abstract Task Play(IMediaItem mediaItem);
 
       public abstract Task Play();
 

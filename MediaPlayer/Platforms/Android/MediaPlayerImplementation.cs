@@ -33,6 +33,11 @@ namespace ZPF.Media
          throw new NotImplementedException();
       }
 
+      public override Task Play(IMediaItem mediaItem)
+      {
+         throw new NotImplementedException();
+      }
+
       public override Task SeekTo(TimeSpan position)
       {
          throw new NotImplementedException();

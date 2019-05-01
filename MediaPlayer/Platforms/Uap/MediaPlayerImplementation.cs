@@ -85,11 +85,23 @@ namespace ZPF.Media
 
       public override async Task<IMediaItem> Play(string uri)
       {
-         _player.Source = MediaSource.CreateFromUri(new Uri(uri));
-         _player.Play();
-         return null;
+         //_player.Source = MediaSource.CreateFromUri(new Uri(uri));
+         //_player.Play();
+         //return null;
 
          var mediaItem = await MediaExtractor.CreateMediaItem(uri);
+
+         await Play(mediaItem);
+
+         return mediaItem;
+      }
+
+      public override async Task Play(IMediaItem mediaItem)
+      {
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            //ToDo: ...
+         };
 
          var mediaPlaybackList = new MediaPlaybackList();
          var mediaSource = await CreateMediaSource(mediaItem);
@@ -97,8 +109,6 @@ namespace ZPF.Media
          mediaPlaybackList.Items.Add(item);
          _player.Source = mediaPlaybackList;
          _player.Play();
-
-         return mediaItem;
       }
 
       private async Task<MediaSource> CreateMediaSource(IMediaItem mediaItem)

@@ -19,9 +19,8 @@ namespace MediaPlayerSample
       {
          InitializeComponent();
 
-         //ToDo: 
-         //MediaPlayer.Current.RepeatMode = MediaManager.Playback.RepeatMode.Off;
-         //MediaPlayer.Current.ShuffleMode = MediaManager.Queue.ShuffleMode.Off;
+         MediaPlayer.Current.PlayList.RepeatMode = RepeatMode.Off;;
+         MediaPlayer.Current.PlayList.ShuffleMode = ShuffleMode.Off;
 
          // Hook into events
          MediaPlayer.Current.StateChanged += Current_StateChanged;
@@ -97,7 +96,7 @@ namespace MediaPlayerSample
 
       private async void Button_PlayMultiple_Clicked(object sender, EventArgs e)
       {
-         //await MediaPlayer.Current.Play(Mp3UrlList);
+         //await MediaPlayer.Current.PlayList.Play(Mp3UrlList);
       }
 
       private async void Button_PlayPause_Clicked(object sender, EventArgs e)
@@ -134,12 +133,12 @@ namespace MediaPlayerSample
 
       private async void Button_PlayPrevious_Clicked(object sender, EventArgs e)
       {
-         //await MediaPlayer.Current.PlayPrevious();
+         await MediaPlayer.Current.PlayList.PlayPrevious();
       }
 
       private async void Button_PlayNext_Clicked(object sender, EventArgs e)
       {
-         //await MediaPlayer.Current.PlayNext();
+         await MediaPlayer.Current.PlayList.PlayNext();
       }
    }
 }

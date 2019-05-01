@@ -11,7 +11,7 @@ namespace ZPF.Media.Uap
 {
    public class UapMediaExtractor : IMediaExtractor
    {
-      //protected Dictionary<string, string> RequestHeaders => CrossMediaManager.Current.RequestHeaders;
+      //protected Dictionary<string, string> RequestHeaders => MediaPlayer.Current.RequestHeaders;
 
       public UapMediaExtractor()
       {
