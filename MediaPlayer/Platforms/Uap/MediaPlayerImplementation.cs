@@ -5,25 +5,50 @@ using System.Threading.Tasks;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.Storage;
+using ZPF.Media.Uap;
 
 namespace ZPF.Media
 {
    public class MediaPlayerImplementation : MediaPlayerBase
    {
       private readonly Windows.Media.Playback.MediaPlayer _player;
+
+      public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor=value; }
       private IMediaExtractor _MediaExtractor;
 
       public MediaPlayerImplementation()
       {
          _player = new Windows.Media.Playback.MediaPlayer();
+         _MediaExtractor = new UapMediaExtractor();
+
+         //ToDo: ME - reorg
+
+         _player.CurrentStateChanged += (Windows.Media.Playback.MediaPlayer sender, object args) =>
+         {
+            _State = GetMediaPlayerState();
+            this.OnStateChanged(this, new StateChangedEventArgs(GetMediaPlayerState()));
+         };
+
+         //ToDo: event BufferingChangedEventHandler BufferingChanged;
+         //ToDo: event MediaItemFinishedEventHandler MediaItemFinished;
+
+         _player.SourceChanged += (Windows.Media.Playback.MediaPlayer sender, object args) =>
+         {
+            this.OnMediaItemChanged(this, new MediaItemEventArgs(this.Playlist.Current));
+         };
+
+         _player.MediaFailed += (Windows.Media.Playback.MediaPlayer sender, MediaPlayerFailedEventArgs args) =>
+         {
+            _State = MediaPlayerState.Failed;
+            _player.PlaybackSession.Position = TimeSpan.Zero;
+            this.OnMediaItemFailed(this, new MediaItemFailedEventArgs(this.Playlist.Current, args.ExtendedErrorCode, args.ErrorMessage));
+         };
       }
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
       public override void Init()
       {
-         // uap
-
          IsInitialized = true;
       }
 
@@ -107,6 +132,10 @@ namespace ZPF.Media
          var mediaSource = await CreateMediaSource(mediaItem);
          var item = new MediaPlaybackItem(mediaSource);
          mediaPlaybackList.Items.Add(item);
+
+         Playlist.Clear();
+         Playlist.Current = mediaItem;
+
          _player.Source = mediaPlaybackList;
          _player.Play();
       }

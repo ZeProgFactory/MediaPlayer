@@ -19,7 +19,7 @@ namespace MediaPlayerSample
       {
          InitializeComponent();
 
-         MediaPlayer.Current.Playlist.RepeatMode = RepeatMode.Off;;
+         MediaPlayer.Current.Playlist.RepeatMode = RepeatMode.Off; ;
          MediaPlayer.Current.Playlist.ShuffleMode = ShuffleMode.Off;
 
          // Hook into events
@@ -77,6 +77,21 @@ namespace MediaPlayerSample
          //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
 
          await MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
+      }
+
+      private async void Button_MediaItem_Clicked(object sender, EventArgs e)
+      {
+         //Audio
+         //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
+
+         var mi = new MediaItem("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3")
+         {
+            MediaLocation = MediaLocation.Remote,
+            MediaType = MediaType.Audio,
+            //ToDo: MediaType = MediaType.SmoothStreaming,
+         };
+
+         await MediaPlayer.Current.Play(mi);
       }
 
       private async void Button_Video_Clicked(object sender, EventArgs e)

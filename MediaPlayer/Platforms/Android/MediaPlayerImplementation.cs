@@ -13,6 +13,8 @@ namespace ZPF.Media
 
       public override TimeSpan Buffered => throw new NotImplementedException();
 
+      public override IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
       public override void Init()
       {
          throw new System.NotImplementedException();

@@ -12,7 +12,23 @@ namespace ZPF.Media
       public RepeatMode RepeatMode { get; set; }
       public ShuffleMode ShuffleMode { get; set; }
 
-      public IMediaItem Current { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      public IMediaItem Current
+      {
+         get => _Current;
+         set
+         {
+            if (_Current != value)
+            {
+               _Current = value;
+
+               if (this.IndexOf(_Current) < 0)
+               {
+                  this.Add(_Current);
+               };
+            };
+         }
+      }
+      IMediaItem _Current = null;
 
       public void AddRange(List<MediaItem> playList)
       {

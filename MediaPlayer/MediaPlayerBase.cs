@@ -6,7 +6,7 @@ namespace ZPF.Media
 {
    public abstract class MediaPlayerBase : IMediaPlayer
    {
-      public IMediaExtractor MediaExtractor { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      public abstract IMediaExtractor MediaExtractor { get; set; }
       public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
       public IPlaylist Playlist { get; set; } = new Playlist();

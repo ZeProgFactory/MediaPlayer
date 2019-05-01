@@ -47,7 +47,9 @@
          <StackLayout Padding="5">
             <Label Text="Examples from 'https://github.com/martijn00/XamarinMediaManager/  README.md'" TextColor="DarkGray" />
 
-            <Button Text="Play a single media item (Audio)" HorizontalOptions="Center" Clicked="Button_Audio_Clicked" />
+            <Button Text="Play a single media item (URI/Audio)" HorizontalOptions="Center" Clicked="Button_Audio_Clicked" />
+
+            <Button Text="Play a single media item (MediaItem/Audio)" HorizontalOptions="Center" Clicked="Button_MediaItem_Clicked" />
 
             <Button Text="Play a single media item (Video)" HorizontalOptions="Center" Clicked="Button_Video_Clicked" />
 
