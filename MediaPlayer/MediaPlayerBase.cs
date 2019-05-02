@@ -7,7 +7,6 @@ namespace ZPF.Media
    public abstract class MediaPlayerBase : IMediaPlayer
    {
       public abstract IMediaExtractor MediaExtractor { get; set; }
-      public IVolumeManager VolumeManager { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
       public IPlaylist Playlist { get; set; } = new Playlist();
 
@@ -31,10 +30,12 @@ namespace ZPF.Media
             PreviousPosition = Position;
             OnPositionChanged(this, new PositionChangedEventArgs(Position));
          }
+
          if (this.IsPlaying())
          {
             OnPlayingChanged(this, new PlayingChangedEventArgs(Position, Duration));
          }
+
          if (this.IsBuffering())
          {
             OnBufferingChanged(this, new BufferingChangedEventArgs(Buffered));
@@ -50,6 +51,9 @@ namespace ZPF.Media
       public abstract TimeSpan Position { get; }
       public abstract TimeSpan Duration { get; }
       public abstract TimeSpan Buffered { get; }
+
+      public abstract decimal CurrentVolume { get; set; }
+      public abstract bool Muted { get; set; }
 
       public abstract void Init();
 

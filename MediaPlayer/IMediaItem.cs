@@ -5,6 +5,31 @@ using System.Text;
 
 namespace ZPF.Media
 {
+   public enum DownloadStatus
+   {
+      Downloaded,
+      Downloading,
+      NotDownloaded
+   }
+
+   public enum MediaType
+   {
+      Default,
+      Audio,
+      Video,
+      Dash,
+      Hls,
+      SmoothStreaming
+   }
+
+   public enum MediaLocation
+   {
+      Default,
+      Remote,
+      FileSystem,
+      Embedded
+   }
+
    public interface IMediaItem : INotifyPropertyChanged
    {
       /// <summary>
@@ -199,28 +224,4 @@ namespace ZPF.Media
       MediaLocation MediaLocation { get; set; }
    }
 
-   public enum DownloadStatus
-   {
-      Downloaded,
-      Downloading,
-      NotDownloaded
-   }
-
-   public enum MediaType
-   {
-      Default,
-      Audio,
-      Video,
-      Dash,
-      Hls,
-      SmoothStreaming
-   }
-
-   public enum MediaLocation
-   {
-      Default,
-      Remote,
-      FileSystem,
-      Embedded
-   }
 }

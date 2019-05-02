@@ -25,7 +25,6 @@ namespace ZPF.Media
    public interface IMediaPlayer
    {
       IMediaExtractor MediaExtractor { get; set; }
-      IVolumeManager VolumeManager { get; set; }
       IPlaylist Playlist { get; set; }
 
       // - - -  - - - 
@@ -103,6 +102,19 @@ namespace ZPF.Media
       event MediaItemChangedEventHandler MediaItemChanged;
 
       event MediaItemFailedEventHandler MediaItemFailed;
+
+
+      // - - -
+      /// <summary>
+      /// The volume for the current MediaPlayer 
+      /// Valid values are 0 - MaxVolume
+      /// </summary>
+      decimal CurrentVolume { get; set; }
+
+      /// <summary>
+      /// True if the sound is Muted
+      /// </summary>
+      bool Muted { get; set; }
    }
 }
 
