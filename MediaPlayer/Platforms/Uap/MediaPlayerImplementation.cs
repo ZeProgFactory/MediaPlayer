@@ -29,7 +29,6 @@ namespace ZPF.Media
             this.OnStateChanged(this, new StateChangedEventArgs(GetMediaPlayerState()));
          };
 
-         //ToDo: event BufferingChangedEventHandler BufferingChanged;
          //ToDo: event MediaItemFinishedEventHandler MediaItemFinished;
 
          _player.SourceChanged += (Windows.Media.Playback.MediaPlayer sender, object args) =>
@@ -57,7 +56,7 @@ namespace ZPF.Media
       public override MediaPlayerState State
       {
          get { return _State; }
-         //ToDo: ME discuss with Martijn
+         //ToDo: ME discuss with CHM
          //private set
          //{
          //    _state = value;
@@ -99,6 +98,9 @@ namespace ZPF.Media
          }
       }
 
+      public override decimal CurrentVolume { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      public override bool Muted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
       // - - -  - - - 
 
       //public new bool play(string uri)
@@ -110,10 +112,6 @@ namespace ZPF.Media
 
       public override async Task<IMediaItem> Play(string uri)
       {
-         //_player.Source = MediaSource.CreateFromUri(new Uri(uri));
-         //_player.Play();
-         //return null;
-
          var mediaItem = await MediaExtractor.CreateMediaItem(uri);
 
          await Play(mediaItem);
@@ -161,7 +159,7 @@ namespace ZPF.Media
 
       public override Task Play()
       {
-         _player.PlaybackSession.PlaybackRate = 1;
+         _player.PlaybackSession.PlaybackRate = (_player.PlaybackSession.PlaybackRate == 0 ? _player.PlaybackSession.PlaybackRate = 1 : _player.PlaybackSession.PlaybackRate);
          _player.Play();
          return Task.CompletedTask;
       }
@@ -174,7 +172,6 @@ namespace ZPF.Media
          }
          else
          {
-            //ToDo: ME: Why not a play from zéro?
             _player.Pause();
          };
 
@@ -186,6 +183,7 @@ namespace ZPF.Media
          _player.PlaybackSession.PlaybackRate = 0;
          _player.PlaybackSession.Position = TimeSpan.Zero;
 
+         //ToDO: ??? SetState(MediaPlayerState.Stopped);
          _State = MediaPlayerState.Stopped;
          this.OnStateChanged(this, new StateChangedEventArgs(_State));
 
