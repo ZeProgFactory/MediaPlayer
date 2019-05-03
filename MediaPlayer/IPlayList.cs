@@ -9,7 +9,7 @@ namespace ZPF.Media
    public enum ShuffleMode
    {
       Off = 0,
-      All = 1
+      On = 1
    }
 
    public enum RepeatMode

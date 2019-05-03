@@ -131,7 +131,7 @@ namespace ZPF.Media
          var item = new MediaPlaybackItem(mediaSource);
          mediaPlaybackList.Items.Add(item);
 
-         Playlist.Clear();
+         //Playlist.Clear();
          Playlist.Current = mediaItem;
 
          _player.Source = mediaPlaybackList;
