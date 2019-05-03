@@ -13,7 +13,7 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 
 |Platform|Version|State|
 | ------------------- | :------------------: | :------------------: |
-|Windows 10 UWP| | |
+|Windows 10 UWP| | 80 % audio |
 |Xamarin.iOS| | |
 |Xamarin.Android| | |
 |Xamarin.Mac| | |
@@ -21,7 +21,9 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 |WPF| | |
 
 ## Next steps
-* finish interfaces
+* samples
+* Android
 * finish UWP implementation
-* Andoid, Mac, WPF, ...
-
+* code review
+* Mac, WPF, ...
+* video
