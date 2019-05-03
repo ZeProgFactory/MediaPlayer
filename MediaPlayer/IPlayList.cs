@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -57,6 +58,8 @@ namespace ZPF.Media
       /// Get the previous item from the queue
       /// </summary>
       IMediaItem PreviousItem { get; }
+
+      Task InsertAfterCurrent(MediaItem mediaItem);
    }
 }
 

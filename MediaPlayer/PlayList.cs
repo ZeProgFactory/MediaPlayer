@@ -2,6 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -21,7 +24,7 @@ namespace ZPF.Media
             {
                _Current = value;
 
-               if (this.IndexOf(_Current) < 0)
+               if (_Current != null && this.IndexOf(_Current) < 0)
                {
                   this.Add(_Current);
                };
@@ -29,10 +32,19 @@ namespace ZPF.Media
          }
       }
 
+      IMediaItem _Current = null;
+
+      protected override void ClearItems()
+      {
+         base.ClearItems();
+
+         Current = null;
+      }
+
+
       public string Title { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
 
-      IMediaItem _Current = null;
 
       public void AddRange(List<MediaItem> playList)
       {
@@ -65,6 +77,31 @@ namespace ZPF.Media
       public bool HasNext()
       {
          throw new NotImplementedException();
+      }
+
+      public Task InsertAfterCurrent(MediaItem mediaItem)
+      {
+         if (Current == null)
+         {
+            ClearItems();
+            MediaPlayer.Current.Play(mediaItem);
+         }
+         else
+         {
+            var ind = this.IndexOf(_Current);
+
+            if (ind >= this.Count - 1)
+            {
+               this.Add(mediaItem);
+            }
+            else
+            {
+               //ToDo: shuffeled list
+               this.Insert(ind + 1, mediaItem);
+            };
+         };
+
+         return Task.CompletedTask;
       }
 
       public IMediaItem PreviousItem => throw new NotImplementedException();
