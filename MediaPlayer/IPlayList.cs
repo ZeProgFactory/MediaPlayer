@@ -37,7 +37,7 @@ namespace ZPF.Media
       Task PlayPrevious();
       Task PlayNext();
       void PlayByPosition(int ind);
-      void AddRange(List<MediaItem> playList);
+      void AddRange(List<IMediaItem> playList);
 
       /// <summary>
       /// If the Queue has a next track
@@ -59,7 +59,7 @@ namespace ZPF.Media
       /// </summary>
       IMediaItem PreviousItem { get; }
 
-      Task InsertAfterCurrent(MediaItem mediaItem);
+      Task InsertAfterCurrent(IMediaItem mediaItem);
    }
 }
 

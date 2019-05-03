@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Threading.Tasks;
 
 namespace ZPF.Media
 {
@@ -10,6 +11,7 @@ namespace ZPF.Media
       {
          if (string.IsNullOrEmpty(uri))
             throw new ArgumentNullException(uri);
+
          MediaUri = uri;
       }
 
@@ -72,6 +74,19 @@ namespace ZPF.Media
       public virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
       {
          PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+      }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
+
+      public static async Task<IMediaItem> GetNew(string path, MediaType mediaType, MediaLocation mediaLocation)
+      {
+         var mediaItem = new MediaItem(path)
+         {
+            MediaType = mediaType,
+            MediaLocation = mediaLocation,
+         };
+
+         return await MediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
       }
    }
 }

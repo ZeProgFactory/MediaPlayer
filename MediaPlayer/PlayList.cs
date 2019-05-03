@@ -46,7 +46,7 @@ namespace ZPF.Media
 
 
 
-      public void AddRange(List<MediaItem> playList)
+      public void AddRange(List<IMediaItem> playList)
       {
          throw new NotImplementedException();
       }
@@ -79,7 +79,7 @@ namespace ZPF.Media
          throw new NotImplementedException();
       }
 
-      public Task InsertAfterCurrent(MediaItem mediaItem)
+      public Task InsertAfterCurrent(IMediaItem mediaItem)
       {
          if (Current == null)
          {
