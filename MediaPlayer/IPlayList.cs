@@ -24,15 +24,39 @@ namespace ZPF.Media
    {
       //event MediaItemChangedEventHandler MediaItemChanged;
 
+      string Title { get; set; }
       RepeatMode RepeatMode { get; set; }
       ShuffleMode ShuffleMode { get; set; }
 
+      /// <summary>
+      /// Get the current track from the Queue
+      /// </summary>
       IMediaItem Current { get; set; }
 
       Task PlayPrevious();
       Task PlayNext();
       void PlayByPosition(int ind);
       void AddRange(List<MediaItem> playList);
+
+      /// <summary>
+      /// If the Queue has a next track
+      /// </summary>
+      bool HasNext();
+
+      /// <summary>
+      /// Get the next item from the queue
+      /// </summary>
+      IMediaItem NextItem { get; }
+
+      /// <summary>
+      /// If the Queue has a previous track
+      /// </summary>
+      bool HasPrevious();
+
+      /// <summary>
+      /// Get the previous item from the queue
+      /// </summary>
+      IMediaItem PreviousItem { get; }
    }
 }
 

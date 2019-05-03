@@ -30,18 +30,33 @@ namespace ZPF.Media
       // - - -  - - - 
 
       void Init();
+      bool IsInitialized { get; set; }
 
       /// <summary>
       /// Reading the current status of the player
       /// </summary>
       MediaPlayerState State { get; }
+
+      /// <summary>
+      /// Gets the players position
+      /// </summary>
       TimeSpan Position { get; }
+
+      /// <summary>
+      /// Gets the source duration
+      /// If the response is TimeSpan.Zero, the duration is unknown or the player is still buffering.
+      /// </summary>
       TimeSpan Duration { get; }
+
+      /// <summary>
+      /// Gets the buffered time
+      /// </summary>
       TimeSpan Buffered { get; }
 
+      /// <summary>
+      /// Managing the step size for the step forward and step backward functions
+      /// </summary>
       TimeSpan StepSize { get; set; }
-
-      bool IsInitialized { get; set; }
 
       /// <summary>
       /// Plays an uri (remote or local)
