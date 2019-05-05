@@ -110,12 +110,8 @@
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MediaPlayer\ZPFMediaPlayer.csproj">
-      <Project>{7fe02644-787d-4121-b142-2e463309904b}</Project>
-      <Name>ZPFMediaPlayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MediaPlayerSample\MediaPlayerSample.csproj">
-      <Project>{50992366-553F-495C-8864-2F09601371CD}</Project>
+      <Project>{643165A1-CB14-4C50-8C69-A896E634216B}</Project>
       <Name>MediaPlayerSample</Name>
     </ProjectReference>
   </ItemGroup>
