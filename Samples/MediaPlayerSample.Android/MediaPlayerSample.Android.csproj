@@ -15,7 +15,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
@@ -103,7 +102,7 @@
       <Name>ZPFMediaPlayer</Name>
     </ProjectReference>
     <ProjectReference Include="..\MediaPlayerSample\MediaPlayerSample.csproj">
-      <Project>{BB7C75E3-995A-4A59-88BF-9C3BE5A3A8C3}</Project>
+      <Project>{643165A1-CB14-4C50-8C69-A896E634216B}</Project>
       <Name>MediaPlayerSample</Name>
     </ProjectReference>
   </ItemGroup>
