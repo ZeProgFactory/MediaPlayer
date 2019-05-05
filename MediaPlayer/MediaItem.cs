@@ -88,5 +88,14 @@ namespace ZPF.Media
 
          return await MediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
       }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
+
+      public override string ToString()
+      {
+         return (string.IsNullOrEmpty(Title) ? (string.IsNullOrEmpty(DisplayTitle) ? MediaUri : DisplayTitle) : Title);
+      }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
    }
 }

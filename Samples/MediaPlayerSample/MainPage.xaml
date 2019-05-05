@@ -12,7 +12,12 @@
          <RowDefinition Height="*"/>
       </Grid.RowDefinitions>
 
-      <Grid Grid.Row="0" >
+      <Grid.ColumnDefinitions>
+         <ColumnDefinition Width="*"/>
+         <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      
+      <Grid Grid.Row="0" Grid.ColumnSpan="2" >
          <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="*"/>
@@ -23,7 +28,7 @@
       </Grid>
 
 
-      <Grid Grid.Row="1" >
+      <Grid Grid.Row="1" Grid.ColumnSpan="2" >
          <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
@@ -33,17 +38,25 @@
             <ColumnDefinition Width="*"/>
          </Grid.ColumnDefinitions>
 
-         <Button Grid.Column="0" Text="PlayPrevious" IsEnabled="False" HorizontalOptions="Center" Clicked="Button_PlayPrevious_Clicked" />
+         <Button Grid.Column="0" Text="PlayPrevious" HorizontalOptions="Center" Clicked="Button_PlayPrevious_Clicked" />
          <Button Grid.Column="1" Text="StepBackward" HorizontalOptions="Center" Clicked="Button_StepBackward_Clicked" />
          <Button Grid.Column="2" Text="PlayPause" HorizontalOptions="Center" Clicked="Button_PlayPause_Clicked" />
          <Button Grid.Column="3" Text="StepForward" HorizontalOptions="Center" Clicked="Button_StepForward_Clicked" />
-         <Button Grid.Column="4" Text="PlayNext" IsEnabled="False" HorizontalOptions="Center" Clicked="Button_PlayNext_Clicked" />
+         <Button Grid.Column="4" Text="PlayNext" HorizontalOptions="Center" Clicked="Button_PlayNext_Clicked" />
          <Button Grid.Column="5" Text="Stop" HorizontalOptions="Center" Clicked="Button_Stop_Clicked" />
       </Grid>
 
       <!--<local:MPController Grid.Row="1" />-->
 
-      <ScrollView Grid.Row="2" Margin="10">
+      <ListView x:Name="listViewPlaylist" Grid.Row="2" Grid.Column="0" Margin="10" SeparatorVisibility="Default"  >
+         <!--<ListView.ItemTemplate>
+            <DataTemplate>
+               <Label Text="{Binding .}" Margin="5" />
+            </DataTemplate>
+         </ListView.ItemTemplate>-->
+      </ListView>
+      
+      <ScrollView Grid.Row="2" Grid.Column="1" Margin="10">
          <StackLayout Padding="5">
             <Label Text="Examples from 'https://github.com/martijn00/XamarinMediaManager/  README.md'" TextColor="DarkGray" />
 

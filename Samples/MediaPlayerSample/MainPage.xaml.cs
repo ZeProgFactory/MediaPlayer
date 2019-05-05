@@ -31,6 +31,12 @@ namespace MediaPlayerSample
 
          MediaPlayer.Current.MediaItemFinished += Current_MediaItemFinished;
          MediaPlayer.Current.MediaItemChanged += Current_MediaItemChanged;
+
+
+         listViewPlaylist.BindingContext = MediaPlayer.Current;
+         listViewPlaylist.ItemsSource = MediaPlayer.Current.Playlist;
+
+         listViewPlaylist.SetBinding(ListView.SelectedItemProperty, new Binding("Current", BindingMode.TwoWay, source: MediaPlayer.Current.Playlist));
       }
 
       private void Current_PlayingChanged(object sender, PlayingChangedEventArgs e)
@@ -73,11 +79,11 @@ namespace MediaPlayerSample
 
       private async void Button_Audio_Clicked(object sender, EventArgs e)
       {
-      //Audio
-      //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
+         //Audio
+         //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
 
-         //await MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
-         await MediaPlayer.Current.Play("http://www.zpf.fr/podcast/01.mp3");
+         await MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
+         //await MediaPlayer.Current.Play("http://www.zpf.fr/podcast/01.mp3");
       }
 
       private async void Button_MediaItem_Clicked(object sender, EventArgs e)

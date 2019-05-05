@@ -74,6 +74,8 @@ namespace ZPF.Media
                {
                   this.Add(_Current);
                };
+
+               OnPropertyChanged(new PropertyChangedEventArgs("Current"));
             };
          }
       }
@@ -83,7 +85,7 @@ namespace ZPF.Media
       //private int _currentIndex = 0;
       public int CurrentIndex
       {
-         get => ( _Current == null ?  -1: this.IndexOf(_Current) );
+         get => (_Current == null ? -1 : this.IndexOf(_Current));
          //get => _currentIndex;
          //set
          //{
