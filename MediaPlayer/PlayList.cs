@@ -75,6 +75,8 @@ namespace ZPF.Media
                   this.Add(_Current);
                };
 
+               MediaPlayer.Current.Play(_Current);
+
                OnPropertyChanged(new PropertyChangedEventArgs("Current"));
             };
          }
@@ -196,7 +198,6 @@ namespace ZPF.Media
          }
       }
 
-
       public Task PlayPrevious()
       {
          if (HasPrevious())
@@ -233,7 +234,6 @@ namespace ZPF.Media
 
          return Task.CompletedTask;
       }
-
    }
 }
 

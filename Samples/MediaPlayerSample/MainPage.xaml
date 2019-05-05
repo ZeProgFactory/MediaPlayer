@@ -48,7 +48,8 @@
 
       <!--<local:MPController Grid.Row="1" />-->
 
-      <ListView x:Name="listViewPlaylist" Grid.Row="2" Grid.Column="0" Margin="10" SeparatorVisibility="Default"  >
+      <Label Text="playlist" Grid.Row="2" Grid.Column="0" Margin="10,10,10,30"  />
+      <ListView x:Name="listViewPlaylist" Grid.Row="2" Grid.Column="0" Margin="10,30,10,10" SeparatorVisibility="Default"  BackgroundColor="#AAAA" >
          <!--<ListView.ItemTemplate>
             <DataTemplate>
                <Label Text="{Binding .}" Margin="5" />
@@ -58,7 +59,7 @@
       
       <ScrollView Grid.Row="2" Grid.Column="1" Margin="10">
          <StackLayout Padding="5">
-            <Label Text="Examples from 'https://github.com/martijn00/XamarinMediaManager/  README.md'" TextColor="DarkGray" />
+            <Label Text="action / tests" TextColor="DarkGray" />
 
             <Button Text="Play a single media item (URI/Audio)" HorizontalOptions="Center" Clicked="Button_Audio_Clicked" />
 
@@ -67,6 +68,8 @@
             <Button Text="Play a single media item (Video)" HorizontalOptions="Center" Clicked="Button_Video_Clicked" />
 
             <Button Text="Play multiple media items"  IsEnabled="False"  HorizontalOptions="Center" Clicked="Button_PlayMultiple_Clicked" />
+            
+            <Button Text="Play multiple media items (short)"  HorizontalOptions="Center" Clicked="Button_PlayMultipleShort_Clicked" />
          </StackLayout>
       </ScrollView>
    </Grid>

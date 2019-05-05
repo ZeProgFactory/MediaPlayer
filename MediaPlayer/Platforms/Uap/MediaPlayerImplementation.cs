@@ -13,7 +13,7 @@ namespace ZPF.Media
    {
       private readonly Windows.Media.Playback.MediaPlayer _player;
 
-      public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor=value; }
+      public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }
       private IMediaExtractor _MediaExtractor;
 
       public MediaPlayerImplementation()
@@ -21,15 +21,21 @@ namespace ZPF.Media
          _player = new Windows.Media.Playback.MediaPlayer();
          _MediaExtractor = new UapMediaExtractor();
 
-         //ToDo: ME - reorg
+         _player.MediaEnded += async (Windows.Media.Playback.MediaPlayer sender, object args) =>
+         {
+            if (this.Playlist.HasNext())
+            {
+               await this.Playlist.PlayNext();
+            };
+
+            this.OnMediaItemFinished(this, new MediaItemEventArgs(this.Playlist.Current));
+         };
 
          _player.CurrentStateChanged += (Windows.Media.Playback.MediaPlayer sender, object args) =>
          {
             _State = GetMediaPlayerState();
             this.OnStateChanged(this, new StateChangedEventArgs(GetMediaPlayerState()));
          };
-
-         //ToDo: event MediaItemFinishedEventHandler MediaItemFinished;
 
          _player.SourceChanged += (Windows.Media.Playback.MediaPlayer sender, object args) =>
          {

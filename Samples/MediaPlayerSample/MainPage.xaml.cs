@@ -52,7 +52,8 @@ namespace MediaPlayerSample
 
       private void Current_MediaItemFinished(object sender, MediaItemEventArgs e)
       {
-         throw new NotImplementedException();
+         //ToDo: ??? event args: Old song or new song ???
+         Debug.WriteLine("Current_MediaItemFinished");
       }
 
       private void Current_MediaItemChanged(object sender, MediaItemEventArgs e)
@@ -83,7 +84,6 @@ namespace MediaPlayerSample
          //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
 
          await MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");
-         //await MediaPlayer.Current.Play("http://www.zpf.fr/podcast/01.mp3");
       }
 
       private async void Button_MediaItem_Clicked(object sender, EventArgs e)
@@ -119,6 +119,15 @@ namespace MediaPlayerSample
       private async void Button_PlayMultiple_Clicked(object sender, EventArgs e)
       {
          //await MediaPlayer.Current.PlayList.Play(Mp3UrlList);
+      }
+
+      private async void Button_PlayMultipleShort_Clicked(object sender, EventArgs e)
+      {
+         await MediaPlayer.Current.Play("http://www.zpf.fr/podcast/01.mp3");
+         MediaPlayer.Current.Playlist.Add(await MediaItem.GetNew("http://www.zpf.fr/podcast/02.mp3", MediaType.Audio, MediaLocation.Remote));
+         MediaPlayer.Current.Playlist.Add(await MediaItem.GetNew("http://www.zpf.fr/podcast/03.mp3", MediaType.Audio, MediaLocation.Remote));
+         MediaPlayer.Current.Playlist.Add(await MediaItem.GetNew("http://www.zpf.fr/podcast/04.mp3", MediaType.Audio, MediaLocation.Remote));
+         MediaPlayer.Current.Playlist.Add(await MediaItem.GetNew("http://www.zpf.fr/podcast/05.mp3", MediaType.Audio, MediaLocation.Remote));
       }
 
       private async void Button_PlayPause_Clicked(object sender, EventArgs e)
