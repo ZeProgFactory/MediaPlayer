@@ -21,9 +21,10 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 |WPF| | |
 
 ## Next steps
-* samples
 * Android
 * finish UWP implementation
 * code review
 * Mac, WPF, ...
+* sync native playlist with intenal playlist (UWP, ...)
 * video
+* enhance/(re)design sample application
