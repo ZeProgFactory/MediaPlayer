@@ -17,6 +17,12 @@
     <PackageId>ZPFMediaPlayer</PackageId>
     <Description>Cross platform control to play Audio and Video</Description>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
+    <Authors>Michael Engelmann</Authors>
+    <Company>ZPF</Company>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DocumentationFile>D:\SoftWare2\Apps\MediaPlayer\MediaPlayer\ZPFMediaPlayer.xml</DocumentationFile>
   </PropertyGroup>
   
   <ItemGroup>

@@ -9,11 +9,11 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace ZPF.Media.Uap
 {
-   public class UapMediaExtractor : IMediaExtractor
+   public class MediaExtractor : IMediaExtractor
    {
       //protected Dictionary<string, string> RequestHeaders => MediaPlayer.Current.RequestHeaders;
 
-      public UapMediaExtractor()
+      public MediaExtractor()
       {
       }
 

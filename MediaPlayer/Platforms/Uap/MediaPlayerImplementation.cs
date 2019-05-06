@@ -19,7 +19,7 @@ namespace ZPF.Media
       public MediaPlayerImplementation()
       {
          _player = new Windows.Media.Playback.MediaPlayer();
-         _MediaExtractor = new UapMediaExtractor();
+         _MediaExtractor = new MediaExtractor();
 
          _player.MediaEnded += async (Windows.Media.Playback.MediaPlayer sender, object args) =>
          {
