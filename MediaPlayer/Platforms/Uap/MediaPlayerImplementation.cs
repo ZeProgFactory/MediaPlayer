@@ -62,15 +62,16 @@ namespace ZPF.Media
       public override MediaPlayerState State
       {
          get { return _State; }
-         //ToDo: ME discuss with CHM
-         //private set
-         //{
-         //    _state = value;
-         //    MediaManager.OnStateChanged(this, new StateChangedEventArgs(_state));
-         //}
       }
       private MediaPlayerState _State;
 
+      private void SetState(MediaPlayerState state)
+      {
+         _State = state;
+         this.OnStateChanged(this, new StateChangedEventArgs(_State));
+      }
+
+      // - - -  - - - 
 
       private MediaPlayerState GetMediaPlayerState()
       {
@@ -189,9 +190,7 @@ namespace ZPF.Media
          _player.PlaybackSession.PlaybackRate = 0;
          _player.PlaybackSession.Position = TimeSpan.Zero;
 
-         //ToDO: ??? SetState(MediaPlayerState.Stopped);
-         _State = MediaPlayerState.Stopped;
-         this.OnStateChanged(this, new StateChangedEventArgs(_State));
+         SetState(MediaPlayerState.Stopped);
 
          return Task.CompletedTask;
       }

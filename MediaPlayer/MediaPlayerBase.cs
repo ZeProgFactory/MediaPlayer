@@ -31,15 +31,15 @@ namespace ZPF.Media
             OnPositionChanged(this, new PositionChangedEventArgs(Position));
          }
 
-         if (this.IsPlaying())
-         {
-            OnPlayingChanged(this, new PlayingChangedEventArgs(Position, Duration));
-         }
+         //if (this.IsPlaying())
+         //{
+         //   OnPlayingChanged(this, new PlayingChangedEventArgs(Position, Duration));
+         //}
 
-         if (this.IsBuffering())
-         {
-            OnBufferingChanged(this, new BufferingChangedEventArgs(Buffered));
-         }
+         //if (this.IsBuffering())
+         //{
+         //   OnBufferingChanged(this, new BufferingChangedEventArgs(Buffered));
+         //}
       }
 
       public TimeSpan StepSize { get; set; } = TimeSpan.FromSeconds(10);

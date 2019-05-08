@@ -46,6 +46,9 @@ namespace ZPF.Media
          _player.Prepared += (s, e) =>
          {
             _player.Start();
+            SetState(MediaPlayerState.Playing);
+
+            this.OnMediaItemChanged(this, new MediaItemEventArgs(this.Playlist.Current));
          };
 
          _player.BufferingUpdate += (s, e) =>
@@ -54,9 +57,16 @@ namespace ZPF.Media
             Debug.WriteLine($"*** BufferingUpdate {e.Percent}");
          };
 
-         _player.Completion += (s, e) =>
+         _player.Completion += async (s, e) =>
          {
             Debug.WriteLine($"*** Completion {e.ToString()}");
+
+            if (this.Playlist.HasNext())
+            {
+               await this.Playlist.PlayNext();
+            };
+
+            this.OnMediaItemFinished(this, new MediaItemEventArgs(this.Playlist.Current));
          };
 
          _player.TimedMetaDataAvailable += (s, e) =>
@@ -70,11 +80,25 @@ namespace ZPF.Media
          };
 
          _MediaExtractor = new ZPF.Media.MediaExtractor();
+
+         IsInitialized = true;
       }
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
-      public override MediaPlayerState State => throw new System.NotImplementedException();
+      public override MediaPlayerState State
+      {
+         get { return _State; }
+      }
+      private MediaPlayerState _State;
+
+      private void SetState(MediaPlayerState state)
+      {
+         _State = state;
+         this.OnStateChanged(this, new StateChangedEventArgs(_State));
+      }
+
+      // - - -  - - - 
 
       public override TimeSpan Position => TimeSpan.FromMilliseconds(_player.CurrentPosition);
 
