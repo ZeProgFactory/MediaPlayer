@@ -15,7 +15,7 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 | ------------------- | :------------------: | :------------------: |
 |Windows 10 UWP| | 80 % audio |
 |Xamarin.iOS| | |
-|Xamarin.Android| | |
+|Xamarin.Android| | 40 % audio |
 |Xamarin.Mac| | |
 |Xamarin.WPF| | |
 |WPF| | |
