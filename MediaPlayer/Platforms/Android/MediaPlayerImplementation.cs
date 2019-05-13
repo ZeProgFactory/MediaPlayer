@@ -137,8 +137,13 @@ namespace ZPF.Media
          return Task.CompletedTask;
       }
 
-      public override Task Play(IMediaItem mediaItem)
+      public override async Task Play(IMediaItem mediaItem)
       {
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
+
          if (_player.IsPlaying)
          {
             _player.Reset();
@@ -146,8 +151,6 @@ namespace ZPF.Media
 
          _player.SetDataSource(mediaItem.MediaUri);
          _player.Prepare();
-
-         return Task.CompletedTask;
       }
 
       public override Task SeekTo(TimeSpan position)

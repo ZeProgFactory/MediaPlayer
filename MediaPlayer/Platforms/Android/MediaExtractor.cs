@@ -23,10 +23,11 @@ namespace ZPF.Media
 
          try
          {
-            //ToDo:
-            //var metaRetriever = new MediaMetadataRetriever();
+            var metaRetriever = new MediaMetadataRetriever();
             //await metaRetriever.SetDataSourceAsync(url, RequestHeaders);
-            //mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
+            await metaRetriever.SetDataSourceAsync(url);
+
+            mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
          }
          catch (Exception)
          {
@@ -38,6 +39,7 @@ namespace ZPF.Media
       public virtual async Task<IMediaItem> CreateMediaItem(FileInfo file)
       {
          IMediaItem mediaItem = new MediaItem(file.FullName);
+
          try
          {
             var metaRetriever = new MediaMetadataRetriever();
@@ -49,7 +51,8 @@ namespace ZPF.Media
          }
          catch (Exception)
          {
-         }
+         };
+
          return mediaItem;
       }
 
@@ -57,14 +60,15 @@ namespace ZPF.Media
       {
          try
          {
-            //ToDo
-            //var metaRetriever = new MediaMetadataRetriever();
+            var metaRetriever = new MediaMetadataRetriever();
             //await metaRetriever.SetDataSourceAsync(mediaItem.MediaUri, RequestHeaders);
-            //mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
+            await metaRetriever.SetDataSourceAsync(mediaItem.MediaUri);
+            mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
          }
          catch (Exception)
          {
-         }
+         };
+
          return mediaItem;
       }
 
@@ -189,6 +193,7 @@ namespace ZPF.Media
       {
          System.Uri testUri = new System.Uri(baseUri, filename);
          string testPath = testUri.LocalPath;
+
          if (System.IO.File.Exists(testPath))
             return testPath;
          else
