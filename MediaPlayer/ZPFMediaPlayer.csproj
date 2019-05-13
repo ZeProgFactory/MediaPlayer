@@ -15,7 +15,7 @@
     <AssemblyName>ZPFMediaPlayer</AssemblyName>
     <RootNamespace>ZPFMediaPlayer</RootNamespace>
     <PackageId>ZPFMediaPlayer</PackageId>
-    <Description>Cross platform control to play Audio and Video</Description>
+    <Description>Cross platform library to play Audio and Video</Description>
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <Authors>Michael Engelmann</Authors>
     <Company>ZPF</Company>

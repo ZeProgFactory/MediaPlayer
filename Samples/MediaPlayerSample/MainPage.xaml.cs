@@ -19,6 +19,13 @@ namespace MediaPlayerSample
       {
          InitializeComponent();
 
+         // - - -  - - - 
+
+         btnPlayPause.FontFamily = "/Fonts/IconFont.ttf#IconFont";
+         btnPlayPause.Text = "" + (char)(0xe956);
+
+         // - - -  - - - 
+
          MediaPlayer.Current.Playlist.RepeatMode = RepeatMode.Off; ;
          MediaPlayer.Current.Playlist.ShuffleMode = ShuffleMode.Off;
 
@@ -170,6 +177,11 @@ namespace MediaPlayerSample
       private async void Button_PlayNext_Clicked(object sender, EventArgs e)
       {
          await MediaPlayer.Current.Playlist.PlayNext();
+      }
+
+      private async void Button_PlayEntry_Clicked(object sender, EventArgs e)
+      {
+         await MediaPlayer.Current.Play(entryURI.Text);
       }
    }
 }

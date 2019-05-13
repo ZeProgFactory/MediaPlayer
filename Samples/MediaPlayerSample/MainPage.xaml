@@ -16,7 +16,7 @@
          <ColumnDefinition Width="*"/>
          <ColumnDefinition Width="*"/>
       </Grid.ColumnDefinitions>
-      
+
       <Grid Grid.Row="0" Grid.ColumnSpan="2" >
          <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
@@ -40,7 +40,7 @@
 
          <Button Grid.Column="0" Text="PlayPrevious"  Clicked="Button_PlayPrevious_Clicked" />
          <Button Grid.Column="1" Text="StepBackward" Clicked="Button_StepBackward_Clicked" />
-         <Button Grid.Column="2" Text="PlayPause" Clicked="Button_PlayPause_Clicked" />
+         <Button Grid.Column="2" x:Name="btnPlayPause" Text="PlayPause" Clicked="Button_PlayPause_Clicked" />
          <Button Grid.Column="3" Text="StepForward" Clicked="Button_StepForward_Clicked" />
          <Button Grid.Column="4" Text="PlayNext" Clicked="Button_PlayNext_Clicked" />
          <Button Grid.Column="5" Text="Stop" Clicked="Button_Stop_Clicked" />
@@ -61,16 +61,20 @@
 
       <ScrollView Grid.Row="2" Grid.Column="1" Margin="0,25,5,5" >
          <StackLayout Padding="5">
-            
-            <Button Text="Play a single (URI/Audio)"  Clicked="Button_Audio_Clicked" />
 
-            <Button Text="Play a single (MediaItem/Audio)"  Clicked="Button_MediaItem_Clicked" />
+            <Button Text="Play a single (URI/Audio)" Clicked="Button_Audio_Clicked" />
+
+            <Button Text="Play a single (MediaItem/Audio)" Clicked="Button_MediaItem_Clicked" />
 
             <Button Text="Play a single (Video)"  Clicked="Button_Video_Clicked" />
 
-            <Button Text="Play multiple "  IsEnabled="False"   Clicked="Button_PlayMultiple_Clicked" />
+            <Button Text="Play multiple"  IsEnabled="False" Clicked="Button_PlayMultiple_Clicked" />
+
+            <Button Text="Play multiple (short)" Clicked="Button_PlayMultipleShort_Clicked" />
+
+            <Entry x:Name="entryURI" Text="http://icecast3.radiotop.ch:8000/toptwo_128" Placeholder="URL" Keyboard="Url" />
+            <Button Text="Play URI" Clicked="Button_PlayEntry_Clicked" Margin="0,-5,0,0" />
             
-            <Button Text="Play multiple (short)"  Clicked="Button_PlayMultipleShort_Clicked" />
          </StackLayout>
       </ScrollView>
    </Grid>
