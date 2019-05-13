@@ -57,6 +57,8 @@ namespace ZPF.Media.Uap
             await SetAlbumArt(file, mediaItem);
          }
 
+         mediaItem.IsMetadataExtracted = true;
+
          return mediaItem;
       }
 

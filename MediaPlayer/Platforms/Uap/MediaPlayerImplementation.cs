@@ -130,7 +130,7 @@ namespace ZPF.Media
       {
          if (!mediaItem.IsMetadataExtracted)
          {
-            //ToDo: ...
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
          };
 
          var mediaPlaybackList = new MediaPlaybackList();
