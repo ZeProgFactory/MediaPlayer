@@ -11,14 +11,14 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 
 ## Platform Support
 
-|Platform|Version|State|
-| ------------------- | :------------------: | :------------------: |
-|Windows 10 UWP| | 80 % audio |
-|Xamarin.iOS| | |
-|Xamarin.Android| | 40 % audio |
-|Xamarin.Mac| | |
-|Xamarin.WPF| | |
-|WPF| | |
+|Platform|Version|Build|State|
+| ------------------- | :------------------: |  :------------------: | :------------------: |
+|Windows 10 UWP| |[![Build status](https://build.appcenter.ms/v0.1/apps/c04f9cb9-8f2a-4d33-9011-0f1fe8235713/branches/master/badge)](https://appcenter.ms) |  80 % audio |
+|Xamarin.iOS| | | |
+|Xamarin.Android| | [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 40 % audio |
+|Xamarin.Mac| | | |
+|Xamarin.WPF| | | |
+|WPF| | | |
 
 ## Next steps
 * Android
