@@ -21,8 +21,8 @@ namespace MediaPlayerSample
 
          // - - -  - - - 
 
-         btnPlayPause.FontFamily = "/Fonts/IconFont.ttf#IconFont";
-         btnPlayPause.Text = "" + (char)(0xe956);
+         //btnPlayPause.FontFamily = "/Fonts/IconFont.ttf#IconFont";
+         //btnPlayPause.Text = "" + (char)(0xe956);
 
          // - - -  - - - 
 
