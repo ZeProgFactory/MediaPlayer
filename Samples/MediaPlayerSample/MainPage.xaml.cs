@@ -80,8 +80,7 @@ namespace MediaPlayerSample
       {
          Device.BeginInvokeOnMainThread(() =>
          {
-            //labelInfo.Text = $"{e.State} {MediaPlayer.Current.Duration} {MediaPlayer.Current.MediaQueue.Current?.Title}";
-            labelInfo.Text = $"{e.State} {MediaPlayer.Current.Duration} ";
+            labelInfo.Text = $"{e.State} {(MediaPlayer.Current.Duration == TimeSpan.MaxValue ? "" : MediaPlayer.Current.Duration.ToString())} ";
          });
       }
 
