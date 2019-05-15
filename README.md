@@ -15,7 +15,7 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 | ------------------- | :------------------: |  :------------------: | :------------------: |
 |Windows 10 UWP| | [![Build status](https://build.appcenter.ms/v0.1/apps/c04f9cb9-8f2a-4d33-9011-0f1fe8235713/branches/master/badge)](https://appcenter.ms) |  90 % audio |
 |Xamarin.iOS| | [![Build status](https://build.appcenter.ms/v0.1/apps/4427f9f1-a7ee-4b86-b690-be87c518f62b/branches/master/badge)](https://appcenter.ms) | 1 % audio |
-|Xamarin.Android| | [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 40 % audio |
+|Xamarin.Android| | [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 50 % audio |
 |Xamarin.Mac| | | |
 |Xamarin.WPF| | | |
 |WPF| | | |

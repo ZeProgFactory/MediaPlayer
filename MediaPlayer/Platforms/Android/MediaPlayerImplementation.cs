@@ -146,20 +146,7 @@ namespace ZPF.Media
             mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
          };
 
-         //if (Playlist.Current != mediaItem)
-         //{
-         //   if (Playlist.Count == 0)
-         //   {
-         //      Debug.WriteLine("Play(IMediaItem mediaItem) 1 - Playlist.Add");
-         //      Playlist.Current = mediaItem;
-         //      return; // autoplay
-         //   }
-         //   else
-         //   {
-         //      Debug.WriteLine("Play(IMediaItem mediaItem) 2 - Playlist.Add");
-         //      Playlist.Add(mediaItem);
-         //   };
-         //};
+         Playlist.Current = mediaItem;
 
          //if (_player.IsPlaying)
          {
