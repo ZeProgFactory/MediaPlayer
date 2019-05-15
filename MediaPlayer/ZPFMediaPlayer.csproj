@@ -22,7 +22,7 @@
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
-    <DocumentationFile>D:\SoftWare2\Apps\MediaPlayer\MediaPlayer\ZPFMediaPlayer.xml</DocumentationFile>
+    <DocumentationFile>ZPFMediaPlayer.xml</DocumentationFile>
   </PropertyGroup>
   
   <ItemGroup>

@@ -13,6 +13,9 @@ namespace ZPF.Media
             throw new ArgumentNullException(uri);
 
          MediaUri = uri;
+
+         // default title
+         Title = System.IO.Path.GetFileNameWithoutExtension(MediaUri);
       }
 
       public string Advertisement { get; set; }

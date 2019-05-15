@@ -74,7 +74,10 @@
 
             <Entry x:Name="entryURI" Text="http://icecast3.radiotop.ch:8000/toptwo_128" Placeholder="URL" Keyboard="Url" />
             <Button Text="Play URI" Clicked="Button_PlayEntry_Clicked" Margin="0,-5,0,0" />
-            
+
+            <Button Text="Play '1' (URI/Audio)" Clicked="Button_Audio1_Clicked" />
+            <Button Text="Play '2' (URI/Audio)" Clicked="Button_Audio2_Clicked" />
+            <Button Text="Play '3' (URI/Audio)" Clicked="Button_Audio3_Clicked" />
          </StackLayout>
       </ScrollView>
    </Grid>

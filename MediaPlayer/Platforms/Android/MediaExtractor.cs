@@ -23,11 +23,11 @@ namespace ZPF.Media
 
          try
          {
-            var metaRetriever = new MediaMetadataRetriever();
-            //await metaRetriever.SetDataSourceAsync(url, RequestHeaders);
-            await metaRetriever.SetDataSourceAsync(url);
+            //var metaRetriever = new MediaMetadataRetriever();
+            ////await metaRetriever.SetDataSourceAsync(url, RequestHeaders);
+            //await metaRetriever.SetDataSourceAsync(url);
 
-            mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
+            //mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
          }
          catch (Exception)
          {
@@ -42,12 +42,12 @@ namespace ZPF.Media
 
          try
          {
-            var metaRetriever = new MediaMetadataRetriever();
+            //var metaRetriever = new MediaMetadataRetriever();
 
-            var javaFile = new Java.IO.File(file.FullName);
-            var inputStream = new Java.IO.FileInputStream(javaFile);
-            await metaRetriever.SetDataSourceAsync(inputStream.FD);
-            mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
+            //var javaFile = new Java.IO.File(file.FullName);
+            //var inputStream = new Java.IO.FileInputStream(javaFile);
+            //await metaRetriever.SetDataSourceAsync(inputStream.FD);
+            //mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
          }
          catch (Exception)
          {
@@ -60,10 +60,10 @@ namespace ZPF.Media
       {
          try
          {
-            var metaRetriever = new MediaMetadataRetriever();
-            //await metaRetriever.SetDataSourceAsync(mediaItem.MediaUri, RequestHeaders);
-            await metaRetriever.SetDataSourceAsync(mediaItem.MediaUri);
-            mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
+            //var metaRetriever = new MediaMetadataRetriever();
+            ////await metaRetriever.SetDataSourceAsync(mediaItem.MediaUri, RequestHeaders);
+            //await metaRetriever.SetDataSourceAsync(mediaItem.MediaUri);
+            //mediaItem = await ExtractMediaInfo(metaRetriever, mediaItem);
          }
          catch (Exception)
          {

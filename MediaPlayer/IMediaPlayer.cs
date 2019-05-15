@@ -123,8 +123,8 @@ namespace ZPF.Media
 
       // - - -
       /// <summary>
-      /// The volume for the current MediaPlayer 
-      /// Valid values are 0 - MaxVolume 1
+      /// Get or sets the audio volume for media playback.
+      /// The range is between 0 and 1. The default value is 1.
       /// </summary>
       decimal Volume { get; set; }
 
@@ -135,7 +135,7 @@ namespace ZPF.Media
       decimal Balance { get; set; }
 
       /// <summary>
-      /// True if the sound is Muted
+      /// Gets or sets a Boolean value indicating if the audio is muted.
       /// </summary>
       bool Muted { get; set; }
    }

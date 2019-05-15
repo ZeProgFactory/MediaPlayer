@@ -136,6 +136,21 @@ namespace MediaPlayerSample
          MediaPlayer.Current.Playlist.Add(await MediaItem.GetNew("http://www.zpf.fr/podcast/05.mp3", MediaType.Audio, MediaLocation.Remote));
       }
 
+      private async void Button_Audio1_Clicked(object sender, EventArgs e)
+      {
+         await MediaPlayer.Current.Play("http://www.zpf.fr/podcast/01.mp3");
+      }
+
+      private async void Button_Audio2_Clicked(object sender, EventArgs e)
+      {
+         await MediaPlayer.Current.Play("http://www.zpf.fr/podcast/02.mp3");
+      }
+
+      private async void Button_Audio3_Clicked(object sender, EventArgs e)
+      {
+         await MediaPlayer.Current.Play("http://www.zpf.fr/podcast/03.mp3");
+      }
+
       private async void Button_PlayPause_Clicked(object sender, EventArgs e)
       {
          //ToDo: await MediaPlayer.Current.PlayPause();

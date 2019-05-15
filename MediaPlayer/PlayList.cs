@@ -73,6 +73,7 @@ namespace ZPF.Media
                if (_Current != null && this.IndexOf(_Current) < 0)
                {
                   this.Add(_Current);
+                  Debug.WriteLine("Playlist.Current - Playlist.Add");
                };
 
                MediaPlayer.Current.Play(_Current);
@@ -128,7 +129,7 @@ namespace ZPF.Media
 
       // - - -  - - - 
 
-      public bool HasNext() => ShuffleMode == ShuffleMode.On ? _shuffledIndexes.Count() > _indexOfCurrentItemInShuffledIndexes + 1 : Count > CurrentIndex + 1;
+      public bool HasNext() => ( ShuffleMode == ShuffleMode.On ? _shuffledIndexes.Count() > _indexOfCurrentItemInShuffledIndexes + 1 : Count > CurrentIndex + 1);
 
       public IMediaItem NextItem
       {
@@ -224,6 +225,7 @@ namespace ZPF.Media
             if (ind >= this.Count - 1)
             {
                this.Add(mediaItem);
+               Debug.WriteLine("Playlist.InsertAfterCurrent - Playlist.Add");
             }
             else
             {

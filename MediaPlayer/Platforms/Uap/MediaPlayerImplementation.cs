@@ -113,23 +113,13 @@ namespace ZPF.Media
       {
          get
          {
-            return _Volume;
+            return (decimal)_player.Volume;
          }
          set
          {
-            _Volume = value;
-
-            if (_Muted)
-            {
-               // Nothing to do
-            }
-            else
-            {
-               _player.Volume = (double)_Volume;
-            };
+            _player.Volume = (double)value;
          }
       }
-      decimal _Volume = 1;
 
       public override decimal Balance
       {
@@ -147,23 +137,13 @@ namespace ZPF.Media
       {
          get
          {
-            return _Muted;
+            return _player.IsMuted;
          }
          set
          {
-            _Muted = value;
-
-            if (_Muted)
-            {
-               _player.Volume = 0;
-            }
-            else
-            {
-               _player.Volume = (double)_Volume;
-            };
+            _player.IsMuted = value;
          }
       }
-      bool _Muted = false;
 
       // - - -  - - - 
 

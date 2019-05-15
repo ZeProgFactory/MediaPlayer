@@ -146,7 +146,22 @@ namespace ZPF.Media
             mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
          };
 
-         if (_player.IsPlaying)
+         //if (Playlist.Current != mediaItem)
+         //{
+         //   if (Playlist.Count == 0)
+         //   {
+         //      Debug.WriteLine("Play(IMediaItem mediaItem) 1 - Playlist.Add");
+         //      Playlist.Current = mediaItem;
+         //      return; // autoplay
+         //   }
+         //   else
+         //   {
+         //      Debug.WriteLine("Play(IMediaItem mediaItem) 2 - Playlist.Add");
+         //      Playlist.Add(mediaItem);
+         //   };
+         //};
+
+         //if (_player.IsPlaying)
          {
             _player.Reset();
          };
