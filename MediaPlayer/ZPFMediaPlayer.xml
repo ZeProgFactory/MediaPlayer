@@ -270,10 +270,16 @@
             Seeks backward a fixed amount of seconds of the current MediaItem
             </summary>
         </member>
-        <member name="P:ZPF.Media.IMediaPlayer.CurrentVolume">
+        <member name="P:ZPF.Media.IMediaPlayer.Volume">
             <summary>
             The volume for the current MediaPlayer 
-            Valid values are 0 - MaxVolume
+            Valid values are 0 - MaxVolume 1
+            </summary>
+        </member>
+        <member name="P:ZPF.Media.IMediaPlayer.Balance">
+            <summary>
+            Gets or sets a ratio of volume across stereo speakers.
+            The ratio of volume across speakers in the range between -1 and 1. The default value is 0.
             </summary>
         </member>
         <member name="P:ZPF.Media.IMediaPlayer.Muted">

@@ -107,7 +107,8 @@ namespace ZPF.Media
 
       public override TimeSpan Buffered => throw new NotImplementedException();
 
-      public override decimal CurrentVolume { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      public override decimal Volume { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      public override decimal Balance { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
       public override bool Muted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
       public override void Init()

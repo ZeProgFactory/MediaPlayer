@@ -53,7 +53,8 @@ namespace ZPF.Media
       public abstract TimeSpan Duration { get; }
       public abstract TimeSpan Buffered { get; }
 
-      public abstract decimal CurrentVolume { get; set; }
+      public abstract decimal Volume { get; set; }
+      public abstract decimal Balance { get; set; }
       public abstract bool Muted { get; set; }
 
       public abstract void Init();

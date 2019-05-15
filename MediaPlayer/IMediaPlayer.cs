@@ -124,9 +124,15 @@ namespace ZPF.Media
       // - - -
       /// <summary>
       /// The volume for the current MediaPlayer 
-      /// Valid values are 0 - MaxVolume
+      /// Valid values are 0 - MaxVolume 1
       /// </summary>
-      decimal CurrentVolume { get; set; }
+      decimal Volume { get; set; }
+
+      /// <summary>
+      /// Gets or sets a ratio of volume across stereo speakers.
+      /// The ratio of volume across speakers in the range between -1 and 1. The default value is 0.
+      /// </summary>
+      decimal Balance { get; set; }
 
       /// <summary>
       /// True if the sound is Muted
