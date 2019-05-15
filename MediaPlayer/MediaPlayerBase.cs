@@ -6,6 +6,7 @@ namespace ZPF.Media
 {
    public abstract class MediaPlayerBase : IMediaPlayer
    {
+      public abstract object Player { get; }
       public abstract IMediaExtractor MediaExtractor { get; set; }
 
       public IPlaylist Playlist { get; set; } = new Playlist();

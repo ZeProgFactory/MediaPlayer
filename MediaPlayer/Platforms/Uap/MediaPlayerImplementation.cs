@@ -11,6 +11,8 @@ namespace ZPF.Media
 {
    public class MediaPlayerImplementation : MediaPlayerBase
    {
+      public override object Player { get => _player; }
+
       private readonly Windows.Media.Playback.MediaPlayer _player;
 
       public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }

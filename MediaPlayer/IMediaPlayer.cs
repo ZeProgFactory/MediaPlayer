@@ -24,6 +24,8 @@ namespace ZPF.Media
 
    public interface IMediaPlayer
    {
+      object Player { get; }
+
       IMediaExtractor MediaExtractor { get; set; }
       IPlaylist Playlist { get; set; }
 

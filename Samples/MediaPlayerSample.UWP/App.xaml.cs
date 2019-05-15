@@ -51,7 +51,14 @@ namespace MediaPlayerSample.UWP
 
             rootFrame.NavigationFailed += OnNavigationFailed;
 
+            // - - -  - - - 
+
             MediaPlayer.Current.Init();
+            Windows.Media.Playback.MediaPlayer Player = (Windows.Media.Playback.MediaPlayer)MediaPlayer.Current.Player;
+
+            Player.Volume = 1;
+
+            // - - -  - - - 
 
             Xamarin.Forms.Forms.Init(e);
 

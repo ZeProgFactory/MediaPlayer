@@ -7,6 +7,7 @@ namespace ZPF.Media
 {
    public class MediaPlayerImplementation : MediaPlayerBase
    {
+      public override object Player { get => _player; }
       private AVAudioPlayer _player = null;
 
       public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }

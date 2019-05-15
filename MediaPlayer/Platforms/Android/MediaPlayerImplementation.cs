@@ -21,6 +21,7 @@ namespace ZPF.Media
 {
    public class MediaPlayerImplementation : MediaPlayerBase
    {
+      public override object Player { get => _player; }
       private readonly Android.Media.MediaPlayer _player;
       //private readonly AudioTrack _player;
 
