@@ -107,9 +107,46 @@ namespace ZPF.Media
 
       public override TimeSpan Buffered => throw new NotImplementedException();
 
-      public override decimal Volume { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-      public override decimal Balance { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-      public override bool Muted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+      // - - -  - - - 
+
+      float _Volume = 1;
+      float _Balance = 1;
+      bool _Muted = false;
+
+      public override decimal Volume { get => (decimal)_Volume; set { _Volume = (float)value; SetVolume(); } }
+      public override decimal Balance { get => (decimal)_Balance; set { _Balance = (float)value; SetVolume(); } }
+      public override bool Muted { get => _Muted; set { _Muted = value; SetVolume(); } }
+
+      void SetVolume()
+      {
+         if (_Muted)
+         {
+            _player.SetVolume(0, 0);
+            return;
+         };
+
+         float _LeftVolume = _Volume;
+         float _RightVolume = _Volume;
+
+         if (Balance == 0)
+         {
+            // nothing 
+         }
+         else if (Balance == 0)
+         {
+            // left
+            _RightVolume *= (float)(1 + Balance);
+         }
+         else
+         {
+            // right
+            _LeftVolume *= (float)(1 - Balance);
+         };
+
+         _player.SetVolume(_LeftVolume, _RightVolume);
+      }
+
+      // - - -  - - - 
 
       public override void Init()
       {
