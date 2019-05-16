@@ -28,3 +28,7 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 * sync native playlist with intenal playlist (UWP, ...)
 * video
 * enhance/(re)design sample application
+
+## How to build
+On Windows you can build the solution with Visual Studio 2019 with the latest Xamarin, .NET Core and UWP installed.   
+For the moment the solution doesn't build with VS2019 on MacOS: https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html .
