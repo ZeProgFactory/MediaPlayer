@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using AVFoundation;
+using AVKit;
 using Foundation;
 
 namespace ZPF.Media
@@ -8,7 +9,8 @@ namespace ZPF.Media
    public class MediaPlayerImplementation : MediaPlayerBase
    {
       public override object Player { get => _player; }
-      private AVAudioPlayer _player = null;
+      //private AVAudioPlayer _player = null;
+      private AVPlayerViewController _player = new AVPlayerViewController();
 
       public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }
       private IMediaExtractor _MediaExtractor;
@@ -44,7 +46,7 @@ namespace ZPF.Media
             }
             else
             {
-               _player.Volume = (float)_Volume;
+               //_player.Volume = (float)_Volume;
             };
          }
       }
@@ -74,11 +76,11 @@ namespace ZPF.Media
 
             if (_Muted)
             {
-               _player.Volume = 0;
+               //_player.Volume = 0;
             }
             else
             {
-               _player.Volume = (float)_Volume;
+               //_player.Volume = (float)_Volume;
             };
          }
       }
@@ -102,22 +104,37 @@ namespace ZPF.Media
 
          NSError err;
 
-         // Any existing music?
-         if (_player != null)
+         //// Any existing music?
+         //if (_player != null)
+         //{
+         //   // Stop and dispose of any music
+         //   _player.Stop();
+         //   _player.Dispose();
+         //}
+
+         //// Initialize music
+         //if (_player == null)
+         //{
+         //   var url = new NSUrl(uri);
+         //   _player = AVAudioPlayer.FromUrl(url);
+         //   //_player = new AVAudioPlayer(uri, "wav", out err);
+         //   _player.Play();
+         //};
+
+         AVAsset asset = null;
+         asset = AVUrlAsset.Create(NSUrl.FromString(uri));
+         AVPlayerItem item = new AVPlayerItem(asset);
+
+         if (_player.Player != null)
          {
-            // Stop and dispose of any music
-            _player.Stop();
-            _player.Dispose();
+            _player.Player.ReplaceCurrentItemWithPlayerItem(item);
+         }
+         else
+         {
+            _player.Player = new AVPlayer(item);
          }
 
-         // Initialize music
-         if (_player == null)
-         {
-            var url = new NSUrl(uri);
-            _player = AVAudioPlayer.FromUrl(url);
-            //_player = new AVAudioPlayer(uri, "wav", out err);
-            _player.Play();
-         };
+         _player.Player.Play();
 
          return mediaItem;
       }
