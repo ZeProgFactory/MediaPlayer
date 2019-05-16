@@ -9,7 +9,6 @@ namespace ZPF.Media
    public class MediaPlayerImplementation : MediaPlayerBase
    {
       public override object Player { get => _player; }
-      //private AVAudioPlayer _player = null;
       private AVPlayerViewController _player = new AVPlayerViewController();
 
       public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }
@@ -18,6 +17,7 @@ namespace ZPF.Media
       public MediaPlayerImplementation()
       {
          _MediaExtractor = new MediaExtractor();
+
       }
 
       public override MediaPlayerState State => throw new System.NotImplementedException();
@@ -95,7 +95,53 @@ namespace ZPF.Media
 
       public override Task Pause()
       {
-         throw new NotImplementedException();
+         _player?.Player.Pause();
+
+         return Task.CompletedTask;
+      }
+
+      private NSObject _observer;
+
+      private void RemoveStatusObserver()
+      {
+         if (_observer != null)
+         {
+            try
+            {
+               _player?.Player?.CurrentItem?.RemoveObserver(_observer, "status");
+            }
+            catch { }
+            finally
+            {
+
+               _observer = null;
+            }
+         }
+      }
+
+      private void ObserveStatus(NSObservedChange e)
+      {
+         if (e.NewValue != null)
+         {
+            switch (_player.Player.Status)
+            {
+               case AVPlayerStatus.Failed:
+                  break;
+
+               case AVPlayerStatus.ReadyToPlay:
+                  break;
+
+               case AVPlayerStatus.Unknown:
+                  break;
+            };
+
+            //if (_player.Player.Status == AVPlayerStatus.ReadyToPlay)
+            //{
+            //   Element?.RaiseMediaOpened();
+            //}
+
+            System.Diagnostics.Debug.WriteLine("*** " + DateTimeOffset.Now + " " + e.NewValue.ToString());
+         }
       }
 
       public override async Task<IMediaItem> Play(string uri)
@@ -104,26 +150,15 @@ namespace ZPF.Media
 
          NSError err;
 
-         //// Any existing music?
-         //if (_player != null)
-         //{
-         //   // Stop and dispose of any music
-         //   _player.Stop();
-         //   _player.Dispose();
-         //}
-
-         //// Initialize music
-         //if (_player == null)
-         //{
-         //   var url = new NSUrl(uri);
-         //   _player = AVAudioPlayer.FromUrl(url);
-         //   //_player = new AVAudioPlayer(uri, "wav", out err);
-         //   _player.Play();
-         //};
 
          AVAsset asset = null;
          asset = AVUrlAsset.Create(NSUrl.FromString(uri));
          AVPlayerItem item = new AVPlayerItem(asset);
+
+         // AVPlayerItem.TimeJumpedNotification
+         // AVPlayerItem.DidPlayToEndTimeNotification
+
+         _observer = (NSObject)item.AddObserver("status", NSKeyValueObservingOptions.New, ObserveStatus);
 
          if (_player.Player != null)
          {
@@ -141,7 +176,9 @@ namespace ZPF.Media
 
       public override Task Play()
       {
-         throw new NotImplementedException();
+         _player?.Player.Play();
+
+         return Task.CompletedTask;
       }
 
       public override Task Play(IMediaItem mediaItem)
@@ -151,12 +188,17 @@ namespace ZPF.Media
 
       public override Task SeekTo(TimeSpan position)
       {
-         throw new NotImplementedException();
+         _player?.Player.SeekAsync(new CoreMedia.CMTime((long)position.TotalMilliseconds, 1000));
+
+         return Task.CompletedTask;
       }
 
       public override Task Stop()
       {
-         throw new System.NotImplementedException();
+         //ToDo: iOS: Stop()
+         _player?.Player.Pause();
+
+         return Task.CompletedTask;
       }
    }
 }
