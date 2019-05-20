@@ -44,6 +44,13 @@ namespace MediaPlayerSample
          listViewPlaylist.ItemsSource = MediaPlayer.Current.Playlist;
 
          listViewPlaylist.SetBinding(ListView.SelectedItemProperty, new Binding("Current", BindingMode.TwoWay, source: MediaPlayer.Current.Playlist));
+
+         // - - -  - - - 
+
+         // new FontImageSource() { }
+
+         lTest.FontFamily = "/ZPFMediaPlayerHelper;/component/Fonts/MusicPlayerFont.ttf#MusicPlayerFont";
+         lTest.Text = ZPFFonts.MPF.GetContent( ZPFFonts.MPF.Music );
       }
 
       private void Current_PlayingChanged(object sender, PlayingChangedEventArgs e)

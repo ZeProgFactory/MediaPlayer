@@ -78,6 +78,8 @@
             <Button Text="Play '1' (URI/Audio)" Clicked="Button_Audio1_Clicked" />
             <Button Text="Play '2' (URI/Audio)" Clicked="Button_Audio2_Clicked" />
             <Button Text="Play '3' (URI/Audio)" Clicked="Button_Audio3_Clicked" />
+
+            <Label x:Name="lTest" FontSize="24"/>
          </StackLayout>
       </ScrollView>
    </Grid>
