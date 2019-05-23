@@ -75,5 +75,6 @@ MediaPlayer.Current.StateChanged
 * enhance/(re)design sample application
 
 ## How to build
+!!! It seam that since update to VS2019 16.1.0 the build doesn't function anymore. It's still fine with VS2017. !!!  
 On Windows you can build the solution with Visual Studio 2019 with the latest Xamarin, .NET Core and UWP installed.   
 For the moment the solution doesn't build with VS2019 on MacOS: https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html .
