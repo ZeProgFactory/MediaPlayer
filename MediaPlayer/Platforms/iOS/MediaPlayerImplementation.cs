@@ -147,11 +147,24 @@ namespace ZPF.Media
       {
          var mediaItem = await MediaExtractor.CreateMediaItem(uri);
 
+         await Play(mediaItem);
+
+         return mediaItem;
+      }
+
+      public override Task Play()
+      {
+         _player?.Player.Play();
+
+         return Task.CompletedTask;
+      }
+
+      public override Task Play(IMediaItem mediaItem)
+      {
          NSError err;
 
-
          AVAsset asset = null;
-         asset = AVUrlAsset.Create(NSUrl.FromString(uri));
+         asset = AVUrlAsset.Create(NSUrl.FromString(mediaItem.MediaUri));
          AVPlayerItem item = new AVPlayerItem(asset);
 
          // AVPlayerItem.TimeJumpedNotification
@@ -170,19 +183,7 @@ namespace ZPF.Media
 
          _player.Player.Play();
 
-         return mediaItem;
-      }
-
-      public override Task Play()
-      {
-         _player?.Player.Play();
-
          return Task.CompletedTask;
-      }
-
-      public override Task Play(IMediaItem mediaItem)
-      {
-         throw new NotImplementedException();
       }
 
       public override Task SeekTo(TimeSpan position)

@@ -15,7 +15,6 @@ namespace ZPF.Media
    }
 
    public delegate void StateChangedEventHandler(object sender, StateChangedEventArgs e);
-   public delegate void PlayingChangedEventHandler(object sender, PlayingChangedEventArgs e);
    public delegate void BufferingChangedEventHandler(object sender, BufferingChangedEventArgs e);
    public delegate void PositionChangedEventHandler(object sender, PositionChangedEventArgs e);
    public delegate void MediaItemFinishedEventHandler(object sender, MediaItemEventArgs e);
@@ -107,8 +106,6 @@ namespace ZPF.Media
       // - - -   - - - 
 
       event StateChangedEventHandler StateChanged;
-
-      event PlayingChangedEventHandler PlayingChanged;
 
       event BufferingChangedEventHandler BufferingChanged;
 

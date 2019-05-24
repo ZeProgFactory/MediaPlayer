@@ -12,25 +12,15 @@ namespace ZPF.Media
       public MediaPlayerState State { get; }
    }
 
-   public class PlayingChangedEventArgs : EventArgs
+   public class PositionChangedEventArgs : EventArgs
    {
-      public PlayingChangedEventArgs(TimeSpan position, TimeSpan duration)
+      public PositionChangedEventArgs(TimeSpan position, TimeSpan duration)
       {
          Position = position;
          Duration = duration;
       }
       public TimeSpan Position { get; }
       public TimeSpan Duration { get; }
-   }
-
-   public class PositionChangedEventArgs : EventArgs
-   {
-      public PositionChangedEventArgs(TimeSpan position)
-      {
-         Position = position;
-      }
-
-      public TimeSpan Position { get; }
    }
 
    public class BufferingChangedEventArgs : EventArgs

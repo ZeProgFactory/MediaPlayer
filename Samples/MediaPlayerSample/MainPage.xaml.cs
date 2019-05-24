@@ -33,7 +33,6 @@ namespace MediaPlayerSample
          MediaPlayer.Current.StateChanged += Current_StateChanged;
          MediaPlayer.Current.PositionChanged += Current_PositionChanged;
 
-         MediaPlayer.Current.PlayingChanged += Current_PlayingChanged;
          MediaPlayer.Current.BufferingChanged += Current_BufferingChanged;
 
          MediaPlayer.Current.MediaItemFinished += Current_MediaItemFinished;
@@ -51,12 +50,6 @@ namespace MediaPlayerSample
 
          lTest.FontFamily = "/ZPFMediaPlayerHelper;/component/Fonts/MusicPlayerFont.ttf#MusicPlayerFont";
          lTest.Text = ZPFFonts.MPF.GetContent( ZPFFonts.MPF.Music );
-      }
-
-      private void Current_PlayingChanged(object sender, PlayingChangedEventArgs e)
-      {
-         //Bug: Is running on Startup without any previous operation
-         Debug.WriteLine($"Current_PlayingChanged {e.Position}");
       }
 
       private void Current_BufferingChanged(object sender, BufferingChangedEventArgs e)

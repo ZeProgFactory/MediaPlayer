@@ -65,7 +65,6 @@ MediaPlayer.Current.State
 | MediaItemChanged     |  X  |     |   X   |     |     |  
 | MediaItemFailed      |  X  |     |       |     |     |  
 | MediaItemFinished    |  X  |     |   X   |     |     |  
-| PlayingChanged       |     |     |       |     |     | 
 | PositionChanged      |  X  |  X  |   X   |  X  |  X  |
 | StateChanged         |  X  |     |       |     |     |
 

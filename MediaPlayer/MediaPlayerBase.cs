@@ -29,13 +29,8 @@ namespace ZPF.Media
          if (PreviousPosition != Position)
          {
             PreviousPosition = Position;
-            OnPositionChanged(this, new PositionChangedEventArgs(Position));
+            OnPositionChanged(this, new PositionChangedEventArgs(Position, Duration));
          }
-
-         //if (this.IsPlaying())
-         //{
-         //   OnPlayingChanged(this, new PlayingChangedEventArgs(Position, Duration));
-         //}
 
          //if (this.IsBuffering())
          //{
@@ -90,7 +85,6 @@ namespace ZPF.Media
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
       public event StateChangedEventHandler StateChanged;
-      public event PlayingChangedEventHandler PlayingChanged;
       public event BufferingChangedEventHandler BufferingChanged;
       public event PositionChangedEventHandler PositionChanged;
 
@@ -99,7 +93,6 @@ namespace ZPF.Media
       public event MediaItemFailedEventHandler MediaItemFailed;
 
       public void OnStateChanged(object sender, StateChangedEventArgs e) => StateChanged?.Invoke(sender, e);
-      public void OnPlayingChanged(object sender, PlayingChangedEventArgs e) => PlayingChanged?.Invoke(sender, e);
       public void OnBufferingChanged(object sender, BufferingChangedEventArgs e) => BufferingChanged?.Invoke(sender, e);
       public void OnPositionChanged(object sender, PositionChangedEventArgs e) => PositionChanged?.Invoke(sender, e);
 
