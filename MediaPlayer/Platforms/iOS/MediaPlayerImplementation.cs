@@ -18,6 +18,7 @@ namespace ZPF.Media
       {
          _MediaExtractor = new MediaExtractor();
 
+         //ToDo: evants ...
       }
 
       public override MediaPlayerState State => throw new System.NotImplementedException();
@@ -46,7 +47,7 @@ namespace ZPF.Media
             }
             else
             {
-               //_player.Volume = (float)_Volume;
+               _player.Player.Volume = (float)_Volume;
             };
          }
       }
@@ -56,11 +57,10 @@ namespace ZPF.Media
       {
          get
          {
-            throw new NotImplementedException();
+            return 1;
          }
          set
          {
-            throw new NotImplementedException();
          }
       }
 
@@ -76,11 +76,11 @@ namespace ZPF.Media
 
             if (_Muted)
             {
-               //_player.Volume = 0;
+               _player.Player.Volume = 0;
             }
             else
             {
-               //_player.Volume = (float)_Volume;
+               _player.Player.Volume = (float)_Volume;
             };
          }
       }
@@ -90,7 +90,6 @@ namespace ZPF.Media
 
       public override void Init()
       {
-         throw new System.NotImplementedException();
       }
 
       public override Task Pause()

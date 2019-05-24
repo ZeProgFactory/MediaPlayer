@@ -59,12 +59,15 @@ MediaPlayer.Current.Play(PreviousItem);
 MediaPlayer.Current.State  
    
 ### Events
-MediaPlayer.Current.BufferingChanged  
-MediaPlayer.Current.MediaItemChanged  
-MediaPlayer.Current.MediaItemFinished  
-MediaPlayer.Current.PlayingChanged  
-MediaPlayer.Current.PositionChanged  
-MediaPlayer.Current.StateChanged  
+| event                | UWP | iOS |Android| Mac | WPF |
+| -------------------- |:---:|:---:|:-----:|:---:|:---:|
+| BufferingChanged     |     |     |       |     |     |   
+| MediaItemChanged     |  X  |     |   X   |     |     |  
+| MediaItemFailed      |  X  |     |       |     |     |  
+| MediaItemFinished    |  X  |     |   X   |     |     |  
+| PlayingChanged       |     |     |       |     |     | 
+| PositionChanged      |  X  |  X  |   X   |  X  |  X  |
+| StateChanged         |  X  |     |       |     |     |
 
 
 ## Next steps
