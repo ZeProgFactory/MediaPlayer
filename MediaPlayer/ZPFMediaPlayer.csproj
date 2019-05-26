@@ -20,7 +20,7 @@
     <Authors>Michael Engelmann</Authors>
     <Company>ZPF</Company>
     <Copyright>Copyright (c) Michael Engelmann (ZPF)</Copyright>
-    <PackageIconUrl>https://github.com/ZeProgFactory/MediaPlayer/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
     <PackageTags>Xamarin, Android, iOS, UWP, MacOS, WPF, plugin, MediaPlayer, media, audio, C#, streaming, music, MP3</PackageTags>
   </PropertyGroup>
   
