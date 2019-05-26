@@ -84,7 +84,9 @@ MediaPlayer.Current.State
 | MediaItemFinished    |  X  |     |   X   |     |     |  
 | PositionChanged      |  X  |  X  |   X   |  X  |  X  |
 | StateChanged         |  X  |     |       |     |     |
+
 X = implemented, blanc = net yet implemented  
+  
 
 ## Next steps
 * code review
