@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using ZPF.Media;
+using ZPF.XF;
 
 namespace MediaPlayerSample
 {
@@ -46,10 +44,35 @@ namespace MediaPlayerSample
 
          // - - -  - - - 
 
-         // new FontImageSource() { }
+         switch (Device.RuntimePlatform)
+         {
+            case Device.iOS:
+            case Device.Android:
+            case Device.UWP:  
+               btnPlayPrevious.Text = "";
+               btnPlayPrevious.ImageSource = SkiaHelper.SkiaFontIcon(ZPFFonts.MPF.Media_Backward, 48);
 
-         lTest.FontFamily = "/ZPFMediaPlayerHelper;/component/Fonts/MusicPlayerFont.ttf#MusicPlayerFont";
-         lTest.Text = ZPFFonts.MPF.GetContent( ZPFFonts.MPF.Music );
+               btnStepBackward.Text = "";
+               btnStepBackward.ImageSource = SkiaHelper.SkiaFontIcon(ZPFFonts.MPF.Media_Previous, 48);
+
+               btnPlayPause.Text = "";
+               btnPlayPause.ImageSource = SkiaHelper.SkiaFontIcon(ZPFFonts.MPF.Media_Play_01, 48);
+
+               btnStepForward.Text = "";
+               btnStepForward.ImageSource = SkiaHelper.SkiaFontIcon(ZPFFonts.MPF.Media_Next, 48);
+
+               btnPlayNext.Text = "";
+               btnPlayNext.ImageSource = SkiaHelper.SkiaFontIcon(ZPFFonts.MPF.Media_Fast_Forward, 48);
+
+               btnStop.Text = "";
+               btnStop.ImageSource = SkiaHelper.SkiaFontIcon(ZPFFonts.MPF.Media_Stop, 48);
+
+               break;
+
+            default:
+               break;
+         };
+
       }
 
       private void Current_BufferingChanged(object sender, BufferingChangedEventArgs e)

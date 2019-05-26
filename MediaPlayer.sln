@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28803.202
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.645
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{3B5D9760-7F39-40DF-A213-ED0410A989BE}"
 	ProjectSection(SolutionItems) = preProject
@@ -24,8 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPlayerSample.MacOS", "Samples\MediaPlayerSample.MacOS\MediaPlayerSample.MacOS.csproj", "{23A8CD26-3B50-4CDC-96A6-BA972D956B6F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPlayerSample.WPF", "Samples\MediaPlayerSample.WPF\MediaPlayerSample.WPF.csproj", "{9CA103FC-2666-4D39-B85A-61581E397FF9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZPFMediaPlayerHelper", "ZPFMediaPlayerHelper\ZPFMediaPlayerHelper.csproj", "{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -259,30 +257,6 @@ Global
 		{9CA103FC-2666-4D39-B85A-61581E397FF9}.Release|x64.Build.0 = Release|Any CPU
 		{9CA103FC-2666-4D39-B85A-61581E397FF9}.Release|x86.ActiveCfg = Release|Any CPU
 		{9CA103FC-2666-4D39-B85A-61581E397FF9}.Release|x86.Build.0 = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|ARM.Build.0 = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|x64.Build.0 = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Debug|x86.Build.0 = Debug|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|Any CPU.Build.0 = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|ARM.ActiveCfg = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|ARM.Build.0 = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|iPhone.Build.0 = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|x64.ActiveCfg = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|x64.Build.0 = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|x86.ActiveCfg = Release|Any CPU
-		{479EADE1-A60F-4DB2-BCAF-BB963FFDC123}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

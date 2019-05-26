@@ -19,6 +19,9 @@
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <Authors>Michael Engelmann</Authors>
     <Company>ZPF</Company>
+    <Copyright>Copyright (c) Michael Engelmann (ZPF)</Copyright>
+    <PackageIconUrl>https://github.com/ZeProgFactory/MediaPlayer/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
+    <PackageTags>Xamarin, Android, iOS, UWP, MacOS, WPF, plugin, MediaPlayer, media, audio, C#, streaming, music, MP3</PackageTags>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">

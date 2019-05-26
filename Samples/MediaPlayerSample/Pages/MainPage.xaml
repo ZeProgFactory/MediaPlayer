@@ -38,12 +38,12 @@
             <ColumnDefinition Width="*"/>
          </Grid.ColumnDefinitions>
 
-         <Button Grid.Column="0" Text="PlayPrevious"  Clicked="Button_PlayPrevious_Clicked" />
-         <Button Grid.Column="1" Text="StepBackward" Clicked="Button_StepBackward_Clicked" />
+         <Button Grid.Column="0" x:Name="btnPlayPrevious" Text="PlayPrevious"  Clicked="Button_PlayPrevious_Clicked" />
+         <Button Grid.Column="1" x:Name="btnStepBackward" Text="StepBackward" Clicked="Button_StepBackward_Clicked" />
          <Button Grid.Column="2" x:Name="btnPlayPause" Text="PlayPause" Clicked="Button_PlayPause_Clicked" />
-         <Button Grid.Column="3" Text="StepForward" Clicked="Button_StepForward_Clicked" />
-         <Button Grid.Column="4" Text="PlayNext" Clicked="Button_PlayNext_Clicked" />
-         <Button Grid.Column="5" Text="Stop" Clicked="Button_Stop_Clicked" />
+         <Button Grid.Column="3" x:Name="btnStepForward" Text="StepForward" Clicked="Button_StepForward_Clicked" />
+         <Button Grid.Column="4" x:Name="btnPlayNext" Text="PlayNext" Clicked="Button_PlayNext_Clicked" />
+         <Button Grid.Column="5" x:Name="btnStop" Text="Stop" Clicked="Button_Stop_Clicked" />
       </Grid>
 
       <!--<local:MPController Grid.Row="1" />-->
@@ -78,8 +78,6 @@
             <Button Text="Play '1' (URI/Audio)" Clicked="Button_Audio1_Clicked" />
             <Button Text="Play '2' (URI/Audio)" Clicked="Button_Audio2_Clicked" />
             <Button Text="Play '3' (URI/Audio)" Clicked="Button_Audio3_Clicked" />
-
-            <Label x:Name="lTest" FontSize="24"/>
          </StackLayout>
       </ScrollView>
    </Grid>
