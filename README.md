@@ -1,15 +1,10 @@
-# MediaPlayer
+# MediaPlayer - !!! Preview !!!
 Cross platform media player lib</BR>
 based on ideas and code of [martijn00](https://github.com/martijn00) ( https://github.com/martijn00/XamarinMediaManager )
 
-MediaPlayer is basically a clone of martijn00s XamarinMediaManager. It started all when I tried to contribute to this project. </BR>
-Any media player is a quite complex project and martijn00 is a quite sophisticated developer. Whereas my first steps went well, I was quickly struggling with the project structure and implementation. When I saw that I took more time analyzing the project than developing features I started thinking about this reimplementation… </BR>
-</BR>
-Doing so I finally I understand many of the tricks hidden in martijn00s project.</BR>
-</BR>
-So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
+(You’ll find the story behind this MediaPlayer lib here …)[https://zeprogfactory.github.io/MediaPlayer/]
 
-## Platform Support
+## Current platform support (evolves on nearly daily basis)
 
 |Platform|Version|Build|State|
 | ------------------- | :------------------: |  :------------------: | :------------------: |
@@ -20,35 +15,56 @@ So, I didn’t reinvent the wheel, I disassembled and reassembled it 😉
 |Xamarin.WPF| | | |
 |WPF| | | |
 
+## Setup
+* Available on NuGet: https://www.nuget.org/packages/ZPFMediaPlayer [![NuGet](https://img.shields.io/nuget/v/ZPFMediaPlayer.svg)](https://www.nuget.org/packages/ZPFMediaPlayer/)
+* For Xamarin.Forms install into your Main and Client projects.
+
+
 ## How to use
+A Xamarin.Forms sample how to use MediaPlayer is in this Git, but here are the  basics ...
+
+```csharp
 MediaPlayer.Current.Init();  
 MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");  
+```
 
 ### Native player
+
+```csharp
 Windows.Media.Playback.MediaPlayer Player = (Windows.Media.Playback.MediaPlayer)MediaPlayer.Current.Player;  
+```
 
 
 ## API
 ### Methods
+```csharp
 MediaPlayer.Current.Pause();  
 MediaPlayer.Current.Play("http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4");  
 MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");  
 MediaPlayer.Current.Play(mi);  
 MediaPlayer.Current.Play();  
+```
 
+```csharp
 MediaPlayer.Current.Playlist.Current   
 MediaPlayer.Current.Playlist.PlayNext();  
 MediaPlayer.Current.Playlist.PlayPrevious();  
 MediaPlayer.Current.Playlist.Add( MediaItem.GetNew("http://www.zpf.fr/podcast/02.mp3", MediaType.Audio, MediaLocation.Remote) );   
+```
 
+```csharp
 MediaPlayer.Current.StepBackward(); 
 MediaPlayer.Current.StepForward();  
 MediaPlayer.Current.Stop();  
+```
 
+```csharp
 MediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);  
+```
 
 
 ### Properies
+```csharp
 MediaPlayer.Current.Duration  
 MediaPlayer.Current.Position  
 MediaPlayer.Current.Playlist  
@@ -57,6 +73,7 @@ MediaPlayer.Current.Playlist.ShuffleMode = ShuffleMode.Off;
 MediaPlayer.Current.Play(NextItem);  
 MediaPlayer.Current.Play(PreviousItem);  
 MediaPlayer.Current.State  
+```
    
 ### Events
 | event                | UWP | iOS |Android| Mac | WPF |
@@ -67,7 +84,7 @@ MediaPlayer.Current.State
 | MediaItemFinished    |  X  |     |   X   |     |     |  
 | PositionChanged      |  X  |  X  |   X   |  X  |  X  |
 | StateChanged         |  X  |     |       |     |     |
-
+X = implemented, blanc = net yet implemented  
 
 ## Next steps
 * code review
