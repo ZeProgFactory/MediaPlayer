@@ -19,11 +19,6 @@ namespace MediaPlayerSample
 
          // - - -  - - - 
 
-         //btnPlayPause.FontFamily = "/Fonts/IconFont.ttf#IconFont";
-         //btnPlayPause.Text = "" + (char)(0xe956);
-
-         // - - -  - - - 
-
          MediaPlayer.Current.Playlist.RepeatMode = RepeatMode.Off; ;
          MediaPlayer.Current.Playlist.ShuffleMode = ShuffleMode.Off;
 
@@ -43,6 +38,8 @@ namespace MediaPlayerSample
          listViewPlaylist.SetBinding(ListView.SelectedItemProperty, new Binding("Current", BindingMode.TwoWay, source: MediaPlayer.Current.Playlist));
 
          // - - -  - - - 
+
+         #region FontIcon stuff
 
          switch (Device.RuntimePlatform)
          {
@@ -73,6 +70,7 @@ namespace MediaPlayerSample
                break;
          };
 
+         #endregion
       }
 
       private void Current_BufferingChanged(object sender, BufferingChangedEventArgs e)

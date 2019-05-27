@@ -22,19 +22,53 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 
 
 ## How to use
+
 A Xamarin.Forms sample how to use MediaPlayer is in this Git, but here are the  basics ...
 
+### Initialization 
+Before using the MediaPlayer you had to initialize it in the platform dependent project. 
+
+Start by adding the using at the header of each concerned file ...
 ```csharp
+using ZPF.Media;
+```  
+  
+*for an Android project: MainActivity.cs: OnCreate:* 
+```csharp
+...
 MediaPlayer.Current.Init();  
+LoadApplication(new App());
+```   
+  
+*for a UWP project: App.xaml.cs: OnLaunched:* 
+```csharp
+...
+MediaPlayer.Current.Init();  
+Xamarin.Forms.Forms.Init(e);
+...
+```
+
+
+### Play 
+```csharp
 MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");  
 ```
 
 ### Native player
+*Android*
+```csharp
+Android.Media.MediaPlayer Player = (Android.Media.MediaPlayer)MediaPlayer.Current.Player;  
+```
+Remark: The Android Player type will probably change in the future to the ExoPlayer. So check the doc on each release. 
+  
 
+*UWP*
 ```csharp
 Windows.Media.Playback.MediaPlayer Player = (Windows.Media.Playback.MediaPlayer)MediaPlayer.Current.Player;  
 ```
 
+### Code Sample
+[Main page source code from sample program ...](https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/Samples/MediaPlayerSample/Pages/MainPage.xaml.cs)
 
 ## API
 ### Methods
@@ -64,7 +98,7 @@ MediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
 ```
 
 
-### Properies
+### Properties
 ```csharp
 MediaPlayer.Current.Duration  
 MediaPlayer.Current.Position  
@@ -92,7 +126,7 @@ X = implemented, blanc = net yet implemented
 ## Next steps
 * code review
 * iOS, Mac, WPF, ...
-* sync native playlist with intenal playlist (UWP, ...)
+* sync native playlist with internal playlist (UWP, ...)
 * check ExoPlayer on Android
 * video
 * enhance/(re)design sample application
