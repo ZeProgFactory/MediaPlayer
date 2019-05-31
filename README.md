@@ -120,7 +120,7 @@ MediaPlayer.Current.State
 | PositionChanged      |  X  |  X  |   X   |  X  |  X  |
 | StateChanged         |  X  |     |       |     |     |
 
-X = implemented, blanc = net yet implemented  
+X = implemented, blank = not yet implemented  
   
 
 ## Next steps
