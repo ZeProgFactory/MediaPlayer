@@ -38,6 +38,11 @@
     <Compile Remove="Resources\*.cs" />
   </ItemGroup>
 
+  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
+    <Compile Include="Platforms\Apple\**\*.cs" />
+    <Compile Include="Platforms\MacOS\**\*.cs" />
+  </ItemGroup>
+  
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <Compile Include="Platforms\Netstandard\**\*.cs" />
   </ItemGroup>
@@ -51,11 +56,6 @@
     <Compile Include="Platforms\iOS\**\*.cs" />
   </ItemGroup>
 
-  <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
-    <Compile Include="Platforms\Apple\**\*.cs" />
-    <Compile Include="Platforms\MacOS\**\*.cs" />
-  </ItemGroup>
-  
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <Compile Include="Platforms\Android\**\*.cs" />
   </ItemGroup>
