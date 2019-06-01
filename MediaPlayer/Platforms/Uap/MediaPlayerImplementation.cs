@@ -9,6 +9,9 @@ using ZPF.Media.Uap;
 
 namespace ZPF.Media
 {
+   /// <summary>
+   /// MediaPlayerImplementation for UWP ...
+   /// </summary>
    public class MediaPlayerImplementation : MediaPlayerBase
    {
       public override object Player { get => _player; }
@@ -50,11 +53,13 @@ namespace ZPF.Media
             _player.PlaybackSession.Position = TimeSpan.Zero;
             this.OnMediaItemFailed(this, new MediaItemFailedEventArgs(this.Playlist.Current, args.ExtendedErrorCode, args.ErrorMessage));
          };
+
+         IsInitialized = true;
       }
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
-      public override void Init()
+      public override void Init(object mainWindow = null)
       {
          IsInitialized = true;
       }
@@ -90,6 +95,8 @@ namespace ZPF.Media
 
          return MediaPlayerState.Paused;
       }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
       public override TimeSpan Position => _player.PlaybackSession.Position;
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using System.Timers;
 
 namespace ZPF.Media
 {
@@ -30,7 +29,7 @@ namespace ZPF.Media
 
       // - - -  - - - 
 
-      void Init();
+      void Init(object mainWindow = null);
       bool IsInitialized { get; set; }
 
       /// <summary>

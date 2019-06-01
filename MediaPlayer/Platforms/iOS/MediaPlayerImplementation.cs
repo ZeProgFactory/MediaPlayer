@@ -18,7 +18,13 @@ namespace ZPF.Media
       {
          _MediaExtractor = new MediaExtractor();
 
-         //ToDo: evants ...
+         //ToDo: events ...
+         IsInitialized = true;
+      }
+
+      public override void Init(object mainWindow = null)
+      {
+         IsInitialized = true;
       }
 
       public override MediaPlayerState State => throw new System.NotImplementedException();
@@ -87,10 +93,6 @@ namespace ZPF.Media
       bool _Muted = false;
 
       // - - -  - - - 
-
-      public override void Init()
-      {
-      }
 
       public override Task Pause()
       {

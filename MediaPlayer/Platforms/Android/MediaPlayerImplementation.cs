@@ -85,6 +85,11 @@ namespace ZPF.Media
          IsInitialized = true;
       }
 
+      public override void Init(object mainWindow = null)
+      {
+         IsInitialized = true;
+      }
+
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
       public override MediaPlayerState State
@@ -147,11 +152,6 @@ namespace ZPF.Media
       }
 
       // - - -  - - - 
-
-      public override void Init()
-      {
-         IsInitialized = true;
-      }
 
       public override Task Pause()
       {

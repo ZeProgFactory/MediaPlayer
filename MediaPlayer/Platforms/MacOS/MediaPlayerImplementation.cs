@@ -24,7 +24,7 @@ namespace ZPF.Media
       public override decimal Balance { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
       public override bool Muted { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-      public override void Init()
+      public override void Init(object mainWindow = null)
       {
          throw new NotImplementedException();
       }

@@ -13,7 +13,7 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 |Xamarin.iOS| | [![Build status](https://build.appcenter.ms/v0.1/apps/4427f9f1-a7ee-4b86-b690-be87c518f62b/branches/master/badge)](https://appcenter.ms) | 30 % audio |
 |Xamarin.Android| | [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 90 % audio |
 |Xamarin.Mac| | | |
-|Xamarin.WPF| | | 30 % audio |
+|Xamarin.WPF| | | 80 % audio |
 |WPF| | | |
 
 ## Setup
@@ -26,7 +26,7 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 A Xamarin.Forms sample how to use MediaPlayer is in this Git, but here are the  basics ...
 
 ### Initialization 
-Before using the MediaPlayer you had to initialize it in the platform dependent project. 
+Before using the MediaPlayer you should initialize it in the platform dependent project. 
 
 Start by adding the using at the header of each concerned file ...
 ```csharp
@@ -47,6 +47,18 @@ MediaPlayer.Current.Init();
 Xamarin.Forms.Forms.Init(e);
 ...
 ```
+  
+*for a WPF project: MainWindow.xaml.cs: MainWindow():* 
+```csharp
+...
+ZPF.Media.MediaPlayer.Current.Init(this);
+Forms.Init();
+...
+```
+
+| MediaPlayer.Current.Init() | UWP | iOS |Android| Mac | WPF |
+| -------------------------- |:---:|:---:|:-----:|:---:|:---:|
+| Mandatory                  |  no |  no |   no  |  no | yes |   
 
 
 ### Play 
@@ -65,6 +77,12 @@ Remark: The Android Player type will probably change in the future to the ExoPla
 *UWP*
 ```csharp
 Windows.Media.Playback.MediaPlayer Player = (Windows.Media.Playback.MediaPlayer)MediaPlayer.Current.Player;  
+```
+  
+
+*WPF*
+```csharp
+System.Windows.Controls.MediaElement Player = (System.Windows.Controls.MediaElement)ZPF.Media.MediaPlayer.Current.Player; 
 ```
 
 ### Code Sample
@@ -109,16 +127,20 @@ MediaPlayer.Current.Play(NextItem);
 MediaPlayer.Current.Play(PreviousItem);  
 MediaPlayer.Current.State  
 ```
-   
+
+Balance  
+Volume  
+Muted  
+
 ### Events
 | event                | UWP | iOS |Android| Mac | WPF |
 | -------------------- |:---:|:---:|:-----:|:---:|:---:|
 | BufferingChanged     |     |     |       |     |     |   
 | MediaItemChanged     |  X  |     |   X   |     |     |  
-| MediaItemFailed      |  X  |     |       |     |     |  
-| MediaItemFinished    |  X  |     |   X   |     |     |  
+| MediaItemFailed      |  X  |     |       |     |  X  |  
+| MediaItemFinished    |  X  |     |   X   |     |  X  |  
 | PositionChanged      |  X  |  X  |   X   |  X  |  X  |
-| StateChanged         |  X  |     |       |     |     |
+| StateChanged         |  X  |     |       |     |  X  |
 
 X = implemented, blank = not yet implemented  
   
@@ -126,6 +148,7 @@ X = implemented, blank = not yet implemented
 ## Next steps
 * code review
 * iOS, Mac, WPF, ...
+* MediaExtractor (WPF)
 * sync native playlist with internal playlist (UWP, ...)
 * check ExoPlayer on Android
 * video

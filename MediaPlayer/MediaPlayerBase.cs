@@ -52,7 +52,7 @@ namespace ZPF.Media
       public abstract decimal Balance { get; set; }
       public abstract bool Muted { get; set; }
 
-      public abstract void Init();
+      public abstract void Init(object mainWindow = null);
 
       public abstract Task<IMediaItem> Play(string uri);
 

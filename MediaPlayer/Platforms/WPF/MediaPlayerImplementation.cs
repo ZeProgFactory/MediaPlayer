@@ -1,11 +1,17 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ZPF.Media
 {
+   /// <summary>
+   /// MediaPlayerImplementation for WPF ...
+   /// </summary>
    public class MediaPlayerImplementation : MediaPlayerBase
    {
+      Window _Window = null;
+
       public override object Player { get => _player; }
 
       private readonly System.Windows.Controls.MediaElement _player;
@@ -57,21 +63,21 @@ namespace ZPF.Media
             _player.Position = TimeSpan.Zero;
             this.OnMediaItemFailed(this, new MediaItemFailedEventArgs(this.Playlist.Current, e.ErrorException, e.ErrorException.Message));
          };
-
-      }
-
-      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
-
-      public override void Init()
-      {
-         IsInitialized = true;
       }
 
       // - - -  - - - 
 
+      public override void Init(object mainWindow = null)
+      {
+         _Window = (Window)mainWindow;
+         IsInitialized = (_Window != null);
+      }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
+
       public override MediaPlayerState State
       {
-         get { return _State; }
+         get { return GetMediaPlayerState(); }
       }
       private MediaPlayerState _State;
 
@@ -83,11 +89,61 @@ namespace ZPF.Media
 
       // - - -  - - - 
 
-      public override TimeSpan Position => _player.Position;
+      private MediaPlayerState GetMediaPlayerState()
+      {
+         // Playing, Paused, Stopped, Loading, Buffering, Failed
 
-      public override TimeSpan Duration => (_player.NaturalDuration.HasTimeSpan ? _player.NaturalDuration.TimeSpan : TimeSpan.MaxValue);
+         if (_player.IsBuffering) return MediaPlayerState.Buffering;
 
-      public override TimeSpan Buffered => throw new NotImplementedException();
+         return _State;
+      }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
+
+      public override TimeSpan Position
+      {
+         get
+         {
+            TimeSpan ts = TimeSpan.MinValue;
+
+            _Window.Dispatcher.Invoke(() =>
+            {
+               ts = _player.Position;
+            });
+
+            return ts;
+         }
+      }
+
+      public override TimeSpan Duration
+      {
+         get
+         {
+            TimeSpan ts = TimeSpan.MinValue;
+
+            _Window.Dispatcher.Invoke(() =>
+            {
+               ts = (_player.NaturalDuration.HasTimeSpan ? _player.NaturalDuration.TimeSpan : TimeSpan.MaxValue);
+            });
+
+            return ts;
+         }
+      }
+
+      public override TimeSpan Buffered
+      {
+         get
+         {
+            TimeSpan ts = TimeSpan.MinValue;
+
+            _Window.Dispatcher.Invoke(() =>
+            {
+               ts = (_player.NaturalDuration.HasTimeSpan ? TimeSpan.FromSeconds(_player.NaturalDuration.TimeSpan.TotalSeconds * _player.BufferingProgress) : TimeSpan.MinValue);
+            });
+
+            return ts;
+         }
+      }
 
       // - - -  - - - 
 
@@ -103,15 +159,16 @@ namespace ZPF.Media
          }
       }
 
-      //ToDo: HasBalance
+      //ToDo: HasBalance --> Yes
       public override decimal Balance
       {
          get
          {
-            return (decimal)0;
+            return (decimal)_player.Balance;
          }
          set
          {
+            _player.Balance = (double)value;
          }
       }
 
@@ -132,6 +189,8 @@ namespace ZPF.Media
       public override Task Pause()
       {
          _player.Pause();
+         SetState(MediaPlayerState.Paused);
+
          return Task.CompletedTask;
       }
 
@@ -159,18 +218,26 @@ namespace ZPF.Media
 
       public override Task Play()
       {
-         _player.Pause();
+         _player.Play();
+         SetState(MediaPlayerState.Playing);
+
          return Task.CompletedTask;
       }
 
       public override Task SeekTo(TimeSpan position)
       {
-         throw new NotImplementedException();
+         _player.Position = position;
+         Play();
+
+         return Task.CompletedTask;
       }
 
       public override Task Stop()
       {
-         throw new NotImplementedException();
+         _player.Stop();
+         SetState(MediaPlayerState.Stopped);
+
+         return Task.CompletedTask;
       }
    }
 }
