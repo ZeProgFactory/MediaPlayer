@@ -132,6 +132,26 @@ X = implemented, blank = not yet implemented
 * enhance/(re)design sample application
 
 ## How to build
+### EDI
 !!! It seam that since update to VS2019 16.1.0/16.1.1 the build doesn't function anymore. It's still fine with VS2017. !!!  
 On Windows you can build the solution with Visual Studio 2019 with the latest Xamarin, .NET Core and UWP installed.   
 For the moment the solution doesn't build with VS2019 on MacOS: https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html .
+
+### Visual Studio 2017 Developer Command Prompt
+Build WPF debug
+```
+msbuild zpfmediaplayer.csproj /p:TargetsToBuild=Wpf /t:Rebuild  
+```
+Build all platformes debug
+```
+msbuild zpfmediaplayer.csproj /p:TargetsToBuild=All /t:Rebuild  
+```   
+   
+Build WPF release
+```
+msbuild zpfmediaplayer.csproj /p:TargetsToBuild=Wpf;Configuration=Release /t:Rebuild  
+```    
+Build all platformes release (--> Nuget)
+```
+msbuild zpfmediaplayer.csproj /p:TargetsToBuild=All;Configuration=Release /t:Rebuild  
+```
