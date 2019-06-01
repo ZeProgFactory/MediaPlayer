@@ -136,8 +136,19 @@ X = implemented, blank = not yet implemented
 !!! It seam that since update to VS2019 16.1.0/16.1.1 the build doesn't function anymore. It's still fine with VS2017. !!!  
 On Windows you can build the solution with Visual Studio 2019 with the latest Xamarin, .NET Core and UWP installed.   
 For the moment the solution doesn't build with VS2019 on MacOS: https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html .
+Nor on Microsoft Visual Studio Professional 2019 Version 16.1.1
+https://github.com/onovotny/MSBuildSdkExtras/issues/168 https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html
+
+**Microsoft Visual Studio Professional 2017 Version 15.9.12
+OK - Nuget - Android, iOS, MacOS, UWP, WPF**
+
+it doesn't build on
+Microsoft Visual Studio Enterprise 2019 (Preview) for Mac Version 8.1 Preview (8.1 build 2460)
+
 
 ### Visual Studio 2017 Developer Command Prompt
+It builds on 'Visual Studio 2017 Developer Command Prompt'   
+   
 Build WPF debug
 ```
 msbuild zpfmediaplayer.csproj /p:TargetsToBuild=Wpf /t:Rebuild  
