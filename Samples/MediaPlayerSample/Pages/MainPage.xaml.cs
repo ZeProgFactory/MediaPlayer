@@ -116,8 +116,6 @@ namespace MediaPlayerSample
       private async void Button_MediaItem_Clicked(object sender, EventArgs e)
       {
          //Audio
-         //await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
-
          var mi = new MediaItem("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3")
          {
             MediaLocation = MediaLocation.Remote,
@@ -125,7 +123,21 @@ namespace MediaPlayerSample
             //ToDo: MediaType = MediaType.SmoothStreaming,
          };
 
-         await MediaPlayer.Current.Play(mi);
+         try
+         {
+            await MediaPlayer.Current.Play(mi);
+         }
+         catch
+         {
+            if (Device.RuntimePlatform == Device.WPF)
+            {
+               await DisplayAlert("Oups ...", "You stumbled into a known error ( https://github.com/ZeProgFactory/MediaPlayer/issues/3 ) ", "ok");
+            }
+            else
+            {
+               await DisplayAlert("Oups ...", "This should not happen. Please report the problem ...", "ok");
+            };
+         };
       }
 
       private async void Button_Video_Clicked(object sender, EventArgs e)

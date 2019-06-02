@@ -7,15 +7,15 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 
 ## Current platform support (evolves on nearly daily basis)
 
-|Platform|Version|Build|State|
-| ------------------- | :------------------: |  :------------------: | :------------------: |
-|Windows 10 UWP| | [![Build status](https://build.appcenter.ms/v0.1/apps/c04f9cb9-8f2a-4d33-9011-0f1fe8235713/branches/master/badge)](https://appcenter.ms) |  90 % audio |
-|Xamarin.iOS| | [![Build status](https://build.appcenter.ms/v0.1/apps/4427f9f1-a7ee-4b86-b690-be87c518f62b/branches/master/badge)](https://appcenter.ms) | 30 % audio |
-|Xamarin.Android| | [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 90 % audio |
-|Xamarin.Mac| | | |
-|Xamarin.WPF| | | 70 % audio |
-|WPF| | | |
-
+|platform|sample|build|state|
+| ------------------- | :------------------: | :------------------: |  :------------------: | :------------------: |
+|UWP| XF.UWP | [![Build status](https://build.appcenter.ms/v0.1/apps/c04f9cb9-8f2a-4d33-9011-0f1fe8235713/branches/master/badge)](https://appcenter.ms) |  90 % audio |
+|iOS| XF.iOS| [![Build status](https://build.appcenter.ms/v0.1/apps/4427f9f1-a7ee-4b86-b690-be87c518f62b/branches/master/badge)](https://appcenter.ms) | 30 % audio |
+|Android| XF.Android| [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 90 % audio |
+|MacOS| XF.Mac | | |
+| WPF | XF.WPF | | 70 % audio |
+   
+   
 ## Setup
 * Available on NuGet: https://www.nuget.org/packages/ZPFMediaPlayer [![NuGet](https://img.shields.io/nuget/v/ZPFMediaPlayer.svg)](https://www.nuget.org/packages/ZPFMediaPlayer/)
 * For Xamarin.Forms install into your Main and Client projects.
@@ -65,6 +65,10 @@ Forms.Init();
 ```csharp
 MediaPlayer.Current.Play("http://freesound.org/data/previews/273/273629_4068345-lq.mp3");  
 ```
+
+On WPF you should `try .. catch` the `Play` method for the moment:  
+[[WPF] Fatal exception when playing special song](https://github.com/ZeProgFactory/MediaPlayer/issues/3)
+
 
 ### Native player
 *Android*
@@ -158,7 +162,7 @@ X = implemented, blank = not yet implemented
 ### EDI
 !!! It seam that since update to VS2019 16.1.0/16.1.1 the build doesn't function anymore. It's still fine with VS2017. !!!  
 On Windows you can build the solution with Visual Studio 2019 with the latest Xamarin, .NET Core and UWP installed.   
-For the moment the solution doesn't build with VS2019 on MacOS: https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html .
+For the moment the solution doesn't build with VS2019 on MacOS: https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html .  
 Nor on Microsoft Visual Studio Professional 2019 Version 16.1.1
 https://github.com/onovotny/MSBuildSdkExtras/issues/168 https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html
 

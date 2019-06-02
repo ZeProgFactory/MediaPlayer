@@ -42,8 +42,7 @@ namespace ZPF.Media
 
          _player.MediaOpened += (object sender, System.Windows.RoutedEventArgs e) =>
          {
-            MediaElement _Sound = sender as MediaElement;
-            _Sound.Play();
+            _playerPlay();
          };
 
          _player.BufferingStarted += (object sender, System.Windows.RoutedEventArgs e) =>
@@ -53,7 +52,7 @@ namespace ZPF.Media
 
          _player.BufferingEnded += (object sender, System.Windows.RoutedEventArgs e) =>
          {
-            _player.Play();
+            _playerPlay();
             SetState(MediaPlayerState.Playing);
          };
 
@@ -213,12 +212,26 @@ namespace ZPF.Media
          Playlist.Current = mediaItem;
 
          _player.Source = new Uri(mediaItem.MediaUri);
-         _player.Play();
+         _playerPlay();
+      }
+
+      private void _playerPlay()
+      {
+         try
+         {
+            _player.Play();
+         }
+         catch (Exception ex)
+         {
+            _State = MediaPlayerState.Failed;
+            _player.Position = TimeSpan.Zero;
+            this.OnMediaItemFailed(this, new MediaItemFailedEventArgs(this.Playlist.Current, ex, ex.Message));
+         };
       }
 
       public override Task Play()
       {
-         _player.Play();
+         _playerPlay();
          SetState(MediaPlayerState.Playing);
 
          return Task.CompletedTask;
