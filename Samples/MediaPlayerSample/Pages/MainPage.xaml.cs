@@ -43,7 +43,6 @@ namespace MediaPlayerSample
 
          switch (Device.RuntimePlatform)
          {
-            case Device.iOS:
             case Device.Android:
             case Device.UWP:  
                btnPlayPrevious.Text = "";
@@ -63,9 +62,9 @@ namespace MediaPlayerSample
 
                btnStop.Text = "";
                btnStop.ImageSource = SkiaHelper.SkiaFontIcon(ZPFFonts.MPF.Media_Stop, 48);
-
                break;
 
+            case Device.WPF:
             default:
                break;
          };
