@@ -193,6 +193,8 @@ namespace ZPF.Media
          return Task.CompletedTask;
       }
 
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
+
       public override async Task<IMediaItem> Play(string uri)
       {
          var mediaItem = await MediaExtractor.CreateMediaItem(uri);
@@ -209,10 +211,28 @@ namespace ZPF.Media
             mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
          };
 
-         Playlist.Current = mediaItem;
+         if (Playlist.Current?.MediaUri != mediaItem.MediaUri)
+         {
+            Playlist.Current = mediaItem;
+         };
+      }
+
+      public override async Task SetSource(IMediaItem mediaItem)
+      {
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
 
          _player.Source = new Uri(mediaItem.MediaUri);
+      }
+
+      public override Task Play()
+      {
          _playerPlay();
+         SetState(MediaPlayerState.Playing);
+
+         return Task.CompletedTask;
       }
 
       private void _playerPlay()
@@ -224,18 +244,12 @@ namespace ZPF.Media
          catch (Exception ex)
          {
             _State = MediaPlayerState.Failed;
-            _player.Position = TimeSpan.Zero;
+            // _player.Position = TimeSpan.Zero;
             this.OnMediaItemFailed(this, new MediaItemFailedEventArgs(this.Playlist.Current, ex, ex.Message));
          };
       }
 
-      public override Task Play()
-      {
-         _playerPlay();
-         SetState(MediaPlayerState.Playing);
-
-         return Task.CompletedTask;
-      }
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
 
       public override Task SeekTo(TimeSpan position)
       {

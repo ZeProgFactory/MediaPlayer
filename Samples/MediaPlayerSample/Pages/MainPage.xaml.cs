@@ -126,8 +126,10 @@ namespace MediaPlayerSample
          {
             await MediaPlayer.Current.Play(mi);
          }
-         catch
+         catch(Exception ex)
          {
+            Debug.WriteLine(ex.Message);
+
             if (Device.RuntimePlatform == Device.WPF)
             {
                await DisplayAlert("Oups ...", "You stumbled into a known error ( https://github.com/ZeProgFactory/MediaPlayer/issues/3 ) ", "ok");

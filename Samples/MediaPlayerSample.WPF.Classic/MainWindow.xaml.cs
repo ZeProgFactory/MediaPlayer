@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using ZPF.Media;
@@ -88,7 +89,10 @@ namespace MediaPlayerSample.WPF.Classic
             // Audio
             await MediaPlayer.Current.Play("https://ia800806.us.archive.org/15/items/Mp3Playlist_555/AaronNeville-CrazyLove.mp3");
          }
-         catch { };
+         catch (Exception ex)
+         {
+            Debug.WriteLine(ex.Message);
+         };
       }
 
       private void Button_Click(object sender, RoutedEventArgs e)

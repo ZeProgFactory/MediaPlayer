@@ -76,7 +76,10 @@ namespace ZPF.Media
                   Debug.WriteLine("Playlist.Current - Playlist.Add");
                };
 
-               MediaPlayer.Current.Play(_Current);
+               MediaPlayer.Current.SetSource(_Current);
+               MediaPlayer.Current.Play();
+
+               //MediaPlayer.Current.Play(_Current);
 
                OnPropertyChanged(new PropertyChangedEventArgs("Current"));
             };

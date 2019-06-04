@@ -39,8 +39,23 @@ namespace ZPF.Media
          throw new NotImplementedException();
       }
 
-      public override Task Play(IMediaItem mediaItem)
+      public override async Task Play(IMediaItem mediaItem)
       {
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
+
+         throw new NotImplementedException();
+      }
+
+      public override async Task SetSource(IMediaItem mediaItem)
+      {
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
+
          throw new NotImplementedException();
       }
 

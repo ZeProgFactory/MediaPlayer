@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using Android;
-using Android.Media;
 
 /// <summary>
 /// https://developer.android.com/reference/android/media/MediaPlayer.html
@@ -169,13 +167,6 @@ namespace ZPF.Media
          return mediaItem;
       }
 
-      public override Task Play()
-      {
-         _player.Start();
-
-         return Task.CompletedTask;
-      }
-
       public override async Task Play(IMediaItem mediaItem)
       {
          if (!mediaItem.IsMetadataExtracted)
@@ -185,6 +176,18 @@ namespace ZPF.Media
 
          Playlist.Current = mediaItem;
 
+         //await SetSource(mediaItem);
+      }
+
+      public override async Task SetSource(IMediaItem mediaItem)
+      {
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
+
+         //Playlist.Current = mediaItem;
+
          //if (_player.IsPlaying)
          {
             _player.Reset();
@@ -192,6 +195,13 @@ namespace ZPF.Media
 
          _player.SetDataSource(mediaItem.MediaUri);
          _player.Prepare();
+      }
+
+      public override Task Play()
+      {
+         _player.Start();
+
+         return Task.CompletedTask;
       }
 
       public override Task SeekTo(TimeSpan position)

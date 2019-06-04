@@ -152,7 +152,7 @@ namespace ZPF.Media
          }
       }
 
-      // - - -  - - - 
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
 
       //public new bool play(string uri)
       //{
@@ -177,16 +177,25 @@ namespace ZPF.Media
             mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
          };
 
+         Playlist.Current = mediaItem;
+      }
+
+      public override async Task SetSource(IMediaItem mediaItem)
+      {
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
+
          var mediaPlaybackList = new MediaPlaybackList();
          var mediaSource = await CreateMediaSource(mediaItem);
          var item = new MediaPlaybackItem(mediaSource);
          mediaPlaybackList.Items.Add(item);
 
          //Playlist.Clear();
-         Playlist.Current = mediaItem;
+         //Playlist.Current = mediaItem;
 
          _player.Source = mediaPlaybackList;
-         _player.Play();
       }
 
       private async Task<MediaSource> CreateMediaSource(IMediaItem mediaItem)
@@ -212,8 +221,11 @@ namespace ZPF.Media
       {
          _player.PlaybackSession.PlaybackRate = (_player.PlaybackSession.PlaybackRate == 0 ? _player.PlaybackSession.PlaybackRate = 1 : _player.PlaybackSession.PlaybackRate);
          _player.Play();
+
          return Task.CompletedTask;
       }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
 
       public override Task Pause()
       {

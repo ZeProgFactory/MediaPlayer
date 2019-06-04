@@ -235,10 +235,15 @@
         </member>
         <member name="M:ZPF.Media.IMediaPlayer.Play(ZPF.Media.IMediaItem)">
             <summary>
-            Plays a MediaItem
             </summary>
-            <param name="uri"></param>
+            <param name="mediaItem"></param>
             <returns></returns>
+        </member>
+        <member name="M:ZPF.Media.IMediaPlayer.SetSource(ZPF.Media.IMediaItem)">
+            <summary>
+            
+            </summary>
+            <param name="mediaItem"></param>
         </member>
         <member name="M:ZPF.Media.IMediaPlayer.Play">
             <summary>

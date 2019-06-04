@@ -66,11 +66,16 @@ namespace ZPF.Media
       Task<IMediaItem> Play(string uri);
 
       /// <summary>
-      /// Plays a MediaItem
       /// </summary>
-      /// <param name="uri"></param>
+      /// <param name="mediaItem"></param>
       /// <returns></returns>
       Task Play(IMediaItem mediaItem);
+
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="mediaItem"></param>
+      Task SetSource(IMediaItem mediaItem);
 
       /// <summary>
       /// Starts playing

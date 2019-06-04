@@ -57,7 +57,7 @@ namespace ZPF.Media
       public abstract Task<IMediaItem> Play(string uri);
 
       public abstract Task Play(IMediaItem mediaItem);
-
+      public abstract Task SetSource(IMediaItem mediaItem);
       public abstract Task Play();
 
       public abstract Task Pause();

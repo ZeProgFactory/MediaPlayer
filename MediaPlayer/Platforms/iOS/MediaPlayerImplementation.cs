@@ -145,6 +145,8 @@ namespace ZPF.Media
          }
       }
 
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
+
       public override async Task<IMediaItem> Play(string uri)
       {
          var mediaItem = await MediaExtractor.CreateMediaItem(uri);
@@ -154,16 +156,25 @@ namespace ZPF.Media
          return mediaItem;
       }
 
-      public override Task Play()
+      public override async Task Play(IMediaItem mediaItem)
       {
-         _player?.Player.Play();
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
 
-         return Task.CompletedTask;
+         Playlist.Current = mediaItem;
+
+         //await SetSource(mediaItem);
+         //await Play();
       }
 
-      public override Task Play(IMediaItem mediaItem)
+      public override async Task SetSource(IMediaItem mediaItem)
       {
-         NSError err;
+         if (!mediaItem.IsMetadataExtracted)
+         {
+            mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
+         };
 
          AVAsset asset = null;
          asset = AVUrlAsset.Create(NSUrl.FromString(mediaItem.MediaUri));
@@ -182,11 +193,16 @@ namespace ZPF.Media
          {
             _player.Player = new AVPlayer(item);
          }
+      }
 
-         _player.Player.Play();
+      public override Task Play()
+      {
+         _player?.Player.Play();
 
          return Task.CompletedTask;
       }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
 
       public override Task SeekTo(TimeSpan position)
       {
