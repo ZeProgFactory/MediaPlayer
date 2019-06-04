@@ -121,20 +121,26 @@ MediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
 
 
 ### Properties
+| Property | Description |
+| --- | --- |
+| `Duration` | `TimeSpan`
+| `Position` | `TimeSpan`
+| `State`    | Playing, Paused, Stopped, Loading, Buffering, Failed
+
 ```csharp
-MediaPlayer.Current.Duration  
-MediaPlayer.Current.Position  
 MediaPlayer.Current.Playlist  
 MediaPlayer.Current.Playlist.RepeatMode = RepeatMode.Off;  
 MediaPlayer.Current.Playlist.ShuffleMode = ShuffleMode.Off;  
 MediaPlayer.Current.Play(NextItem);  
 MediaPlayer.Current.Play(PreviousItem);  
-MediaPlayer.Current.State  
 ```
 
-Balance  
-Volume  
-Muted  
+#### Volume properties
+| Property | Description |
+| --- | --- |
+| `Balance` | From -1 (Left) to +1 (right). 0 = center. |  
+| `Volume` | From 0 to 1. |  
+| `Muted` | `True` or `False` |    
 
 ### Events
 | event                | UWP | iOS |Android| Mac | WPF |
@@ -152,7 +158,7 @@ X = implemented, blank = not yet implemented
 ## Next steps
 * code review
 * iOS, Mac, WPF, ...
-* MediaExtractor (WPF)
+* MediaExtractor (WPF)**
 * sync native playlist with internal playlist (UWP, ...)
 * check ExoPlayer on Android
 * video
@@ -160,9 +166,12 @@ X = implemented, blank = not yet implemented
 
 ## How to build
 ### EDI
-!!! It seam that since update to VS2019 16.1.0/16.1.1 the build doesn't function anymore. It's still fine with VS2017. !!!  
-On Windows you can build the solution with Visual Studio 2019 with the latest Xamarin, .NET Core and UWP installed.   
+**!!! It seam that since update to VS2019 16.1.0/16.1.1 the build doesn't function anymore. It's still fine with VS2017. !!!**  
+  
+On Windows you can build the solution with Visual Studio 2019 with the latest Xamarin, .NET Core and UWP installed.  
+  
 For the moment the solution doesn't build with VS2019 on MacOS: https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html .  
+  
 Nor on Microsoft Visual Studio Professional 2019 Version 16.1.1
 https://github.com/onovotny/MSBuildSdkExtras/issues/168 https://developercommunity.visualstudio.com/content/problem/536913/vsfm-2019-doesnt-work-with-project-file-sdks-like.html
 
