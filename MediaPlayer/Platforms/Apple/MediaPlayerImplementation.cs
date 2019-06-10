@@ -9,7 +9,12 @@ namespace ZPF.Media
    public class MediaPlayerImplementation : MediaPlayerBase
    {
       public override object Player { get => _player; }
+
+#if __IOS__
+      private AVPlayerViewController _player = new AVPlayerViewController();
+#else
       private AVPlayerView _player = new AVPlayerView();
+#endif
 
       public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }
       private IMediaExtractor _MediaExtractor;

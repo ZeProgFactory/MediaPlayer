@@ -51,7 +51,7 @@ namespace ZPF.Media
 #endif
 
          // Default title to filename
-         mediaItem.Title = url.LastPathComponent;
+         // mediaItem.Title = url.LastPathComponent;
 
          var asset = AVAsset.FromUrl(url);
          await asset.LoadValuesTaskAsync(assetsToLoad.ToArray());
@@ -74,6 +74,8 @@ namespace ZPF.Media
 #endif
             }
          }
+
+         mediaItem.IsMetadataExtracted = true;
 
          return mediaItem;
       }

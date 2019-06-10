@@ -12,7 +12,7 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 |UWP| XF.UWP | [![Build status](https://build.appcenter.ms/v0.1/apps/c04f9cb9-8f2a-4d33-9011-0f1fe8235713/branches/master/badge)](https://appcenter.ms) |  90 % audio |
 |iOS| XF.iOS| [![Build status](https://build.appcenter.ms/v0.1/apps/4427f9f1-a7ee-4b86-b690-be87c518f62b/branches/master/badge)](https://appcenter.ms) | 30 % audio |
 |Android| XF.Android| [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 90 % audio |
-|MacOS| XF.Mac | | |
+|MacOS| XF.Mac | | 30 % audio |
 | WPF | XF.WPF | | 70 % audio |
    
    
