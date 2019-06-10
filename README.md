@@ -22,8 +22,20 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 
 
 ## How to use
+A Xamarin.Forms sample showing how to use MediaPlayer is in this Git, but here are the  basics ...
 
-A Xamarin.Forms sample how to use MediaPlayer is in this Git, but here are the  basics ...
+### authorizations
+#### iOS - Info.plist
+If you wish to access to streamning sites you should add folowing lines to your ```Info.plist```.  
+```XML
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+		<key> NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+	</dict>
+```  
 
 ### Initialization 
 Before using the MediaPlayer you should initialize it in the platform dependent project. 
@@ -71,6 +83,14 @@ On WPF you should `try .. catch` the `Play` method for the moment:
 
 
 ### Native player
+| platform | nativ player |
+| ------------------- | :-----------: |
+| Android | Android.Media.MediaPlayer |
+| iOS     | AVKit.AVPlayerViewController |
+| MacOS   |  |
+| UWP     | Windows.Media.Playback.MediaPlayer |
+| WPF     | System.Windows.Controls.MediaElement |
+
 *Android*
 ```csharp
 Android.Media.MediaPlayer Player = (Android.Media.MediaPlayer)MediaPlayer.Current.Player;  
@@ -87,8 +107,9 @@ Windows.Media.Playback.MediaPlayer Player = (Windows.Media.Playback.MediaPlayer)
 *WPF*
 ```csharp
 System.Windows.Controls.MediaElement Player = (System.Windows.Controls.MediaElement)ZPF.Media.MediaPlayer.Current.Player; 
-```
-
+```     
+   
+   
 ### Code Sample
 [Main page source code from sample program ...](https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/Samples/MediaPlayerSample/Pages/MainPage.xaml.cs)
 
@@ -145,7 +166,6 @@ MediaPlayer.Current.Play(PreviousItem);
 ### Events
 | event                | UWP | iOS |Android| Mac | WPF |
 | -------------------- |:---:|:---:|:-----:|:---:|:---:|
-| BufferingChanged     |     |     |       |     |     |   
 | MediaItemChanged     |  X  |     |   X   |     |     |  
 | MediaItemFailed      |  X  |     |       |     |  X  |  
 | MediaItemFinished    |  X  |     |   X   |     |  X  |  
