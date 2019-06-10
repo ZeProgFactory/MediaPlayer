@@ -25,7 +25,7 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 A Xamarin.Forms sample showing how to use MediaPlayer is in this Git, but here are the  basics ...
 
 ### authorizations
-#### iOS - Info.plist
+#### iOS and  MacOS - Info.plist
 If you wish to access to streamning sites you should add folowing lines to your ```Info.plist```.  
 ```XML
 	<key>NSAppTransportSecurity</key>
