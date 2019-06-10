@@ -32,11 +32,88 @@ namespace ZPF.Media
          IsInitialized = true;
       }
 
-      public override MediaPlayerState State => throw new System.NotImplementedException();
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
 
-      public override TimeSpan Position => throw new NotImplementedException();
+      public override MediaPlayerState State
+      {
+         get { return GetMediaPlayerState(); }
+      }
+      private MediaPlayerState _State;
 
-      public override TimeSpan Duration => throw new NotImplementedException();
+      private void SetState(MediaPlayerState state)
+      {
+         _State = state;
+         this.OnStateChanged(this, new StateChangedEventArgs(_State));
+      }
+
+      // - - -  - - - 
+
+      private MediaPlayerState GetMediaPlayerState()
+      {
+         // Playing, Paused, Stopped, Loading, Buffering, Failed
+
+         switch (_player.Player.Status)
+         {
+            case AVPlayerStatus.Failed:
+               return MediaPlayerState.Failed;
+
+            case AVPlayerStatus.ReadyToPlay:
+               return MediaPlayerState.Stopped;
+
+            case AVPlayerStatus.Unknown:
+               break;
+         };
+
+
+         return _State;
+      }
+
+      // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  -
+
+      public override TimeSpan Position
+      {
+         get
+         {
+            if (_player.Player == null)
+            {
+               return TimeSpan.Zero;
+            }
+            else
+            {
+               try
+               {
+                  return TimeSpan.FromSeconds(_player.Player.CurrentTime.Seconds);
+               }
+               catch
+               {
+                  return TimeSpan.Zero;
+               };
+            };
+         }
+      }
+
+      public override TimeSpan Duration
+      {
+         get
+         {
+            if (_player.Player == null)
+            {
+               return TimeSpan.MinValue;
+            }
+            else
+            {
+               try
+               {
+                  return TimeSpan.FromSeconds(_player.Player.CurrentItem.Duration.Seconds);
+               }
+               catch
+               {
+                  return TimeSpan.MinValue;
+               };
+            };
+
+         }
+      }
 
       public override TimeSpan Buffered => throw new NotImplementedException();
 
@@ -102,6 +179,7 @@ namespace ZPF.Media
       public override Task Pause()
       {
          _player?.Player.Pause();
+         SetState(MediaPlayerState.Paused);
 
          return Task.CompletedTask;
       }
@@ -174,6 +252,12 @@ namespace ZPF.Media
          //await Play();
       }
 
+
+      private NSObject DidFinishPlayingObserver;
+      private NSObject ItemFailedToPlayToEndTimeObserver;
+      private NSObject ErrorObserver;
+      private NSObject PlaybackStalledObserver;
+
       public override async Task SetSource(IMediaItem mediaItem)
       {
          if (!mediaItem.IsMetadataExtracted)
@@ -197,12 +281,51 @@ namespace ZPF.Media
          else
          {
             _player.Player = new AVPlayer(item);
+
+            SetState(MediaPlayerState.Stopped);
+
+            DidFinishPlayingObserver = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.DidPlayToEndTimeNotification, DidFinishPlaying);
+            ItemFailedToPlayToEndTimeObserver = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.ItemFailedToPlayToEndTimeNotification, DidErrorOcurred);
+            ErrorObserver = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.NewErrorLogEntryNotification, DidErrorOcurred);
+            PlaybackStalledObserver = NSNotificationCenter.DefaultCenter.AddObserver(AVPlayerItem.PlaybackStalledNotification, DidErrorOcurred);
          }
       }
+
+      private void DidErrorOcurred(NSNotification obj)
+      {
+         if (obj.Name == "AVPlayerItemPlaybackStalledNotification")
+         {
+            //
+            SetState(MediaPlayerState.Buffering);
+         }
+         else
+         {
+            var error = _player.Player?.CurrentItem?.Error;
+
+            _State = MediaPlayerState.Failed;
+            this.OnMediaItemFailed(this, new MediaItemFailedEventArgs(this.Playlist.Current, new NSErrorException(error), error?.LocalizedDescription));
+         };
+      }
+
+      private async void DidFinishPlaying(NSNotification obj)
+      {
+         if (this.Playlist.HasNext())
+         {
+            await this.Playlist.PlayNext();
+         }
+         else
+         {
+            SetState(MediaPlayerState.Stopped);
+         };
+
+         this.OnMediaItemFinished(this, new MediaItemEventArgs(this.Playlist.Current));
+      }
+
 
       public override Task Play()
       {
          _player?.Player.Play();
+         SetState(MediaPlayerState.Playing);
 
          return Task.CompletedTask;
       }

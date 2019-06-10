@@ -5,6 +5,7 @@ using System.Diagnostics;
 using Xamarin.Forms;
 using ZPF.Media;
 using ZPF.XF;
+using ZPFMediaPlayer;
 
 namespace MediaPlayerSample
 {
@@ -92,7 +93,7 @@ namespace MediaPlayerSample
       {
          Device.BeginInvokeOnMainThread(() =>
          {
-            labelPos.Text = $"{MediaPlayer.Current.Position}";
+            labelPos.Text = $"{MediaPlayer.Current.Position.ToDisplay()}";
          });
       }
 
@@ -100,7 +101,7 @@ namespace MediaPlayerSample
       {
          Device.BeginInvokeOnMainThread(() =>
          {
-            labelInfo.Text = $"{e.State} {(MediaPlayer.Current.Duration == TimeSpan.MaxValue ? "" : MediaPlayer.Current.Duration.ToString())} ";
+            labelInfo.Text = $"{e.State} {(MediaPlayer.Current.Duration == TimeSpan.MaxValue ? "" : MediaPlayer.Current.Duration.ToDisplay())} ";
          });
       }
 
