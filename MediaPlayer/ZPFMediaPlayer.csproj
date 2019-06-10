@@ -47,6 +47,9 @@ The description of the API and sample code on the project site on GitHub.
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
     <Compile Include="Platforms\Apple\**\*.cs" />
     <Compile Include="Platforms\MacOS\**\*.cs" />
+    <!-- <Reference Include="Xamarin.iOS">
+      <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
+    </Reference> -->
   </ItemGroup>
   
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
@@ -75,10 +78,6 @@ The description of the API and sample code on the project site on GitHub.
   
   <ItemGroup>
     <Compile Remove="Platforms\Netstandard\MediaPlayerImplementation.cs" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Folder Include="Platforms\Apple\" />
   </ItemGroup>
 
 </Project>

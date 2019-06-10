@@ -101,49 +101,49 @@ namespace ZPF.Media
          return Task.CompletedTask;
       }
 
-      private NSObject _observer;
+      //private NSObject _observer;
 
-      private void RemoveStatusObserver()
-      {
-         if (_observer != null)
-         {
-            try
-            {
-               _player?.Player?.CurrentItem?.RemoveObserver(_observer, "status");
-            }
-            catch { }
-            finally
-            {
+      //private void RemoveStatusObserver()
+      //{
+      //   if (_observer != null)
+      //   {
+      //      try
+      //      {
+      //         _player?.Player?.CurrentItem?.RemoveObserver(_observer, "status");
+      //      }
+      //      catch { }
+      //      finally
+      //      {
 
-               _observer = null;
-            }
-         }
-      }
+      //         _observer = null;
+      //      }
+      //   }
+      //}
 
-      private void ObserveStatus(NSObservedChange e)
-      {
-         if (e.NewValue != null)
-         {
-            switch (_player.Player.Status)
-            {
-               case AVPlayerStatus.Failed:
-                  break;
+      //private void ObserveStatus(NSObservedChange e)
+      //{
+      //   if (e.NewValue != null)
+      //   {
+      //      switch (_player.Player.Status)
+      //      {
+      //         case AVPlayerStatus.Failed:
+      //            break;
 
-               case AVPlayerStatus.ReadyToPlay:
-                  break;
+      //         case AVPlayerStatus.ReadyToPlay:
+      //            break;
 
-               case AVPlayerStatus.Unknown:
-                  break;
-            };
+      //         case AVPlayerStatus.Unknown:
+      //            break;
+      //      };
 
-            //if (_player.Player.Status == AVPlayerStatus.ReadyToPlay)
-            //{
-            //   Element?.RaiseMediaOpened();
-            //}
+      //      //if (_player.Player.Status == AVPlayerStatus.ReadyToPlay)
+      //      //{
+      //      //   Element?.RaiseMediaOpened();
+      //      //}
 
-            System.Diagnostics.Debug.WriteLine("*** " + DateTimeOffset.Now + " " + e.NewValue.ToString());
-         }
-      }
+      //      System.Diagnostics.Debug.WriteLine("*** " + DateTimeOffset.Now + " " + e.NewValue.ToString());
+      //   }
+      //}
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
 
@@ -183,7 +183,7 @@ namespace ZPF.Media
          // AVPlayerItem.TimeJumpedNotification
          // AVPlayerItem.DidPlayToEndTimeNotification
 
-         _observer = (NSObject)item.AddObserver("status", NSKeyValueObservingOptions.New, ObserveStatus);
+         //_observer = (NSObject)item.AddObserver("status", NSKeyValueObservingOptions.New, ObserveStatus);
 
          if (_player.Player != null)
          {
