@@ -87,7 +87,7 @@ On WPF you should `try .. catch` the `Play` method for the moment:
 | ------------------- | :-----------: |
 | Android | Android.Media.MediaPlayer |
 | iOS     | AVKit.AVPlayerViewController |
-| MacOS   |  |
+| MacOS   | AVKit.AVPlayerView |
 | UWP     | Windows.Media.Playback.MediaPlayer |
 | WPF     | System.Windows.Controls.MediaElement |
 
