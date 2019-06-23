@@ -6,7 +6,7 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
    
 [Xmarin.Forms samples for the MediaPlayer …](https://github.com/ZeProgFactory/MediaPlayer_SamplesXF)   
 [Simple Xamarin, UWP & WPF samples for the MediaPlayer …](https://github.com/ZeProgFactory/MediaPlayer_Buddies)     
-
+and for those interested some links about the tips of this library and examples in the [wiki](https://github.com/ZeProgFactory/MediaPlayer/wiki) section... 
   
 ## Current platform support (evolves on nearly daily basis)
 
