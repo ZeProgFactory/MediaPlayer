@@ -3,8 +3,11 @@ Cross platform media player lib</BR>
 based on ideas and code of [martijn00](https://github.com/martijn00) ( https://github.com/martijn00/XamarinMediaManager )
 
 [You’ll find the story behind this MediaPlayer lib here …](https://zeprogfactory.github.io/MediaPlayer/)
-  
+   
+[Xmarin.Forms samples for the MediaPlayer …](https://github.com/ZeProgFactory/MediaPlayer_SamplesXF)   
+[Simple Xamarin, UWP & WPF samples for the MediaPlayer …](https://github.com/ZeProgFactory/MediaPlayer_Buddies)     
 
+  
 ## Current platform support (evolves on nearly daily basis)
 
 |platform|sample|build|state|  
