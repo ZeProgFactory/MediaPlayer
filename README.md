@@ -225,3 +225,4 @@ Build all platformes release (--> Nuget)
 ```
 msbuild zpfmediaplayer.csproj /p:TargetsToBuild=All;Configuration=Release /t:Rebuild  
 ```
+ 
