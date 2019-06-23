@@ -14,7 +14,7 @@ and for those interested some links about the tricks of this library and example
 | ------------------- | :------------------: | :------------------: |  :------------------: |  
 |UWP| XF.UWP | [![Build status](https://build.appcenter.ms/v0.1/apps/c04f9cb9-8f2a-4d33-9011-0f1fe8235713/branches/master/badge)](https://appcenter.ms) |  90 % audio |
 |iOS| XF.iOS| [![Build status](https://build.appcenter.ms/v0.1/apps/4427f9f1-a7ee-4b86-b690-be87c518f62b/branches/master/badge)](https://appcenter.ms) | 60 % audio |
-|Android| XF.Android| [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/master/badge)](https://appcenter.ms) | 90 % audio |
+|Android| XF.Android| [![Build status](https://build.appcenter.ms/v0.1/apps/faa57107-5590-491c-af93-2aa56bf1c7be/branches/add-code-of-conduct-1/badge)](https://appcenter.ms) | 90 % audio |
 |MacOS| XF.Mac | | 60 % audio |
 | WPF | XF.WPF | | 70 % audio |
    
