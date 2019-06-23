@@ -10,9 +10,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionIt
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPlayerSample.iOS", "Samples.XF\Samples\MediaPlayerSample.iOS\MediaPlayerSample.iOS.csproj", "{628363DA-350B-4A59-AEBA-84CBFCF4F32F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaPlayerSample.iOS", "SamplesXF\Samples\MediaPlayerSample.iOS\MediaPlayerSample.iOS.csproj", "{628363DA-350B-4A59-AEBA-84CBFCF4F32F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaPlayerSample", "Samples.XF\Samples\MediaPlayerSample\MediaPlayerSample.csproj", "{643165A1-CB14-4C50-8C69-A896E634216B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaPlayerSample", "SamplesXF\Samples\MediaPlayerSample\MediaPlayerSample.csproj", "{643165A1-CB14-4C50-8C69-A896E634216B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZPFMediaPlayer", "MediaPlayer\ZPFMediaPlayer.csproj", "{7FE02644-787D-4121-B142-2E463309904B}"
 EndProject
