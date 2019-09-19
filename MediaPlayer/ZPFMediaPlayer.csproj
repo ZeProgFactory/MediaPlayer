@@ -1,4 +1,8 @@
 ﻿<Project Sdk="MSBuild.Sdk.Extras">
+   <PropertyGroup Label="Android DesignTimeBuild error workaround">
+      <DesignTimeBuild>false</DesignTimeBuild>
+   </PropertyGroup>
+   
   <PropertyGroup Condition=" '$(TargetsToBuild)' == 'All' ">
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81;uap10.0.16299;net471</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81;</TargetFrameworks>
