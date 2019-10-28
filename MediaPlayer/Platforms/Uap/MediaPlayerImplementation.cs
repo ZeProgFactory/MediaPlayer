@@ -24,6 +24,15 @@ namespace ZPF.Media
       public MediaPlayerImplementation()
       {
          _player = new Windows.Media.Playback.MediaPlayer();
+
+         // The RealTimePlayback enables the media element to reduce the initial latency for playback. 
+         // This is critical for two-way communications apps. And can be applicable to some gaming scenarios. 
+         // Be aware that this mode is more resource intensive and is less power-efficient.
+         // https://docs.microsoft.com/en-us/previous-versions/windows/apps/hh871376(v=win.10)
+         _player.RealTimePlayback = false;
+
+         _player.AudioCategory = MediaPlayerAudioCategory.Media;
+
          _MediaExtractor = new MediaExtractor();
 
          _player.MediaEnded += async (Windows.Media.Playback.MediaPlayer sender, object args) =>
@@ -31,6 +40,17 @@ namespace ZPF.Media
             if (this.Playlist.HasNext())
             {
                await this.Playlist.PlayNext();
+            }
+            else
+            {
+               if (dispRequest != null)
+               {
+                  // Deactivate the display request and set the var to null.
+                  dispRequest.RequestRelease();
+                  dispRequest = null;
+
+                  //rootPage.NotifyUser("Display request released", NotifyType.StatusMessage);
+               };
             };
 
             this.OnMediaItemFinished(this, new MediaItemEventArgs(this.Playlist.Current));
@@ -217,8 +237,21 @@ namespace ZPF.Media
          return MediaSource.CreateFromUri(new Uri(mediaItem.MediaUri));
       }
 
+      // Create this variable at a global scope. Set it to null.
+      private Windows.System.Display.DisplayRequest dispRequest = null;
+
       public override Task Play()
       {
+         if (dispRequest == null)
+         {
+            // Activate a display-required request. If successful, the screen is 
+            // guaranteed not to turn off automatically due to user inactivity.
+            dispRequest = new Windows.System.Display.DisplayRequest();
+            dispRequest.RequestActive();
+
+            // rootPage.NotifyUser("Display request activated", NotifyType.StatusMessage);
+         };
+
          _player.PlaybackSession.PlaybackRate = (_player.PlaybackSession.PlaybackRate == 0 ? _player.PlaybackSession.PlaybackRate = 1 : _player.PlaybackSession.PlaybackRate);
          _player.Play();
 

@@ -1,4 +1,4 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
    <PropertyGroup Label="Android DesignTimeBuild error workaround">
       <DesignTimeBuild>false</DesignTimeBuild>
    </PropertyGroup>
@@ -82,6 +82,10 @@ The description of the API and sample code on the project site on GitHub.
   
   <ItemGroup>
     <Compile Remove="Platforms\Netstandard\MediaPlayerImplementation.cs" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Update="Microsoft.CSharp" Version="4.6.0" />
   </ItemGroup>
 
 </Project>
