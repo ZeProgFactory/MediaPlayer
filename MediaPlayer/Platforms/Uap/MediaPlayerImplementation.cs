@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Crashes;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.Storage;
@@ -46,7 +47,15 @@ namespace ZPF.Media
                if (dispRequest != null)
                {
                   // Deactivate the display request and set the var to null.
-                  dispRequest.RequestRelease();
+                  try
+                  {
+                     dispRequest.RequestRelease();
+                  }
+                  catch (Exception ex)
+                  {
+                     Crashes.TrackError(ex);
+                  };
+
                   dispRequest = null;
 
                   //rootPage.NotifyUser("Display request released", NotifyType.StatusMessage);
