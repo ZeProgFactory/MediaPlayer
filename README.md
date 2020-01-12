@@ -8,6 +8,12 @@ based on ideas and code of [martijn00](https://github.com/martijn00) ( https://g
 [Simple Xamarin, UWP & WPF samples for the MediaPlayer …](https://github.com/ZeProgFactory/MediaPlayer_Buddies)     
 and for those interested some links about the tricks of this library and examples in the [wiki](https://github.com/ZeProgFactory/MediaPlayer/wiki) section... 
   
+# Notes and warnings
+This is only a preview, so there are missing features. If you are kind and ask for them, perhaps we'll implement them. Otherwise, as is is opensource contribute. PR (pull requests) are wellcome.
+  
+## Android emulator
+12/01/2019 - The mediaplayer control isn't working well in Android emulator, whereas same features work on a physical device.
+
 ## Current platform support
 
 |platform|sample|build|state|  
