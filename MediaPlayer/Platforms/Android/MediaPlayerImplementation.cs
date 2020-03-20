@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Android.App;
 
 /// <summary>
 /// https://developer.android.com/reference/android/media/MediaPlayer.html
@@ -29,6 +30,7 @@ namespace ZPF.Media
       public MediaPlayerImplementation()
       {
          _player = new Android.Media.MediaPlayer();
+         _player.SetWakeMode(Application.Context, Android.OS.WakeLockFlags.Partial);
 
          _player.Error += (sender, args) =>
          {

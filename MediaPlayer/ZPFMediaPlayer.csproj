@@ -1,13 +1,12 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
-   <PropertyGroup Label="Android DesignTimeBuild error workaround">
-      <DesignTimeBuild>false</DesignTimeBuild>
-   </PropertyGroup>
-   
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="MSBuild.Sdk.Extras/2.0.54">
+  <PropertyGroup Label="Android DesignTimeBuild error workaround">
+    <DesignTimeBuild>false</DesignTimeBuild>
+  </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetsToBuild)' == 'All' ">
     <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81;uap10.0.16299;net471</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81;</TargetFrameworks>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(TargetsToBuild)' != 'All' ">
     <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Android' ">netstandard2.0;MonoAndroid81</TargetFrameworks>
     <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Uap' ">netstandard2.0;uap10.0.16299</TargetFrameworks>
@@ -15,7 +14,6 @@
     <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'iOS' ">netstandard2.0;Xamarin.iOS10</TargetFrameworks>
     <TargetFrameworks Condition=" '$)' == 'Apple' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20</TargetFrameworks>
   </PropertyGroup>
-  
   <PropertyGroup>
     <AssemblyName>ZPFMediaPlayer</AssemblyName>
     <RootNamespace>ZPFMediaPlayer</RootNamespace>
@@ -29,25 +27,22 @@ The description of the API and sample code on the project site on GitHub.
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <Authors>Michael Engelmann</Authors>
     <Company>ZPF</Company>
-    <Copyright>Copyright (c) 2019</Copyright>
+    <Copyright>Copyright (c) 2020</Copyright>
     <PackageIconUrl>https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
     <PackageTags>Xamarin, Android, iOS, UWP, MacOS, WPF, plugin, MediaPlayer, media, audio, C#, streaming, music, MP3</PackageTags>
-    <AssemblyVersion>0.3.0</AssemblyVersion>
-    <FileVersion>0.3.0</FileVersion>
-    <Version>0.3.0</Version>
+    <!--<AssemblyVersion>0.3.0</AssemblyVersion>
+    <FileVersion>0.3.0</FileVersion>-->
+    <Version>0.3.1</Version>
   </PropertyGroup>
-  
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>ZPFMediaPlayer.xml</DocumentationFile>
   </PropertyGroup>
-  
   <ItemGroup>
     <Compile Remove="Platforms\**\*.cs" />
     <None Include="Platforms\**\*.cs" />
     <None Include="Resources\*.cs" />
     <Compile Remove="Resources\*.cs" />
   </ItemGroup>
-
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.Mac')) ">
     <Compile Include="Platforms\Apple\**\*.cs" />
     <Compile Include="Platforms\MacOS\**\*.cs" />
@@ -55,43 +50,34 @@ The description of the API and sample code on the project site on GitHub.
       <HintPath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\ReferenceAssemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
     </Reference> -->
   </ItemGroup>
-  
   <ItemGroup Condition=" $(TargetFramework.StartsWith('netstandard')) ">
     <Compile Include="Platforms\Netstandard\**\*.cs" />
   </ItemGroup>
-
   <ItemGroup Condition=" $(TargetFramework.StartsWith('uap')) ">
     <Compile Include="Platforms\Uap\**\*.cs" />
   </ItemGroup>
-
   <ItemGroup Condition=" $(TargetFramework.StartsWith('net4')) ">
     <Compile Include="Platforms\WPF\**\*.cs" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
   </ItemGroup>
-
   <ItemGroup Condition=" $(TargetFramework.StartsWith('Xamarin.iOS')) ">
     <Compile Include="Platforms\Apple\**\*.cs" />
     <Compile Include="Platforms\iOS\**\*.cs" />
   </ItemGroup>
-
   <ItemGroup Condition=" $(TargetFramework.StartsWith('MonoAndroid')) ">
     <Compile Include="Platforms\Android\**\*.cs" />
   </ItemGroup>
-  
   <ItemGroup>
     <Compile Remove="Platforms\Netstandard\MediaPlayerImplementation.cs" />
   </ItemGroup>
-  
   <ItemGroup>
     <PackageReference Include="Microsoft.AppCenter" Version="3.0.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.0.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.0.0" />
   </ItemGroup>
-  
   <ItemGroup>
     <PackageReference Update="Microsoft.CSharp" Version="4.7.0" />
   </ItemGroup>
-
 </Project>

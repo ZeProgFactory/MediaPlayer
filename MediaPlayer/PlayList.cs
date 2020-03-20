@@ -119,7 +119,7 @@ namespace ZPF.Media
 
       public void AddRange(List<IMediaItem> playList)
       {
-         throw new NotImplementedException();
+         //ToDo: AddRange(List<IMediaItem> playList)
       }
 
       public void PlayByPosition(int ind)
