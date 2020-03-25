@@ -17,6 +17,7 @@ namespace ZPF.Media
    {
       public override object Player { get => _player; }
 
+      // https://docs.microsoft.com/en-us/uwp/api/Windows.Media.Playback.BackgroundMediaPlayer
       private readonly Windows.Media.Playback.MediaPlayer _player;
 
       public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }

@@ -103,9 +103,14 @@ On WPF you should `try .. catch` the `Play` method for the moment:
 *Android*
 ```csharp
 Android.Media.MediaPlayer Player = (Android.Media.MediaPlayer)MediaPlayer.Current.Player;  
+
+// Set the low-level power management behavior for the MediaPlayer on Android:
+Player.SetWakeMode(Application.Context, Android.OS.WakeLockFlags.Partial);
 ```
+[WakeLockFlags Enum](https://docs.microsoft.com/en-us/dotnet/api/android.os.wakelockflags?view=xamarin-android-sdk-9)
+
 Remark: The Android Player type will probably change in the future to the ExoPlayer. So check the doc on each release. 
-  
+
 
 *UWP*
 ```csharp

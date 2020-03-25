@@ -30,7 +30,6 @@ namespace ZPF.Media
       public MediaPlayerImplementation()
       {
          _player = new Android.Media.MediaPlayer();
-         _player.SetWakeMode(Application.Context, Android.OS.WakeLockFlags.Partial);
 
          _player.Error += (sender, args) =>
          {

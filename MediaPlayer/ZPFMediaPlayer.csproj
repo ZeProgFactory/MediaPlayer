@@ -32,7 +32,7 @@ The description of the API and sample code on the project site on GitHub.
     <PackageTags>Xamarin, Android, iOS, UWP, MacOS, WPF, plugin, MediaPlayer, media, audio, C#, streaming, music, MP3</PackageTags>
     <!--<AssemblyVersion>0.3.0</AssemblyVersion>
     <FileVersion>0.3.0</FileVersion>-->
-    <Version>0.3.1</Version>
+    <Version>0.3.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DocumentationFile>ZPFMediaPlayer.xml</DocumentationFile>
@@ -73,9 +73,9 @@ The description of the API and sample code on the project site on GitHub.
     <Compile Remove="Platforms\Netstandard\MediaPlayerImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AppCenter" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.0.0" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.0.0" />
+    <PackageReference Include="Microsoft.AppCenter" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Microsoft.CSharp" Version="4.7.0" />
