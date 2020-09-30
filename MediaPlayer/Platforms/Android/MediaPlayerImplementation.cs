@@ -34,7 +34,7 @@ namespace ZPF.Media
          _player.Error += (sender, args) =>
          {
             //playback error
-            Console.WriteLine("Error in playback resetting: " + args.What);
+            Console.WriteLine("Error in playback resetting: " + args?.What);
             _player.Stop();//this will clean up and reset properly.
          };
 
