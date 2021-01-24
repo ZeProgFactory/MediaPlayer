@@ -4,12 +4,12 @@
     <DesignTimeBuild>false</DesignTimeBuild>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetsToBuild)' == 'All' ">
-    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81;uap10.0.16299;net472</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(OS)' == 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81;uap10.0.18362;net472</TargetFrameworks>
     <TargetFrameworks Condition=" '$(OS)' != 'Windows_NT' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20;MonoAndroid81;</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(TargetsToBuild)' != 'All' ">
     <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Android' ">netstandard2.0;MonoAndroid81</TargetFrameworks>
-    <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Uap' ">netstandard2.0;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'Uap' ">netstandard2.0;uap10.0.18362</TargetFrameworks>
     <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'WPF' ">netstandard2.0;net472</TargetFrameworks>
     <TargetFrameworks Condition=" '$(TargetsToBuild)' == 'iOS' ">netstandard2.0;Xamarin.iOS10</TargetFrameworks>
     <TargetFrameworks Condition=" '$)' == 'Apple' ">netstandard2.0;Xamarin.iOS10;Xamarin.Mac20</TargetFrameworks>
@@ -73,9 +73,9 @@ The description of the API and sample code on the project site on GitHub.
     <Compile Remove="Platforms\Netstandard\MediaPlayerImplementation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.AppCenter" Version="3.4.3" />
-    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="3.4.3" />
-    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="3.4.3" />
+    <PackageReference Include="Microsoft.AppCenter" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.1.0" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Update="Microsoft.CSharp" Version="4.7.0" />
