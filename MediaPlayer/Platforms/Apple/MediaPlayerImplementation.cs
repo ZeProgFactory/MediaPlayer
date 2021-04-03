@@ -12,14 +12,8 @@ namespace ZPF.Media
 
 #if __IOS__
       private AVPlayerViewController _player = new AVPlayerViewController();
-
-      // Set Player property to AVPlayer
-      _player.Player = new AVPlayer();
 #else
       private AVPlayerView _player = new AVPlayerView();
-
-      // Set Player property to AVPlayer
-      _player.Player = new AVPlayer();
 #endif
 
       public override IMediaExtractor MediaExtractor { get => _MediaExtractor; set => _MediaExtractor = value; }
