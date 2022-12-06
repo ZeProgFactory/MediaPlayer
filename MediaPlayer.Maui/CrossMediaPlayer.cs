@@ -21,6 +21,13 @@ namespace ZPF.Media
       {
          get
          {
+            //var ret = new MediaPlayerImplementation();
+            //if (ret == null)
+            //{
+            //   throw NotImplementedInReferenceAssembly();
+            //}
+            //return ret;
+
             var ret = implementation.Value;
             if (ret == null)
             {
