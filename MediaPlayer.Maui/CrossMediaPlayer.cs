@@ -7,12 +7,17 @@ namespace ZPF.Media
    /// </summary>
    public static class MediaPlayer
    {
-      static Lazy<IMediaPlayer> implementation = new Lazy<IMediaPlayer>(() => CreateMediaPlayer(), System.Threading.LazyThreadSafetyMode.PublicationOnly);
+      static IMediaPlayer _MediaPlayer = null;
+
+      public static void Init(IMediaPlayer mediaPlayer)
+      {
+         _MediaPlayer = mediaPlayer;
+      }
 
       /// <summary>
       /// Gets if the plugin is supported on the current platform.
       /// </summary>
-      public static bool IsSupported => implementation.Value == null ? false : true;
+      public static bool IsSupported => _MediaPlayer == null ? false : true;
 
       /// <summary>
       /// Current plugin implementation to use
@@ -21,14 +26,7 @@ namespace ZPF.Media
       {
          get
          {
-            //var ret = new MediaPlayerImplementation();
-            //if (ret == null)
-            //{
-            //   throw NotImplementedInReferenceAssembly();
-            //}
-            //return ret;
-
-            var ret = implementation.Value;
+            var ret = _MediaPlayer;
             if (ret == null)
             {
                throw NotImplementedInReferenceAssembly();
