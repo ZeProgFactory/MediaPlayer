@@ -76,8 +76,8 @@ namespace ZPF.Media
                   Debug.WriteLine("Playlist.Current - Playlist.Add");
                };
 
-               MediaPlayer.Current.SetSource(_Current);
-               MediaPlayer.Current.Play();
+               ZeMediaPlayer.Current.SetSource(_Current);
+               ZeMediaPlayer.Current.Play();
 
                //MediaPlayer.Current.Play(_Current);
 
@@ -126,7 +126,7 @@ namespace ZPF.Media
       {
          if (ind < this.Count)
          {
-            MediaPlayer.Current.Play(this[ind]);
+            ZeMediaPlayer.Current.Play(this[ind]);
          };
       }
 
@@ -160,7 +160,7 @@ namespace ZPF.Media
       {
          if (HasNext())
          {
-            return MediaPlayer.Current.Play(NextItem);
+            return ZeMediaPlayer.Current.Play(NextItem);
          };
 
          return Task.CompletedTask;
@@ -206,7 +206,7 @@ namespace ZPF.Media
       {
          if (HasPrevious())
          {
-            return MediaPlayer.Current.Play(PreviousItem);
+            return ZeMediaPlayer.Current.Play(PreviousItem);
          };
 
          return Task.CompletedTask;
@@ -219,7 +219,7 @@ namespace ZPF.Media
          if (Current == null)
          {
             ClearItems();
-            MediaPlayer.Current.Play(mediaItem);
+            ZeMediaPlayer.Current.Play(mediaItem);
          }
          else
          {

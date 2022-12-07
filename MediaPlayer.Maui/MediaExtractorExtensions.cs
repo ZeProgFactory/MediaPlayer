@@ -10,7 +10,7 @@ namespace ZPF.Media
          if (mediaItem.IsMetadataExtracted)
             return mediaItem;
 
-         return mediaItem = await MediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
+         return mediaItem = await ZeMediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
       }
 
       public static async Task<IMediaItem[]> FetchMetaData(this IPlaylist playlist)

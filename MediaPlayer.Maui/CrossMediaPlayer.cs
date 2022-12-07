@@ -5,19 +5,19 @@ namespace ZPF.Media
    /// <summary>
    /// 
    /// </summary>
-   public static class MediaPlayer
+   public static class ZeMediaPlayer
    {
-      static IMediaPlayer _MediaPlayer = null;
+      static IMediaPlayer _ZeMediaPlayer = null;
 
       public static void Init(IMediaPlayer mediaPlayer)
       {
-         _MediaPlayer = mediaPlayer;
+         _ZeMediaPlayer = mediaPlayer;
       }
 
       /// <summary>
       /// Gets if the plugin is supported on the current platform.
       /// </summary>
-      public static bool IsSupported => _MediaPlayer == null ? false : true;
+      public static bool IsSupported => _ZeMediaPlayer == null ? false : true;
 
       /// <summary>
       /// Current plugin implementation to use
@@ -26,7 +26,7 @@ namespace ZPF.Media
       {
          get
          {
-            var ret = _MediaPlayer;
+            var ret = _ZeMediaPlayer;
             if (ret == null)
             {
                throw NotImplementedInReferenceAssembly();

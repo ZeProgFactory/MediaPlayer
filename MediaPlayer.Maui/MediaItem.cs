@@ -89,7 +89,7 @@ namespace ZPF.Media
             MediaLocation = mediaLocation,
          };
 
-         return await MediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
+         return await ZeMediaPlayer.Current.MediaExtractor.CreateMediaItem(mediaItem);
       }
 
       // - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - -  - - 
