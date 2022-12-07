@@ -1,13 +1,8 @@
-# MediaPlayer for Maui - !!! Preview !!!
-Cross platform media player lib for Maui</BR>
-based on our MediaPlayer for XF ([legacy readme.md](readme.XF.md))
-and ideas and code of [martijn00](https://github.com/martijn00) ( https://github.com/martijn00/XamarinMediaManager )
-  
-.  
-.  
-.    
-# ```The following text is not yet updated ...```
+# !!! Probably there  won’t by any further development in direction of Xamarin.Forms. !!!
 
+# MediaPlayer - XF - 07.12.2022
+Cross platform media player lib for Xamarin.Forms</BR>
+based on ideas and code of [martijn00](https://github.com/martijn00) ( https://github.com/martijn00/XamarinMediaManager )
 
 [You’ll find the story behind this MediaPlayer lib here …](https://zeprogfactory.github.io/MediaPlayer/)
    
