@@ -41,4 +41,8 @@
 	  <DefineConstants>$(DefineConstants)TRACE;_YEAP_</DefineConstants>
 	</PropertyGroup>
 
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.CSharp" Version="4.7.0" />
+	</ItemGroup>
+
 </Project>
