@@ -135,7 +135,10 @@ namespace ZPF.Media
             }
             else
             {
-               _player.Player.Volume = (float)_Volume;
+               if (_player.Player != null)
+               {
+                  _player.Player.Volume = (float)_Volume;
+               };
             };
          }
       }
@@ -164,11 +167,17 @@ namespace ZPF.Media
 
             if (_Muted)
             {
-               _player.Player.Volume = 0;
+               if (_player.Player != null)
+               {
+                  _player.Player.Volume = 0;
+               };
             }
             else
             {
-               _player.Player.Volume = (float)_Volume;
+               if (_player.Player != null)
+               {
+                  _player.Player.Volume = (float)_Volume;
+               };
             };
          }
       }
