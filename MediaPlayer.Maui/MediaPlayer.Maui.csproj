@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>net7.0;net7.0-ios;net7.0-maccatalyst;net7.0-android33.0</TargetFrameworks>
@@ -16,6 +16,17 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageId>ZPFMediaPlayer</PackageId>
+		<Title>ZPFMediaPlayer</Title>
+		<Version>1.0.1</Version>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<Description>alpha version – not all platforms are fully implemented. Check the current state on the project site.   
+   
+Easy to use .Net cross platform library to play local and steamed audio (video will come later).    
+It supports Android, iOS, MacOS, UWP, WPF, Xamarin and Xamarin.Forms.   
+The description of the API and sample code on the project site on GitHub.</Description>
+		<PackageIcon>ZeProgramFactory.Square.BG.png</PackageIcon>
    </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
@@ -41,6 +52,17 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-maccatalyst|AnyCPU'">
 	  <DefineConstants>$(DefineConstants)TRACE;_YEAP_</DefineConstants>
 	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Include="..\docs\ZeProgramFactory.Square.BG.png">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Include="..\README.md">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Update="Microsoft.CSharp" Version="4.7.0" />
