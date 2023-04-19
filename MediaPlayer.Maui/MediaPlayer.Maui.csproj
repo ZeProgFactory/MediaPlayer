@@ -39,6 +39,7 @@ The description of the API and sample code on the project site on GitHub.</Descr
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
 	  <DefineConstants>$(DefineConstants)TRACE;_YEAP_</DefineConstants>
+	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
