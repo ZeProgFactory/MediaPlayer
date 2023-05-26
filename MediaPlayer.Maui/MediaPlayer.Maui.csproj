@@ -19,7 +19,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageId>ZPFMediaPlayer</PackageId>
 		<Title>ZPFMediaPlayer</Title>
-		<Version>1.0.1</Version>
+		<Version>1.0.2</Version>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Description>alpha version – not all platforms are fully implemented. Check the current state on the project site.   
    
@@ -27,6 +27,7 @@ Easy to use .Net cross platform library to play local and steamed audio (video w
 It supports Android, iOS, MacOS, UWP, WPF, Xamarin and Xamarin.Forms.   
 The description of the API and sample code on the project site on GitHub.</Description>
 		<PackageIcon>ZeProgramFactory.Square.BG.png</PackageIcon>
+		<PackageTags>Maui, android, plugin, MediaPlayer, media, audio, video</PackageTags>
    </PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
