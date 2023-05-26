@@ -7,7 +7,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Windows.Storage;
 using Windows.Storage.FileProperties;
 
-namespace ZPF.Media.Uap
+namespace ZPF.Media
 {
    public class MediaExtractor : IMediaExtractor
    {
@@ -39,9 +39,34 @@ namespace ZPF.Media.Uap
          // default title
          mediaItem.Title = System.IO.Path.GetFileNameWithoutExtension(mediaItem.MediaUri);
 
+         if (mediaItem.MediaLocation == MediaLocation.Default)
+         {
+            try
+            {
+               if (System.IO.File.Exists(mediaItem.MediaUri))
+               {
+                  mediaItem.MediaLocation = MediaLocation.FileSystem;
+               };
+            }
+            catch { };
+         };
+
          if (mediaItem.MediaLocation == MediaLocation.FileSystem)
          {
             var file = await StorageFile.GetFileFromPathAsync(mediaItem.MediaUri);
+
+            if (mediaItem.MediaType == MediaType.Default)
+            {
+               if (file.ContentType.ToLower().StartsWith("audio"))
+               {
+                  mediaItem.MediaType = MediaType.Audio;
+               };
+
+               if (file.ContentType.ToLower().StartsWith("video"))
+               {
+                  mediaItem.MediaType = MediaType.Video;
+               };
+            };
 
             switch (mediaItem.MediaType)
             {
@@ -68,7 +93,11 @@ namespace ZPF.Media.Uap
 
          mediaItem.Title = musicProperties.Title;
          mediaItem.Artist = musicProperties.Artist;
+
          mediaItem.Album = musicProperties.Album;
+         mediaItem.AlbumArtist = musicProperties.AlbumArtist;
+
+         mediaItem.Duration = musicProperties.Duration;
       }
 
       private async Task SetVideoInfo(IStorageItemProperties file, IMediaItem mediaItem)

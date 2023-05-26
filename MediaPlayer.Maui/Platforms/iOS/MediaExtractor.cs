@@ -10,7 +10,7 @@ using UIKit;
 
 namespace ZPF.Media
 {
-   class MediaExtractor : IMediaExtractor
+   public class MediaExtractor : IMediaExtractor
    {
       //protected Dictionary<string, string> RequestHeaders => CrossMediaManager.Current.RequestHeaders;
 
