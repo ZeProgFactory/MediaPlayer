@@ -52,6 +52,11 @@ namespace ZPF.Media
       {
          // Playing, Paused, Stopped, Loading, Buffering, Failed
 
+         if(_player.Player == null)
+         {
+            return MediaPlayerState.Failed;
+         };
+
          switch (_player.Player.Status)
          {
             case AVPlayerStatus.Failed:
@@ -63,7 +68,6 @@ namespace ZPF.Media
             case AVPlayerStatus.Unknown:
                break;
          };
-
 
          return _State;
       }
