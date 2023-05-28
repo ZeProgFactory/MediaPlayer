@@ -210,6 +210,11 @@ namespace ZPF.Media
 
       public override async Task SetSource(IMediaItem mediaItem)
       {
+         if (mediaItem == null)
+         {
+            return;
+         };
+
          if (!mediaItem.IsMetadataExtracted)
          {
             mediaItem = await MediaExtractor.CreateMediaItem(mediaItem);
