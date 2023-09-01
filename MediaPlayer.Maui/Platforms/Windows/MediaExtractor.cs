@@ -79,7 +79,7 @@ namespace ZPF.Media
                   break;
             }
 
-            await SetAlbumArt(file, mediaItem);
+            //ToDo: await SetAlbumArt(file, mediaItem);
          }
 
          mediaItem.IsMetadataExtracted = true;
