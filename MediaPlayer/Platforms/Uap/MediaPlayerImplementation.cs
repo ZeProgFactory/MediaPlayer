@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using Microsoft.AppCenter.Crashes;
 using Windows.Media.Core;
 using Windows.Media.Playback;
 using Windows.Storage;
@@ -54,7 +51,7 @@ namespace ZPF.Media
                   }
                   catch (Exception ex)
                   {
-                     Crashes.TrackError(ex);
+                     //Crashes.TrackError(ex);
                   };
 
                   dispRequest = null;
