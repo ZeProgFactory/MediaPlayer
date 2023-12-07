@@ -27,7 +27,7 @@ The description of the API and sample code on the project site on GitHub.
     <DisableFastUpToDateCheck>true</DisableFastUpToDateCheck>
     <Authors>Michael Engelmann</Authors>
     <Company>ZPF</Company>
-    <Copyright>Copyright (c) 2021</Copyright>
+    <Copyright>Copyright (c) 2023</Copyright>
     <PackageIconUrl>https://raw.githubusercontent.com/ZeProgFactory/MediaPlayer/master/docs/ZeProgramFactory.Square.BG.png</PackageIconUrl>
     <PackageTags>Xamarin, Android, iOS, UWP, MacOS, WPF, plugin, MediaPlayer, media, audio, C#, streaming, music, MP3</PackageTags>
     <Version>0.3.3.1</Version>
