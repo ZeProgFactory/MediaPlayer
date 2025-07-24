@@ -74,5 +74,9 @@ The description of the API and sample code on the project site on GitHub.</Descr
       <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="9.0.90" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.CSharp" Version="4.7.0" />
+	</ItemGroup>
+
 
 </Project>
